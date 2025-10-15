@@ -178,14 +178,71 @@ const post = await getBySlug('blog-posts', 'my-post-slug');
 3. Add environment variables in Vercel dashboard
 4. Deploy
 
-### Backend (Strapi)
+### Backend (Strapi Cloud) - Recommended
 
-Options:
-- Strapi Cloud (easiest)
-- Railway
-- Heroku
-- DigitalOcean
-- AWS/Azure/GCP
+This project uses a **monorepo structure** with Strapi in the `backend/` directory. Follow these steps:
+
+#### Prerequisites
+- Strapi Cloud account (https://cloud.strapi.io)
+- GitHub repository with code pushed
+- PostgreSQL-compatible database (provided by Strapi Cloud)
+
+#### Deployment Steps
+
+1. **Login to Strapi Cloud**
+   - Visit https://cloud.strapi.io
+   - Sign in with GitHub, Google, or GitLab
+
+2. **Create New Project**
+   - Click "Create Project"
+   - Select a plan (Free tier available)
+   - Choose this GitHub repository: `alimehmetoglu-sipsy/sipsywebsite`
+
+3. **Configure Deployment Settings**
+   - **Base Directory**: Enter `backend` (CRITICAL - this is a monorepo)
+   - **Branch**: Select `master`
+   - **Region**: Choose closest to your users
+   - **Node Version**: Keep default (18+)
+
+4. **Environment Variables**
+   Strapi Cloud automatically provides:
+   - `DATABASE_*` variables (PostgreSQL)
+   - `APP_KEYS`, `API_TOKEN_SALT`, etc.
+
+   Add custom variables if needed:
+   - `NODE_ENV=production`
+   - Any plugin-specific variables
+
+5. **Deploy**
+   - Click "Deploy"
+   - Wait for build to complete (5-10 minutes)
+   - Create your first admin user
+
+6. **Update Frontend Environment**
+   - Copy your Strapi Cloud URL
+   - Update `.env.local` in frontend:
+     ```
+     NEXT_PUBLIC_STRAPI_URL=https://your-project.strapiapp.com
+     STRAPI_TOKEN=your-api-token
+     ```
+
+#### Troubleshooting
+
+**Error: "Strapi was not found in the project dependencies"**
+- Solution: Ensure "Base Directory" is set to `backend` in project settings
+- Location: Project Settings → Repository Settings → Base Directory
+
+**Database Connection Issues**
+- Strapi Cloud provides PostgreSQL automatically
+- No manual database configuration needed
+- Verify `pg` package is in `backend/package.json`
+
+### Alternative Deployment Options
+
+- Railway: Deploy from `backend/` directory
+- Heroku: Use `heroku.yml` with base directory
+- DigitalOcean App Platform: Specify component path
+- AWS/Azure/GCP: Manual Docker deployment
 
 ## 📚 Next Steps
 
