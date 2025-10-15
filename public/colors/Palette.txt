@@ -1,0 +1,32 @@
+/* CSS HEX */
+--golden-dream: #f4d531;
+--tulip-tree: #e5b436;
+--ebony-clay: #212c41;
+--tuscany: #cc602f;
+--zombie: #e3d59b;
+--bismark: #42698b;
+--yellow-metal: #6b5b3a;
+--tussock: #d09d49;
+--chenin: #e5cd73;
+
+/* SCSS HEX */
+$golden-dream: #f4d531;
+$tulip-tree: #e5b436;
+$ebony-clay: #212c41;
+$tuscany: #cc602f;
+$zombie: #e3d59b;
+$bismark: #42698b;
+$yellow-metal: #6b5b3a;
+$tussock: #d09d49;
+$chenin: #e5cd73;
+
+/* SCSS RGB */
+$golden-dream: rgba(244,213,49,1);
+$tulip-tree: rgba(229,180,54,1);
+$ebony-clay: rgba(33,44,65,1);
+$tuscany: rgba(204,96,47,1);
+$zombie: rgba(227,213,155,1);
+$bismark: rgba(66,105,139,1);
+$yellow-metal: rgba(107,91,58,1);
+$tussock: rgba(208,157,73,1);
+$chenin: rgba(229,205,115,1);

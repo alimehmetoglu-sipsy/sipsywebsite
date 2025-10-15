@@ -1,0 +1,31 @@
+{
+  "kind": "singleType",
+  "collectionName": "footers",
+  "info": {
+    "singularName": "footer",
+    "pluralName": "footers",
+    "displayName": "Footer"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "links": {
+      "type": "json"
+    },
+    "companyDescription": {
+      "type": "text"
+    },
+    "socialLinks": {
+      "type": "json"
+    },
+    "copyright": {
+      "type": "string"
+    }
+  }
+}

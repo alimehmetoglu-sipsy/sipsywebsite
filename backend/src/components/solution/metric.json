@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_solution_metrics",
+  "info": {
+    "displayName": "Metric",
+    "icon": "dashboard",
+    "description": "Before/After metric comparison"
+  },
+  "options": {},
+  "attributes": {
+    "label": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

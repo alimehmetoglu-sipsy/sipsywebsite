@@ -1,0 +1,145 @@
+{
+  "data": {
+    "title": "Artificial Intelligence - Make Your Data Talk, Make Smart Decisions",
+    "subtitle": "RAG-based intelligent assistant system",
+    "slug": "intelligent-customer-service-assistant",
+    "shortDescription": "A RAG-based AI assistant that analyzes 10,000+ pages of documentation in seconds for insurance companies.",
+    "service": "rrmdxw17w69t67wrkxgcwg9l",
+    "featured": true,
+    "order": 2,
+    "locale": "en",
+    "tools": [
+      {
+        "name": "LangChain",
+        "description": "orchestration"
+      },
+      {
+        "name": "OpenAI & Ollama APIs",
+        "description": ""
+      },
+      {
+        "name": "Qdrant, pgvector",
+        "description": "Vector Databases"
+      },
+      {
+        "name": "RAG Pipelines",
+        "description": ""
+      }
+    ],
+    "project": {
+      "projectName": "Intelligent Customer Service Assistant",
+      "clientInfo": "An insurance company",
+      "problemTitle": "Problem:",
+      "problemDescription": "An insurance company struggles to manage 10,000+ pages of product documentation.",
+      "problemPoints": [
+        {
+          "emoji": "",
+          "text": "10,000+ pages of product documentation"
+        },
+        {
+          "emoji": "",
+          "text": "Customer representatives spend 5-10 minutes searching for answers to each question"
+        },
+        {
+          "emoji": "❌",
+          "text": "Customers are waiting, dissatisfied"
+        },
+        {
+          "emoji": "❌",
+          "text": "Risk of providing incorrect information"
+        },
+        {
+          "emoji": "❌",
+          "text": "Training new employees takes months"
+        }
+      ],
+      "solutionTitle": "Solution:",
+      "solutionDescription": "We built a RAG (Retrieval Augmented Generation) system:",
+      "solutionSteps": [
+        {
+          "emoji": "📚",
+          "text": "All product documentation, FAQs, and policy information uploaded to database"
+        },
+        {
+          "emoji": "🧠",
+          "text": "Information stored semantically using Vector database (Qdrant)"
+        },
+        {
+          "emoji": "💬",
+          "text": "Customer representative asks: 'Which life insurance for a 35-year-old non-smoking woman?'"
+        },
+        {
+          "emoji": "⚡",
+          "text": "AI system finds relevant documents, generates answer, shows source documents in seconds"
+        },
+        {
+          "emoji": "🎯",
+          "text": "Representative delivers ready answer to customer"
+        }
+      ],
+      "resultsTitle": "Results:",
+      "results": [
+        {
+          "emoji": "✅",
+          "metric": "Response time",
+          "value": "5-10 min → 30 seconds"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Accuracy rate",
+          "value": "95%+"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Customer satisfaction",
+          "value": "+35%"
+        },
+        {
+          "emoji": "✅",
+          "metric": "New employee training time",
+          "value": "3 months → 2 weeks"
+        },
+        {
+          "emoji": "💡",
+          "metric": "Bonus",
+          "value": "System works 24/7, people can use it even on vacation!"
+        }
+      ],
+      "beforeMetrics": [
+        {
+          "label": "Response time",
+          "value": "5-10 minutes"
+        },
+        {
+          "label": "Accuracy",
+          "value": "80%"
+        }
+      ],
+      "afterMetrics": [
+        {
+          "label": "Response time",
+          "value": "30 seconds"
+        },
+        {
+          "label": "Accuracy",
+          "value": "95%+"
+        }
+      ],
+      "savings": "Customer satisfaction +35%"
+    },
+    "visuals": [
+      {
+        "type": "mockup",
+        "description": "Chat interface mockup"
+      },
+      {
+        "type": "comparison",
+        "description": "Before manual search vs Now with AI comparison"
+      },
+      {
+        "type": "illustration",
+        "description": "Brain/network visual, vector database concept"
+      }
+    ]
+  }
+}

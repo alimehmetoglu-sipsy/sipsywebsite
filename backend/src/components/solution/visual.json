@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_solution_visuals",
+  "info": {
+    "displayName": "Visual",
+    "icon": "picture",
+    "description": "Visual material suggestion"
+  },
+  "options": {},
+  "attributes": {
+    "type": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

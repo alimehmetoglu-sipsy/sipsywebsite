@@ -1,0 +1,19 @@
+{
+  "collectionName": "components_solution_points",
+  "info": {
+    "displayName": "Point",
+    "icon": "bulletList",
+    "description": "Problem or solution point with optional emoji"
+  },
+  "options": {},
+  "attributes": {
+    "emoji": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "text": {
+      "type": "text",
+      "required": true
+    }
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "data": {
+    "title": "Data Engineering - Turn Complex Data into Valuable Insights",
+    "subtitle": "ETL pipelines and custom dashboards",
+    "slug": "360-degree-customer-analysis-platform",
+    "shortDescription": "A custom dashboard that transforms customer data scattered across 7 different systems into a unified view for retail chains.",
+    "service": "rrmdxw17w69t67wrkxgcwg9l",
+    "featured": false,
+    "order": 3,
+    "locale": "en",
+    "tools": [
+      {
+        "name": "Python",
+        "description": "pandas, numpy"
+      },
+      {
+        "name": "ETL pipelines",
+        "description": ""
+      },
+      {
+        "name": "PostgreSQL, SQL Server",
+        "description": ""
+      },
+      {
+        "name": "Plotly, Matplotlib",
+        "description": "visualization"
+      }
+    ],
+    "project": {
+      "projectName": "360 Degree Customer Analysis Platform",
+      "clientInfo": "A retail chain",
+      "problemTitle": "Problem:",
+      "problemDescription": "Customer data is scattered across 7 different systems.",
+      "problemPoints": [
+        {
+          "emoji": "❌",
+          "text": "Sales system (cashiers)"
+        },
+        {
+          "emoji": "❌",
+          "text": "E-commerce platform"
+        },
+        {
+          "emoji": "❌",
+          "text": "Mobile application"
+        },
+        {
+          "emoji": "❌",
+          "text": "CRM system"
+        },
+        {
+          "emoji": "❌",
+          "text": "Loyalty program"
+        },
+        {
+          "emoji": "❌",
+          "text": "Social media interactions"
+        },
+        {
+          "emoji": "❌",
+          "text": "Call center records"
+        },
+        {
+          "emoji": "",
+          "text": "No answer to 'When does Customer X buy, what do they buy, why do they complain?'"
+        }
+      ],
+      "solutionTitle": "Solution:",
+      "solutionDescription": "We developed ETL pipeline + Custom dashboard:",
+      "solutionSteps": [
+        {
+          "emoji": "🔄",
+          "text": "Step 1 - Extract: Python scripts automatically run at 02:00 every night, collecting data from 7 different systems"
+        },
+        {
+          "emoji": "🔧",
+          "text": "Step 2 - Transform: Cleaning data, merging same customer's all data into unified profile, enriching with tags"
+        },
+        {
+          "emoji": "💾",
+          "text": "Step 3 - Load: Loading into central PostgreSQL database, updating real-time dashboard"
+        },
+        {
+          "emoji": "📊",
+          "text": "Dashboard shows: Customer profile, trend analysis, risk scores, action recommendations"
+        }
+      ],
+      "resultsTitle": "Results:",
+      "results": [
+        {
+          "emoji": "✅",
+          "metric": "Systems unified",
+          "value": "7 systems → 1 unified view"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Customer analysis time",
+          "value": "2 hours → 30 seconds"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Data quality",
+          "value": "95%+ (automatic cleaning)"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Churn rate",
+          "value": "-25%"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Marketing campaigns",
+          "value": "60% more effective (targeted!)"
+        },
+        {
+          "emoji": "💰",
+          "metric": "ROI",
+          "value": "2.5 million TL additional revenue in 6 months"
+        }
+      ],
+      "beforeMetrics": [
+        {
+          "label": "Data sources",
+          "value": "7 disconnected systems"
+        },
+        {
+          "label": "Analysis time",
+          "value": "2 hours"
+        },
+        {
+          "label": "Data quality",
+          "value": "70%"
+        }
+      ],
+      "afterMetrics": [
+        {
+          "label": "Data sources",
+          "value": "1 unified platform"
+        },
+        {
+          "label": "Analysis time",
+          "value": "30 seconds"
+        },
+        {
+          "label": "Data quality",
+          "value": "95%+"
+        }
+      ],
+      "savings": "2.5 million TL additional revenue in 6 months"
+    },
+    "visuals": [
+      {
+        "type": "diagram",
+        "description": "ETL pipeline flow diagram (Extract → Transform → Load)"
+      },
+      {
+        "type": "screenshot",
+        "description": "Dashboard screenshot (charts, metrics)"
+      },
+      {
+        "type": "comparison",
+        "description": "Before/after: 'Scattered data' vs 'Unified insights'"
+      }
+    ]
+  }
+}

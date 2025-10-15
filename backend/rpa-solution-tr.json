@@ -1,0 +1,136 @@
+{
+  "data": {
+    "title": "Robot Process Automation - İnsanları Tekrarlayan İşlerden Kurtarıyoruz",
+    "subtitle": "7/24 çalışan akıllı otomasyon",
+    "slug": "otomatik-fatura-isleme-robotu",
+    "shortDescription": "E-ticaret şirketleri için günde 500+ faturayı otomatik işleyen akıllı robot sistemi.",
+    "service": "mlivin69yi7pllrt3b5ri37n",
+    "featured": true,
+    "order": 1,
+    "locale": "tr",
+    "tools": [
+      {
+        "name": "n8n",
+        "description": "workflow orchestration"
+      },
+      {
+        "name": "Selenium & Playwright",
+        "description": "web automation"
+      },
+      {
+        "name": "Autom Mate",
+        "description": "enterprise RPA"
+      }
+    ],
+    "project": {
+      "projectName": "Otomatik Fatura İşleme Robotu",
+      "clientInfo": "Bir e-ticaret şirketi",
+      "problemTitle": "Problem:",
+      "problemDescription": "Bir e-ticaret şirketi günde 500+ fatura alıyor. Çalışanlar her faturayı manuel olarak işliyor.",
+      "problemPoints": [
+        {
+          "emoji": "",
+          "text": "Email'den indiriyor"
+        },
+        {
+          "emoji": "",
+          "text": "PDF'i açıp bilgileri okuyor"
+        },
+        {
+          "emoji": "",
+          "text": "ERP sistemine tek tek giriyorlar"
+        },
+        {
+          "emoji": "❌",
+          "text": "1 fatura = 3-4 dakika"
+        },
+        {
+          "emoji": "❌",
+          "text": "Günde 30+ saat insan emeği"
+        }
+      ],
+      "solutionTitle": "Çözüm:",
+      "solutionDescription": "n8n ile akıllı otomasyon geliştirdik:",
+      "solutionSteps": [
+        {
+          "emoji": "🤖",
+          "text": "Robot email kutusunu sürekli izliyor"
+        },
+        {
+          "emoji": "📧",
+          "text": "Yeni fatura geldiğinde otomatik indiriyor"
+        },
+        {
+          "emoji": "🔍",
+          "text": "Playwright ile PDF'i açıp önemli bilgileri okuyor (fatura no, tutar, tarih, firma)"
+        },
+        {
+          "emoji": "⚡",
+          "text": "API ile ERP sistemine otomatik gönderiyor"
+        },
+        {
+          "emoji": "✅",
+          "text": "Başarılı işlemleri Slack'ten bildiriyor"
+        }
+      ],
+      "resultsTitle": "Sonuç:",
+      "results": [
+        {
+          "emoji": "✅",
+          "metric": "Zaman tasarrufu",
+          "value": "30 saat/gün → 30 dakika/gün (sadece kontrol için)"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Hata oranı",
+          "value": "%0 (insan hatası yok)"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Çalışan verimliliği",
+          "value": "Çalışanlar stratejik işlere odaklanabiliyor"
+        },
+        {
+          "emoji": "💰",
+          "metric": "Maliyet tasarrufu",
+          "value": "Yıllık 200.000 TL"
+        }
+      ],
+      "beforeMetrics": [
+        {
+          "label": "İşlem süresi",
+          "value": "30 saat/gün"
+        },
+        {
+          "label": "Hata oranı",
+          "value": "%5-10"
+        }
+      ],
+      "afterMetrics": [
+        {
+          "label": "İşlem süresi",
+          "value": "30 dakika/gün"
+        },
+        {
+          "label": "Hata oranı",
+          "value": "%0"
+        }
+      ],
+      "savings": "Yıllık 200.000 TL maliyet tasarrufu"
+    },
+    "visuals": [
+      {
+        "type": "comparison",
+        "description": "Önce/sonra karşılaştırması (saat cinsinden)"
+      },
+      {
+        "type": "diagram",
+        "description": "Otomasyon akış şeması (basit, renkli ikonlarla)"
+      },
+      {
+        "type": "illustration",
+        "description": "Robot karakteri fatura işlerken"
+      }
+    ]
+  }
+}

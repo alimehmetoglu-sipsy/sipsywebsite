@@ -1,0 +1,39 @@
+{
+  "kind": "collectionType",
+  "collectionName": "value_propositions",
+  "info": {
+    "singularName": "value-proposition",
+    "pluralName": "value-propositions",
+    "displayName": "Value Proposition"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "icon": {
+      "type": "customField",
+      "customField": "plugin::strapi-plugin-iconhub.iconhub",
+      "options": {
+        "storeIconData": true,
+        "storeIconName": true
+      }
+    }
+  }
+}

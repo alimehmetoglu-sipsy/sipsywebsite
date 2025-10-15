@@ -1,0 +1,18 @@
+{
+  "collectionName": "components_solution_tools",
+  "info": {
+    "displayName": "Tool",
+    "icon": "wrench",
+    "description": "Technology or tool used in the solution"
+  },
+  "options": {},
+  "attributes": {
+    "name": {
+      "type": "string",
+      "required": true
+    },
+    "description": {
+      "type": "string"
+    }
+  }
+}

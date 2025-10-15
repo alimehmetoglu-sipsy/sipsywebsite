@@ -1,0 +1,145 @@
+{
+  "data": {
+    "title": "Yapay Zeka - Verilerinizi Konuşturun, Akıllı Kararlar Alın",
+    "subtitle": "RAG tabanlı akıllı asistan sistemi",
+    "slug": "akilli-musteri-hizmetleri-asistani",
+    "shortDescription": "Sigorta şirketleri için 10.000+ sayfa dökümanı saniyeler içinde analiz eden RAG tabanlı AI asistan.",
+    "service": "rrmdxw17w69t67wrkxgcwg9l",
+    "featured": true,
+    "order": 2,
+    "locale": "tr",
+    "tools": [
+      {
+        "name": "LangChain",
+        "description": "orchestration"
+      },
+      {
+        "name": "OpenAI & Ollama APIs",
+        "description": ""
+      },
+      {
+        "name": "Qdrant, pgvector",
+        "description": "Vector Databases"
+      },
+      {
+        "name": "RAG Pipelines",
+        "description": ""
+      }
+    ],
+    "project": {
+      "projectName": "Akıllı Müşteri Hizmetleri Asistanı",
+      "clientInfo": "Bir sigorta şirketi",
+      "problemTitle": "Problem:",
+      "problemDescription": "Bir sigorta şirketi 10.000+ sayfa ürün dökümanı yönetmekte zorlanıyor.",
+      "problemPoints": [
+        {
+          "emoji": "",
+          "text": "10.000+ sayfa ürün dökümanı var"
+        },
+        {
+          "emoji": "",
+          "text": "Müşteri temsilcileri her soruya cevap bulmak için 5-10 dakika döküman arıyor"
+        },
+        {
+          "emoji": "❌",
+          "text": "Müşteriler bekliyor, memnuniyetsiz"
+        },
+        {
+          "emoji": "❌",
+          "text": "Yanlış bilgi verme riski"
+        },
+        {
+          "emoji": "❌",
+          "text": "Yeni çalışanların öğrenmesi aylar sürüyor"
+        }
+      ],
+      "solutionTitle": "Çözüm:",
+      "solutionDescription": "RAG (Retrieval Augmented Generation) sistemi kurduk:",
+      "solutionSteps": [
+        {
+          "emoji": "📚",
+          "text": "Tüm ürün dökümanları, SSS'ler, poliçe bilgileri veritabanına yüklendi"
+        },
+        {
+          "emoji": "🧠",
+          "text": "Vector database (Qdrant) ile bilgiler anlamsal olarak saklandı"
+        },
+        {
+          "emoji": "💬",
+          "text": "Müşteri temsilcisi soru soruyor: '35 yaşında, sigara içmeyen kadın için hangi hayat sigortası?'"
+        },
+        {
+          "emoji": "⚡",
+          "text": "AI sistem saniyeler içinde ilgili dökümanları buluyor, cevabı oluşturuyor, kaynak dökümanları gösteriyor"
+        },
+        {
+          "emoji": "🎯",
+          "text": "Temsilci hazır cevabı müşteriye iletiyor"
+        }
+      ],
+      "resultsTitle": "Sonuç:",
+      "results": [
+        {
+          "emoji": "✅",
+          "metric": "Cevap süresi",
+          "value": "5-10 dk → 30 saniye"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Doğruluk oranı",
+          "value": "%95+"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Müşteri memnuniyeti",
+          "value": "+%35"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Yeni çalışan eğitim süresi",
+          "value": "3 ay → 2 hafta"
+        },
+        {
+          "emoji": "💡",
+          "metric": "Bonus",
+          "value": "Sistem 7/24 çalışıyor, insanlar tatilde bile kullanabiliyor!"
+        }
+      ],
+      "beforeMetrics": [
+        {
+          "label": "Cevap süresi",
+          "value": "5-10 dakika"
+        },
+        {
+          "label": "Doğruluk",
+          "value": "%80"
+        }
+      ],
+      "afterMetrics": [
+        {
+          "label": "Cevap süresi",
+          "value": "30 saniye"
+        },
+        {
+          "label": "Doğruluk",
+          "value": "%95+"
+        }
+      ],
+      "savings": "Müşteri memnuniyeti +%35"
+    },
+    "visuals": [
+      {
+        "type": "mockup",
+        "description": "Chat interface mockup"
+      },
+      {
+        "type": "comparison",
+        "description": "Önce manuel arama vs Şimdi AI ile karşılaştırması"
+      },
+      {
+        "type": "illustration",
+        "description": "Brain/network görseli, vector database konsepti"
+      }
+    ]
+  }
+}

@@ -1,0 +1,166 @@
+{
+  "data": {
+    "title": "Veri Mühendisliği - Karmaşık Verileri Değerli İçgörülere Dönüştürün",
+    "subtitle": "ETL pipeline'ları ve özel dashboard'lar",
+    "slug": "360-derece-musteri-analiz-platformu",
+    "shortDescription": "Perakende zincirleri için 7 farklı sistemde dağınık müşteri verilerini birleşik görünüme dönüştüren özel dashboard.",
+    "service": "rrmdxw17w69t67wrkxgcwg9l",
+    "featured": false,
+    "order": 3,
+    "locale": "tr",
+    "tools": [
+      {
+        "name": "Python",
+        "description": "pandas, numpy"
+      },
+      {
+        "name": "ETL pipelines",
+        "description": ""
+      },
+      {
+        "name": "PostgreSQL, SQL Server",
+        "description": ""
+      },
+      {
+        "name": "Plotly, Matplotlib",
+        "description": "visualization"
+      }
+    ],
+    "project": {
+      "projectName": "360 Derece Müşteri Analiz Platformu",
+      "clientInfo": "Bir perakende zinciri",
+      "problemTitle": "Problem:",
+      "problemDescription": "Müşteri verileri 7 farklı sistemde dağınık.",
+      "problemPoints": [
+        {
+          "emoji": "❌",
+          "text": "Satış sistemi (kasalar)"
+        },
+        {
+          "emoji": "❌",
+          "text": "E-ticaret platformu"
+        },
+        {
+          "emoji": "❌",
+          "text": "Mobil uygulama"
+        },
+        {
+          "emoji": "❌",
+          "text": "CRM sistemi"
+        },
+        {
+          "emoji": "❌",
+          "text": "Loyalty programı"
+        },
+        {
+          "emoji": "❌",
+          "text": "Sosyal medya etkileşimleri"
+        },
+        {
+          "emoji": "❌",
+          "text": "Çağrı merkezi kayıtları"
+        },
+        {
+          "emoji": "",
+          "text": "Müşteri X ne zaman, ne alıyor, neden şikayet ediyor? sorusuna cevap yok"
+        }
+      ],
+      "solutionTitle": "Çözüm:",
+      "solutionDescription": "ETL pipeline + Custom dashboard geliştirdik:",
+      "solutionSteps": [
+        {
+          "emoji": "🔄",
+          "text": "Adım 1 - Extract: Her gece saat 02:00'de otomatik çalışan Python script'leri, 7 farklı sistemden veri topluyor"
+        },
+        {
+          "emoji": "🔧",
+          "text": "Adım 2 - Transform: Verileri temizliyor, aynı müşterinin tüm verilerini birleşik profile çeviriyor, etiketlerle zenginleştiriyor"
+        },
+        {
+          "emoji": "💾",
+          "text": "Adım 3 - Load: Merkezi PostgreSQL veritabanına yükleniyor, gerçek zamanlı dashboard güncelleniyor"
+        },
+        {
+          "emoji": "📊",
+          "text": "Dashboard'da: Müşteri profili, trend analizi, risk skorları, aksiyon önerileri"
+        }
+      ],
+      "resultsTitle": "Sonuç:",
+      "results": [
+        {
+          "emoji": "✅",
+          "metric": "Sistem birleşimi",
+          "value": "7 sistem → 1 birleşik görünüm"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Müşteri analizi süresi",
+          "value": "2 saat → 30 saniye"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Veri kalitesi",
+          "value": "%95+ (otomatik temizlik)"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Churn oranı",
+          "value": "-%25"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Pazarlama kampanyaları",
+          "value": "%60 daha etkili (hedefli!)"
+        },
+        {
+          "emoji": "💰",
+          "metric": "ROI",
+          "value": "6 ayda 2.5 milyon TL ek gelir"
+        }
+      ],
+      "beforeMetrics": [
+        {
+          "label": "Veri kaynakları",
+          "value": "7 bağlantısız sistem"
+        },
+        {
+          "label": "Analiz süresi",
+          "value": "2 saat"
+        },
+        {
+          "label": "Veri kalitesi",
+          "value": "%70"
+        }
+      ],
+      "afterMetrics": [
+        {
+          "label": "Veri kaynakları",
+          "value": "1 birleşik platform"
+        },
+        {
+          "label": "Analiz süresi",
+          "value": "30 saniye"
+        },
+        {
+          "label": "Veri kalitesi",
+          "value": "%95+"
+        }
+      ],
+      "savings": "6 ayda 2.5 milyon TL ek gelir"
+    },
+    "visuals": [
+      {
+        "type": "diagram",
+        "description": "ETL pipeline akış şeması (Extract → Transform → Load)"
+      },
+      {
+        "type": "screenshot",
+        "description": "Dashboard ekran görüntüsü (grafikler, metrikler)"
+      },
+      {
+        "type": "comparison",
+        "description": "Önce/sonra: 'Dağınık data' vs 'Unified insights'"
+      }
+    ]
+  }
+}

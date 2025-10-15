@@ -1,0 +1,17 @@
+{
+  "permissions": {
+    "allow": [
+      "WebSearch",
+      "WebFetch(domain:docs-v4.strapi.io)",
+      "WebFetch(domain:github.com)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_snapshot",
+      "Bash(curl -s http://localhost:1337/api/services/mlivin69yi7pllrt3b5ri37n)",
+      "Bash(curl:*)",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_wait_for"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}

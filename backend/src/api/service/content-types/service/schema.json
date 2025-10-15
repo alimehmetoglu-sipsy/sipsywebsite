@@ -1,0 +1,73 @@
+{
+  "kind": "collectionType",
+  "collectionName": "services",
+  "info": {
+    "singularName": "service",
+    "pluralName": "services",
+    "displayName": "Service"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "keyTools": {
+      "type": "string"
+    },
+    "link": {
+      "type": "string"
+    },
+    "linkText": {
+      "type": "string",
+      "default": "Explore Services"
+    },
+    "color": {
+      "type": "enumeration",
+      "default": "accent",
+      "enum": [
+        "accent",
+        "secondary"
+      ]
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "icon": {
+      "type": "customField",
+      "customField": "plugin::strapi-plugin-iconhub.iconhub",
+      "options": {
+        "storeIconData": true,
+        "storeIconName": true
+      }
+    },
+    "solutions": {
+      "type": "relation",
+      "relation": "oneToMany",
+      "target": "api::solution.solution",
+      "mappedBy": "service"
+    }
+  }
+}

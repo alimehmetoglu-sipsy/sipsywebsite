@@ -1,0 +1,136 @@
+{
+  "data": {
+    "title": "Robot Process Automation - Free People from Repetitive Tasks",
+    "subtitle": "Intelligent automation that works 24/7",
+    "slug": "automatic-invoice-processing-robot",
+    "shortDescription": "An intelligent robot system that automatically processes 500+ invoices per day for e-commerce companies.",
+    "service": "mlivin69yi7pllrt3b5ri37n",
+    "featured": true,
+    "order": 1,
+    "locale": "en",
+    "tools": [
+      {
+        "name": "n8n",
+        "description": "workflow orchestration"
+      },
+      {
+        "name": "Selenium & Playwright",
+        "description": "web automation"
+      },
+      {
+        "name": "Autom Mate",
+        "description": "enterprise RPA"
+      }
+    ],
+    "project": {
+      "projectName": "Automatic Invoice Processing Robot",
+      "clientInfo": "An e-commerce company",
+      "problemTitle": "Problem:",
+      "problemDescription": "An e-commerce company receives 500+ invoices per day. Employees manually process each invoice.",
+      "problemPoints": [
+        {
+          "emoji": "",
+          "text": "Downloading from email"
+        },
+        {
+          "emoji": "",
+          "text": "Opening PDF and reading information"
+        },
+        {
+          "emoji": "",
+          "text": "Entering into ERP system one by one"
+        },
+        {
+          "emoji": "❌",
+          "text": "1 invoice = 3-4 minutes"
+        },
+        {
+          "emoji": "❌",
+          "text": "30+ hours of human effort per day"
+        }
+      ],
+      "solutionTitle": "Solution:",
+      "solutionDescription": "We developed intelligent automation with n8n:",
+      "solutionSteps": [
+        {
+          "emoji": "🤖",
+          "text": "Robot continuously monitors email inbox"
+        },
+        {
+          "emoji": "📧",
+          "text": "Automatically downloads when new invoice arrives"
+        },
+        {
+          "emoji": "🔍",
+          "text": "Opens PDF with Playwright and reads important information (invoice number, amount, date, company)"
+        },
+        {
+          "emoji": "⚡",
+          "text": "Automatically sends to ERP system via API"
+        },
+        {
+          "emoji": "✅",
+          "text": "Notifies successful transactions via Slack"
+        }
+      ],
+      "resultsTitle": "Results:",
+      "results": [
+        {
+          "emoji": "✅",
+          "metric": "Time savings",
+          "value": "30 hours/day → 30 minutes/day (only for control)"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Error rate",
+          "value": "0% (no human error)"
+        },
+        {
+          "emoji": "✅",
+          "metric": "Employee productivity",
+          "value": "Employees can focus on strategic tasks"
+        },
+        {
+          "emoji": "💰",
+          "metric": "Cost savings",
+          "value": "200,000 TL annually"
+        }
+      ],
+      "beforeMetrics": [
+        {
+          "label": "Processing time",
+          "value": "30 hours/day"
+        },
+        {
+          "label": "Error rate",
+          "value": "5-10%"
+        }
+      ],
+      "afterMetrics": [
+        {
+          "label": "Processing time",
+          "value": "30 minutes/day"
+        },
+        {
+          "label": "Error rate",
+          "value": "0%"
+        }
+      ],
+      "savings": "200,000 TL annual cost savings"
+    },
+    "visuals": [
+      {
+        "type": "comparison",
+        "description": "Before/after comparison (in hours)"
+      },
+      {
+        "type": "diagram",
+        "description": "Automation flow diagram (simple, with colorful icons)"
+      },
+      {
+        "type": "illustration",
+        "description": "Robot character processing invoices"
+      }
+    ]
+  }
+}

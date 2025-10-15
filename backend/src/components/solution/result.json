@@ -1,0 +1,23 @@
+{
+  "collectionName": "components_solution_results",
+  "info": {
+    "displayName": "Result",
+    "icon": "chartLine",
+    "description": "Result metric with value"
+  },
+  "options": {},
+  "attributes": {
+    "emoji": {
+      "type": "string",
+      "maxLength": 10
+    },
+    "metric": {
+      "type": "string",
+      "required": true
+    },
+    "value": {
+      "type": "string",
+      "required": true
+    }
+  }
+}

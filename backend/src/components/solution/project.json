@@ -1,0 +1,61 @@
+{
+  "collectionName": "components_solution_projects",
+  "info": {
+    "displayName": "Project",
+    "icon": "briefcase",
+    "description": "Complete project case study details"
+  },
+  "options": {},
+  "attributes": {
+    "projectName": {
+      "type": "string",
+      "required": true
+    },
+    "clientInfo": {
+      "type": "string"
+    },
+    "problemTitle": {
+      "type": "string",
+      "default": "Problem:"
+    },
+    "problemDescription": {
+      "type": "richtext"
+    },
+    "problemPoints": {
+      "type": "component",
+      "component": "solution.point",
+      "repeatable": true
+    },
+    "solutionTitle": {
+      "type": "string",
+      "default": "Çözüm:"
+    },
+    "solutionDescription": {
+      "type": "richtext"
+    },
+    "solutionSteps": {
+      "type": "component",
+      "component": "solution.point",
+      "repeatable": true
+    },
+    "resultsTitle": {
+      "type": "string",
+      "default": "Sonuç:"
+    },
+    "results": {
+      "type": "component",
+      "component": "solution.result",
+      "repeatable": true
+    },
+    "beforeMetrics": {
+      "type": "component",
+      "component": "solution.metric",
+      "repeatable": true
+    },
+    "afterMetrics": {
+      "type": "component",
+      "component": "solution.metric",
+      "repeatable": true
+    }
+  }
+}
