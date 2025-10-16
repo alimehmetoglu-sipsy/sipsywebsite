@@ -28,7 +28,7 @@
       "default": 0
     },
     "icon": {
-      "type": "string"
+      "type": "text"
     }
   }
 }

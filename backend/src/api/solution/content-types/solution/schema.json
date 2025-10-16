@@ -54,7 +54,7 @@
       "inversedBy": "solutions"
     },
     "icon": {
-      "type": "string"
+      "type": "text"
     },
     "featured": {
       "type": "boolean",
