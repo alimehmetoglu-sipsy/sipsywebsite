@@ -54,12 +54,7 @@
       "inversedBy": "solutions"
     },
     "icon": {
-      "type": "customField",
-      "customField": "plugin::strapi-plugin-iconhub.iconhub",
-      "options": {
-        "storeIconData": true,
-        "storeIconName": true
-      }
+      "type": "string"
     },
     "featured": {
       "type": "boolean",

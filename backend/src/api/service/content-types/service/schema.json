@@ -53,12 +53,7 @@
       "default": 0
     },
     "icon": {
-      "type": "customField",
-      "customField": "plugin::strapi-plugin-iconhub.iconhub",
-      "options": {
-        "storeIconData": true,
-        "storeIconName": true
-      }
+      "type": "string"
     },
     "solutions": {
       "type": "relation",
