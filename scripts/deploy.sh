@@ -56,7 +56,7 @@ print_success "Environment files found"
 # Install dependencies for backend
 print_info "Installing Strapi dependencies..."
 cd backend
-npm ci --production=false --quiet
+npm install --loglevel=error
 print_success "Strapi dependencies installed"
 
 # Build Strapi admin panel
@@ -68,7 +68,7 @@ cd ..
 
 # Install dependencies for frontend
 print_info "Installing Next.js dependencies..."
-npm ci --production=false --quiet
+npm install --loglevel=error
 print_success "Next.js dependencies installed"
 
 # Build Next.js application
