@@ -1,7 +1,7 @@
 #!/bin/bash
 
 # SSL Setup Script for sipsy.ai using Let's Encrypt
-# This script will configure SSL certificates and HTTPS
+# This script will configure SSL certificates and HTTPS for Amazon Linux 2023
 
 set -e
 
@@ -38,6 +38,17 @@ if [ "$EUID" -ne 0 ]; then
     exit 1
 fi
 
+# Detect user home directory
+if [ -d "/home/ec2-user" ]; then
+    USER_HOME="/home/ec2-user"
+elif [ -d "/home/ubuntu" ]; then
+    USER_HOME="/home/ubuntu"
+else
+    USER_HOME="$HOME"
+fi
+
+print_info "Using home directory: $USER_HOME"
+
 # Verify domain is pointed to this server
 print_info "Checking DNS configuration..."
 SERVER_IP=$(curl -s ifconfig.me)
@@ -59,18 +70,12 @@ fi
 
 # Copy Nginx configuration
 print_info "Installing Nginx configuration..."
-cp ~/sipsy-website/scripts/nginx-sipsy.conf /etc/nginx/sites-available/sipsy.ai
+cp $USER_HOME/sipsy-website/scripts/nginx-sipsy.conf /etc/nginx/conf.d/sipsy.ai.conf
 
-# Remove default nginx site
-if [ -f /etc/nginx/sites-enabled/default ]; then
-    rm /etc/nginx/sites-enabled/default
-    print_success "Removed default Nginx site"
-fi
-
-# Create symlink if it doesn't exist
-if [ ! -L /etc/nginx/sites-enabled/sipsy.ai ]; then
-    ln -s /etc/nginx/sites-available/sipsy.ai /etc/nginx/sites-enabled/sipsy.ai
-    print_success "Created Nginx site symlink"
+# Remove default nginx config (Amazon Linux uses conf.d, not sites-available)
+if [ -f /etc/nginx/conf.d/default.conf ]; then
+    mv /etc/nginx/conf.d/default.conf /etc/nginx/conf.d/default.conf.disabled
+    print_success "Disabled default Nginx config"
 fi
 
 # Test Nginx configuration
@@ -92,7 +97,18 @@ fi
 
 # Obtain SSL certificate with Certbot
 print_info "Obtaining SSL certificate from Let's Encrypt..."
-certbot --nginx \
+
+# Check if certbot is in PATH, if not use full path
+if command -v certbot &> /dev/null; then
+    CERTBOT_CMD="certbot"
+elif [ -f "/usr/local/bin/certbot" ]; then
+    CERTBOT_CMD="/usr/local/bin/certbot"
+else
+    print_error "Certbot not found. Please install it first."
+    exit 1
+fi
+
+$CERTBOT_CMD --nginx \
     -d sipsy.ai \
     -d www.sipsy.ai \
     --non-interactive \
@@ -104,13 +120,14 @@ print_success "SSL certificate obtained and installed"
 
 # Test automatic renewal
 print_info "Testing SSL certificate auto-renewal..."
-certbot renew --dry-run
+$CERTBOT_CMD renew --dry-run
 
 print_success "Auto-renewal test successful"
 
 # Setup automatic renewal (cron job)
 print_info "Setting up automatic SSL renewal..."
-CRON_JOB="0 12 * * * /usr/bin/certbot renew --quiet"
+CERTBOT_PATH=$(which certbot || echo "/usr/local/bin/certbot")
+CRON_JOB="0 12 * * * $CERTBOT_PATH renew --quiet"
 (crontab -l 2>/dev/null | grep -v certbot; echo "$CRON_JOB") | crontab -
 print_success "Automatic renewal configured (runs daily at 12:00)"
 
@@ -131,8 +148,8 @@ echo ""
 print_info "SSL certificate will auto-renew before expiration"
 echo ""
 print_info "To check certificate status:"
-echo "  sudo certbot certificates"
+echo "  sudo $CERTBOT_CMD certificates"
 echo ""
 print_info "To manually renew (if needed):"
-echo "  sudo certbot renew"
+echo "  sudo $CERTBOT_CMD renew"
 echo ""
