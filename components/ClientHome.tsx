@@ -253,8 +253,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                   >
                     <DynamicIcon
                       icon={item.icon}
-                      style={{ color: 'rgba(204, 96, 47, 1)' }}
-                      className="w-8 h-8"
+                      className="w-8 h-8 text-[rgba(204,96,47,1)]"
                       size={32}
                     />
                   </div>

@@ -45,7 +45,7 @@ export default function ContactPage() {
   const [errors, setErrors] = useState<FormErrors>({});
   const [touchedFields, setTouchedFields] = useState<Set<string>>(new Set());
 
-  const validateField = (name: string, value: string | boolean): string => {
+  const validateField = (name: string, value: string | boolean | undefined): string => {
     switch (name) {
       case 'fullName':
         return !value ? 'Ad Soyad zorunludur' : '';
