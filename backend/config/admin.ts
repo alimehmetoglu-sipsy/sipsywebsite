@@ -19,4 +19,13 @@ export default ({ env }) => ({
   },
   url: env('ADMIN_URL', '/admin'),
   serveAdminPanel: env.bool('SERVE_ADMIN', true),
+  // Session configuration - supports both HTTP (dev) and HTTPS (prod)
+  session: {
+    cookie: {
+      secure: env.bool('ADMIN_COOKIE_SECURE', env('NODE_ENV') === 'production' && env('IS_PROXIED') === 'true'),
+      httpOnly: true,
+      maxAge: 86400000, // 1 day
+      sameSite: 'lax',
+    },
+  },
 });
