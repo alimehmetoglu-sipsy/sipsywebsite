@@ -1,6 +1,15 @@
 export default ({ env }) => ({
   auth: {
     secret: env('ADMIN_JWT_SECRET'),
+    sessions: {
+      enabled: true,
+      cookie: {
+        secure: false, // Nginx handles HTTPS termination
+        httpOnly: true,
+        maxAge: 86400000, // 1 day
+        sameSite: 'lax',
+      },
+    },
   },
   apiToken: {
     salt: env('API_TOKEN_SALT'),
@@ -19,13 +28,4 @@ export default ({ env }) => ({
   },
   url: env('ADMIN_URL', '/admin'),
   serveAdminPanel: env.bool('SERVE_ADMIN', true),
-  // Session configuration - secure cookie disabled for nginx proxy
-  session: {
-    cookie: {
-      secure: false, // Nginx handles HTTPS termination
-      httpOnly: true,
-      maxAge: 86400000, // 1 day
-      sameSite: 'lax',
-    },
-  },
 });
