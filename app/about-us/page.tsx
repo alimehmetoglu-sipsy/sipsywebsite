@@ -227,7 +227,7 @@ export default function AboutUsPage() {
 
                   return (
                     <div
-                      key={vp.id}
+                      key={index}
                       className={`bg-gradient-to-br ${gradient} text-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105`}
                     >
                       <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 w-fit mb-6">
