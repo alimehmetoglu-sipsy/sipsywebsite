@@ -33,9 +33,6 @@
       },
       "required": true
     },
-    "keyTools": {
-      "type": "string"
-    },
     "link": {
       "type": "string"
     },
@@ -68,6 +65,12 @@
       "relation": "oneToMany",
       "target": "api::solution.solution",
       "mappedBy": "service"
+    },
+    "keyTools": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tool.tool",
+      "mappedBy": "services"
     }
   }
 }

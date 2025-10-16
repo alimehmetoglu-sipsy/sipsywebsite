@@ -28,6 +28,9 @@ yarn-error.log*
 # local env files
 .env*.local
 .env
+.env.production
+backend/.env
+backend/.env.production
 
 # vercel
 .vercel
@@ -35,3 +38,10 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# backups
+/backups
+backup-*.tar.gz
+
+# deployment guides with sensitive info
+DEPLOYMENT_GUIDE.md

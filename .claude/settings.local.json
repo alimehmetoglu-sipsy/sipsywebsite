@@ -9,7 +9,12 @@
       "Bash(curl -s http://localhost:1337/api/services/mlivin69yi7pllrt3b5ri37n)",
       "Bash(curl:*)",
       "mcp__playwright__browser_take_screenshot",
-      "mcp__playwright__browser_wait_for"
+      "mcp__playwright__browser_wait_for",
+      "WebFetch(domain:docs.strapi.io)",
+      "mcp__playwright__browser_console_messages",
+      "mcp__playwright__browser_click",
+      "mcp__playwright__browser_network_requests",
+      "mcp__playwright__browser_resize"
     ],
     "deny": [],
     "ask": []

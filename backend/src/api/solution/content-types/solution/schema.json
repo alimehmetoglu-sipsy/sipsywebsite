@@ -18,12 +18,12 @@
   "attributes": {
     "title": {
       "type": "string",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "subtitle": {
       "type": "string",
@@ -40,12 +40,12 @@
     },
     "shortDescription": {
       "type": "text",
-      "required": true,
       "pluginOptions": {
         "i18n": {
           "localized": true
         }
-      }
+      },
+      "required": true
     },
     "service": {
       "type": "relation",
@@ -69,20 +69,21 @@
       "type": "integer",
       "default": 0
     },
-    "tools": {
-      "type": "component",
-      "repeatable": true,
-      "component": "solution.tool"
-    },
     "project": {
       "type": "component",
-      "repeatable": false,
-      "component": "solution.project"
+      "component": "solution.project",
+      "repeatable": false
     },
     "visuals": {
       "type": "component",
-      "repeatable": true,
-      "component": "solution.visual"
+      "component": "solution.visual",
+      "repeatable": true
+    },
+    "keyTools": {
+      "type": "relation",
+      "relation": "manyToMany",
+      "target": "api::tool.tool",
+      "mappedBy": "solutions"
     }
   }
 }

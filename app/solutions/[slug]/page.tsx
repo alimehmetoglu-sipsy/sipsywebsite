@@ -35,6 +35,7 @@ import {
   XCircle,
 } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 export default function SolutionDetailPage() {
   const params = useParams();
@@ -377,7 +378,7 @@ export default function SolutionDetailPage() {
         )}
 
         {/* Technologies Section */}
-        {solution.tools && solution.tools.length > 0 && (
+        {solution.keyTools && solution.keyTools.length > 0 && (
           <section className="section-padding bg-white">
             <div className="container-custom">
               <div className="text-center mb-12">
@@ -391,18 +392,27 @@ export default function SolutionDetailPage() {
                 </p>
               </div>
               <div className="flex flex-wrap justify-center gap-6 max-w-5xl mx-auto">
-                {solution.tools.map((tool, index) => (
+                {solution.keyTools.map((tool, index) => (
                   <div
                     key={index}
                     className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-brand-accent group w-64"
                   >
-                    <div className="w-12 h-12 bg-brand-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                      <Zap className="w-6 h-6 text-brand-accent" />
-                    </div>
-                    <h3 className="text-lg font-bold text-navy-900 mb-2">{tool.name}</h3>
-                    {tool.description && (
-                      <p className="text-sm text-gray-600">{tool.description}</p>
+                    {tool.Logo ? (
+                      <div className="w-16 h-16 mb-4 flex items-center justify-center">
+                        <Image
+                          src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${tool.Logo.url}`}
+                          alt={tool.Logo.alternativeText || tool.Name}
+                          width={64}
+                          height={64}
+                          className="w-full h-full object-contain group-hover:scale-110 transition-transform"
+                        />
+                      </div>
+                    ) : (
+                      <div className="w-12 h-12 bg-brand-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <Zap className="w-6 h-6 text-brand-accent" />
+                      </div>
                     )}
+                    <h3 className="text-lg font-bold text-navy-900 mb-2">{tool.Name}</h3>
                   </div>
                 ))}
               </div>
@@ -540,106 +550,45 @@ export default function SolutionDetailPage() {
           </section>
         )}
 
-        {/* Final CTA Section - Multi-Option */}
-        <section id="final-cta" className="section-padding bg-gradient-to-br from-green-600 via-green-500 to-blue-600">
-          <div className="container-custom">
-            <div className="max-w-4xl mx-auto text-center">
-              <h2 className="text-5xl font-bold text-white mb-6">
-                {solution.finalCTA?.title || (language === 'tr'
-                  ? 'Benzer Sonuçları Sizin İçin de Gerçekleştirelim'
-                  : 'Let\'s Achieve Similar Results for You')}
+        {/* Final CTA Section */}
+        <section id="final-cta" className="section-padding bg-gradient-to-r from-gold-500 via-gold-400 to-copper-500">
+          <div className="container-custom text-center">
+            {ctaSection?.title && (
+              <h2 className="text-4xl lg:text-5xl font-bold text-navy-900 mb-6">
+                {ctaSection.title}
               </h2>
-              <p className="text-2xl text-white/90 mb-12">
-                {solution.finalCTA?.description || (language === 'tr'
-                  ? 'Ücretsiz demo ve danışmanlık için hemen iletişime geçin'
-                  : 'Contact us now for a free demo and consultation')}
+            )}
+            {ctaSection?.description && (
+              <p className="text-xl text-navy-800 mb-8 max-w-2xl mx-auto">
+                {ctaSection.description}
               </p>
-
-              {/* Multi-CTA Grid */}
-              <div className="grid md:grid-cols-3 gap-6 mb-8">
-                {solution.finalCTA?.options && solution.finalCTA.options.length > 0 ? (
-                  solution.finalCTA.options.map((option, index) => {
-                    const IconComponent = option.icon === 'Calendar' ? Calendar : option.icon === 'MessageCircle' ? MessageCircle : Mail;
-                    return (
-                      <button
-                        key={index}
-                        onClick={scrollToCTA}
-                        className="bg-white text-brand-accent hover:bg-gray-100 font-bold px-6 py-6 rounded-xl transition-all duration-300 hover:scale-105 shadow-2xl group"
-                      >
-                        <IconComponent className="w-8 h-8 mx-auto mb-3 text-brand-accent group-hover:scale-110 transition-transform" />
-                        <div className="text-lg font-bold mb-1">{option.title}</div>
-                        <div className="text-sm text-gray-600">{option.description}</div>
-                      </button>
-                    );
-                  })
-                ) : (
-                  <>
-                    <button
-                      onClick={scrollToCTA}
-                      className="bg-white text-brand-accent hover:bg-gray-100 font-bold px-6 py-6 rounded-xl transition-all duration-300 hover:scale-105 shadow-2xl group"
-                    >
-                      <Calendar className="w-8 h-8 mx-auto mb-3 text-brand-accent group-hover:scale-110 transition-transform" />
-                      <div className="text-lg font-bold mb-1">
-                        {language === 'tr' ? 'Demo Rezervasyonu' : 'Book a Demo'}
-                      </div>
-                      <div className="text-sm text-gray-600">
-                        {language === 'tr' ? '30 dakikalık ücretsiz demo' : '30-min free demo'}
-                      </div>
-                    </button>
-
-                    <button
-                      onClick={scrollToCTA}
-                      className="bg-white text-brand-accent hover:bg-gray-100 font-bold px-6 py-6 rounded-xl transition-all duration-300 hover:scale-105 shadow-2xl group"
-                    >
-                      <MessageCircle className="w-8 h-8 mx-auto mb-3 text-brand-accent group-hover:scale-110 transition-transform" />
-                      <div className="text-lg font-bold mb-1">
-                        {language === 'tr' ? 'Uzmanla Görüş' : 'Talk to Expert'}
-                      </div>
-                      <div className="text-sm text-gray-600">
-                        {language === 'tr' ? 'Özel çözüm danışmanlığı' : 'Custom solution consulting'}
-                      </div>
-                    </button>
-
-                    <button
-                      onClick={scrollToCTA}
-                      className="bg-white text-brand-accent hover:bg-gray-100 font-bold px-6 py-6 rounded-xl transition-all duration-300 hover:scale-105 shadow-2xl group"
-                    >
-                      <Mail className="w-8 h-8 mx-auto mb-3 text-brand-accent group-hover:scale-110 transition-transform" />
-                      <div className="text-lg font-bold mb-1">
-                        {language === 'tr' ? 'Teklif Al' : 'Get a Quote'}
-                      </div>
-                      <div className="text-sm text-gray-600">
-                        {language === 'tr' ? 'Ücretsiz ROI analizi' : 'Free ROI analysis'}
-                      </div>
-                    </button>
-                  </>
-                )}
-              </div>
-
-              <div className="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            )}
+            {ctaSection?.buttonText && (
+              ctaSection.buttonUrl ? (
                 <a
-                  href={`tel:${solution.finalCTA?.contactPhone || '+905551234567'}`}
-                  className="flex items-center space-x-2 text-white hover:text-white/80 transition-colors"
+                  href={ctaSection.buttonUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-block bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
                 >
-                  <Phone className="w-5 h-5" />
-                  <span className="font-semibold">{solution.finalCTA?.contactPhone || '+90 555 123 45 67'}</span>
+                  {ctaSection.buttonText}
                 </a>
-                <span className="text-white/60 hidden sm:block">•</span>
-                <a
-                  href={`mailto:${solution.finalCTA?.contactEmail || 'info@sipsy.ai'}`}
-                  className="flex items-center space-x-2 text-white hover:text-white/80 transition-colors"
-                >
-                  <Mail className="w-5 h-5" />
-                  <span className="font-semibold">{solution.finalCTA?.contactEmail || 'info@sipsy.ai'}</span>
-                </a>
-              </div>
-
-              <p className="text-white/80 mt-6 text-sm">
-                {solution.finalCTA?.guarantees || (language === 'tr'
-                  ? '✓ Taahhüt gerektirmez  •  ✓ %100 gizlilik  •  ✓ Hızlı yanıt garantisi'
-                  : '✓ No commitment  •  ✓ 100% confidential  •  ✓ Fast response guarantee')}
+              ) : (
+                <button className="bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
+                  {ctaSection.buttonText}
+                </button>
+              )
+            )}
+            {ctaSection?.phoneText && (
+              <p className="text-navy-800 mb-2">
+                {ctaSection.phoneText}
               </p>
-            </div>
+            )}
+            {ctaSection?.confidentialityText && (
+              <p className="text-sm text-navy-700">
+                {ctaSection.confidentialityText}
+              </p>
+            )}
           </div>
         </section>
 
@@ -669,11 +618,21 @@ export default function SolutionDetailPage() {
           <div className="container-custom">
             <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8 mb-12">
               <div>
-                <div className="flex items-center space-x-2 mb-4">
-                  <div className="w-10 h-10 bg-gradient-to-br from-brand-accent to-brand-secondary rounded-lg flex items-center justify-center">
-                    <Bot className="w-6 h-6 text-white" />
-                  </div>
-                  <span className="text-2xl font-bold text-white">sipsy.ai</span>
+                <div className="flex items-center space-x-3 mb-4">
+                  {footer?.logo ? (
+                    <Image
+                      src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${footer.logo.url}`}
+                      alt={footer.logo.alternativeText || 'Logo'}
+                      width={40}
+                      height={40}
+                      className="w-10 h-10 object-contain"
+                    />
+                  ) : (
+                    <div className="w-10 h-10 bg-gradient-to-br from-brand-accent to-brand-secondary rounded-lg flex items-center justify-center">
+                      <Bot className="w-6 h-6 text-white" />
+                    </div>
+                  )}
+                  <span className="text-2xl font-bold text-white">{footer?.siteName || 'sipsy.ai'}</span>
                 </div>
                 <p className="text-gray-400 mb-6 leading-relaxed">
                   {footer?.companyDescription ||
@@ -682,24 +641,61 @@ export default function SolutionDetailPage() {
                       : 'Enterprise AI and automation solutions that deliver measurable ROI')}
                 </p>
                 <div className="flex space-x-4">
-                  <a
-                    href="#"
-                    className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
-                  >
-                    <Linkedin className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="#"
-                    className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
-                  >
-                    <Twitter className="w-5 h-5" />
-                  </a>
-                  <a
-                    href="#"
-                    className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
-                  >
-                    <Github className="w-5 h-5" />
-                  </a>
+                  {footer?.socialLinks ? (
+                    <>
+                      {footer.socialLinks.linkedin && (
+                        <a
+                          href={footer.socialLinks.linkedin}
+                          className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                          aria-label="LinkedIn"
+                        >
+                          <Linkedin className="w-5 h-5" />
+                        </a>
+                      )}
+                      {footer.socialLinks.twitter && (
+                        <a
+                          href={footer.socialLinks.twitter}
+                          className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                          aria-label="Twitter"
+                        >
+                          <Twitter className="w-5 h-5" />
+                        </a>
+                      )}
+                      {footer.socialLinks.github && (
+                        <a
+                          href={footer.socialLinks.github}
+                          className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                          aria-label="GitHub"
+                        >
+                          <Github className="w-5 h-5" />
+                        </a>
+                      )}
+                    </>
+                  ) : (
+                    <>
+                      <a
+                        href="#"
+                        className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                        aria-label="LinkedIn"
+                      >
+                        <Linkedin className="w-5 h-5" />
+                      </a>
+                      <a
+                        href="#"
+                        className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                        aria-label="Twitter"
+                      >
+                        <Twitter className="w-5 h-5" />
+                      </a>
+                      <a
+                        href="#"
+                        className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                        aria-label="GitHub"
+                      >
+                        <Github className="w-5 h-5" />
+                      </a>
+                    </>
+                  )}
                 </div>
               </div>
 
@@ -708,16 +704,28 @@ export default function SolutionDetailPage() {
                   {language === 'tr' ? 'Hizmetler' : 'Services'}
                 </h4>
                 <ul className="space-y-2">
-                  <li>
-                    <Link href="/solutions" className="hover:text-brand-accent transition-colors">
-                      {language === 'tr' ? 'Çözümler' : 'Solutions'}
-                    </Link>
-                  </li>
-                  <li>
-                    <a href="/#services" className="hover:text-brand-accent transition-colors">
-                      {language === 'tr' ? 'Hizmetlerimiz' : 'Our Services'}
-                    </a>
-                  </li>
+                  {footer?.links?.services ? (
+                    footer.links.services.map((link: { label: string; href: string }, index: number) => (
+                      <li key={index}>
+                        <a href={link.href} className="hover:text-brand-accent transition-colors">
+                          {link.label}
+                        </a>
+                      </li>
+                    ))
+                  ) : (
+                    <>
+                      <li>
+                        <Link href="/solutions" className="hover:text-brand-accent transition-colors">
+                          {language === 'tr' ? 'Çözümler' : 'Solutions'}
+                        </Link>
+                      </li>
+                      <li>
+                        <a href="/#services" className="hover:text-brand-accent transition-colors">
+                          {language === 'tr' ? 'Hizmetlerimiz' : 'Our Services'}
+                        </a>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
 
@@ -726,16 +734,28 @@ export default function SolutionDetailPage() {
                   {language === 'tr' ? 'Şirket' : 'Company'}
                 </h4>
                 <ul className="space-y-2">
-                  <li>
-                    <a href="/#about" className="hover:text-brand-accent transition-colors">
-                      {language === 'tr' ? 'Hakkımızda' : 'About Us'}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="/#contact" className="hover:text-brand-accent transition-colors">
-                      {language === 'tr' ? 'İletişim' : 'Contact'}
-                    </a>
-                  </li>
+                  {footer?.links?.company ? (
+                    footer.links.company.map((link: { label: string; href: string }, index: number) => (
+                      <li key={index}>
+                        <a href={link.href} className="hover:text-brand-accent transition-colors">
+                          {link.label}
+                        </a>
+                      </li>
+                    ))
+                  ) : (
+                    <>
+                      <li>
+                        <a href="/#about" className="hover:text-brand-accent transition-colors">
+                          {language === 'tr' ? 'Hakkımızda' : 'About Us'}
+                        </a>
+                      </li>
+                      <li>
+                        <a href="/#contact" className="hover:text-brand-accent transition-colors">
+                          {language === 'tr' ? 'İletişim' : 'Contact'}
+                        </a>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
 
@@ -744,16 +764,28 @@ export default function SolutionDetailPage() {
                   {language === 'tr' ? 'Kaynaklar' : 'Resources'}
                 </h4>
                 <ul className="space-y-2">
-                  <li>
-                    <a href="#" className="hover:text-brand-accent transition-colors">
-                      {language === 'tr' ? 'Blog' : 'Blog'}
-                    </a>
-                  </li>
-                  <li>
-                    <a href="#" className="hover:text-brand-accent transition-colors">
-                      {language === 'tr' ? 'Dökümanlar' : 'Documentation'}
-                    </a>
-                  </li>
+                  {footer?.links?.resources ? (
+                    footer.links.resources.map((link: { label: string; href: string }, index: number) => (
+                      <li key={index}>
+                        <a href={link.href} className="hover:text-brand-accent transition-colors">
+                          {link.label}
+                        </a>
+                      </li>
+                    ))
+                  ) : (
+                    <>
+                      <li>
+                        <a href="#" className="hover:text-brand-accent transition-colors">
+                          {language === 'tr' ? 'Blog' : 'Blog'}
+                        </a>
+                      </li>
+                      <li>
+                        <a href="#" className="hover:text-brand-accent transition-colors">
+                          {language === 'tr' ? 'Dökümanlar' : 'Documentation'}
+                        </a>
+                      </li>
+                    </>
+                  )}
                 </ul>
               </div>
             </div>
@@ -763,6 +795,19 @@ export default function SolutionDetailPage() {
                 <p className="text-gray-400 text-sm">
                   {footer?.copyright || '© 2025 sipsy.ai. All rights reserved.'}
                 </p>
+                <div className="flex flex-wrap justify-center gap-6 text-sm">
+                  <a href="#" className="hover:text-brand-accent transition-colors">
+                    {language === 'tr' ? 'Gizlilik Politikası' : 'Privacy Policy'}
+                  </a>
+                  <span className="text-gray-600">•</span>
+                  <a href="#" className="hover:text-brand-accent transition-colors">
+                    {language === 'tr' ? 'Hizmet Şartları' : 'Terms of Service'}
+                  </a>
+                  <span className="text-gray-600">•</span>
+                  <a href="#" className="hover:text-brand-accent transition-colors">
+                    {language === 'tr' ? 'Çerez Politikası' : 'Cookie Policy'}
+                  </a>
+                </div>
                 <div className="flex items-center space-x-4 text-sm">
                   <span className="text-gray-400">SOC 2 Compliant</span>
                   <span className="text-gray-600">•</span>

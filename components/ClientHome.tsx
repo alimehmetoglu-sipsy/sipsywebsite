@@ -316,13 +316,33 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                   <p className="text-gray-600 mb-4">
                     {service.description}
                   </p>
-                  {service.keyTools && (
-                    <p className="text-sm text-gray-500 mb-4">
-                      <span className="font-semibold">
+                  {service.keyTools && service.keyTools.length > 0 && (
+                    <div className="mb-4">
+                      <p className="text-sm font-semibold text-gray-600 mb-2">
                         {language === 'tr' ? 'Anahtar araçlar:' : 'Key tools:'}
-                      </span>{' '}
-                      {service.keyTools}
-                    </p>
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {service.keyTools.map((tool, index) => (
+                          <span
+                            key={index}
+                            className={`inline-flex items-center gap-2 px-3 py-1 ${
+                              isAccent ? 'bg-copper-500/10' : 'bg-gold-400/10'
+                            } rounded-full text-sm`}
+                          >
+                            {tool.Logo && (
+                              <Image
+                                src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${tool.Logo.url}`}
+                                alt={tool.Logo.alternativeText || tool.Name}
+                                width={16}
+                                height={16}
+                                className="w-4 h-4 object-contain"
+                              />
+                            )}
+                            <span className="text-gray-900 font-medium">{tool.Name}</span>
+                          </span>
+                        ))}
+                      </div>
+                    </div>
                   )}
                   <a
                     href={service.link || '#'}
@@ -340,306 +360,48 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
         </div>
       </section>
 
-      {/* Methodology Section */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom">
-          <h2 className="text-4xl font-bold text-center text-navy-900 mb-16">
-            {language === 'tr' ? 'Kanıtlanmış Sürecimiz' : 'Our Proven Process'}
-          </h2>
-          <div className="grid md:grid-cols-4 gap-8 relative">
-            {/* Connecting Line */}
-            <div className="hidden md:block absolute top-12 left-0 right-0 h-1 bg-gradient-to-r from-gold-400 via-copper-500 to-gold-400 transform translate-y-1/2"></div>
-
-            {safeProcessSteps.length > 0 ? (
-              safeProcessSteps.map((step: ProcessStep & {id: number}, index: number) => {
-                const isAccent = index % 2 !== 0;
-                const stepNumber = step.stepNumber || index + 1;
-                return (
-                  <div key={step.id} className="relative text-center">
-                    <div className={`w-24 h-24 bg-white border-4 ${isAccent ? 'border-copper-500' : 'border-gold-400'} rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg relative z-10`}>
-                      <DynamicIcon
-                        icon={step.icon || 'Search'}
-                        className={`w-10 h-10 ${isAccent ? 'text-copper-500' : 'text-gold-500'}`}
-                        size={40}
-                      />
-                    </div>
-                    <div className={`absolute top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 ${isAccent ? 'bg-copper-500' : 'bg-gold-500'} text-white rounded-full flex items-center justify-center font-bold text-xl z-20`}>
-                      {stepNumber}
-                    </div>
-                    <h3 className="text-xl font-bold text-navy-900 mb-3">
-                      {step.title}
-                    </h3>
-                    <p className="text-gray-600">
-                      {step.description}
-                    </p>
-                  </div>
-                );
-              })
-            ) : (
-              <>
-                {/* Default fallback steps */}
-                <div className="relative text-center">
-                  <div className="w-24 h-24 bg-white border-4 border-gold-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg relative z-10">
-                    <Search className="w-10 h-10 text-gold-500" />
-                  </div>
-                  <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gold-500 text-white rounded-full flex items-center justify-center font-bold text-xl z-20">
-                    1
-                  </div>
-                  <h3 className="text-xl font-bold text-navy-900 mb-3">
-                    {language === 'tr' ? 'Keşif & Değerlendirme' : 'Discovery & Assessment'}
-                  </h3>
-                  <p className="text-gray-600">
-                    {language === 'tr'
-                      ? 'Süreçleri analiz edin ve otomasyon fırsatlarını belirleyin'
-                      : 'Analyze processes and identify automation opportunities'}
-                  </p>
-                </div>
-                <div className="relative text-center">
-                  <div className="w-24 h-24 bg-white border-4 border-copper-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg relative z-10">
-                    <Map className="w-10 h-10 text-copper-500" />
-                  </div>
-                  <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-copper-500 text-white rounded-full flex items-center justify-center font-bold text-xl z-20">
-                    2
-                  </div>
-                  <h3 className="text-xl font-bold text-navy-900 mb-3">
-                    {language === 'tr' ? 'Strateji & Yol Haritası' : 'Strategy & Roadmap'}
-                  </h3>
-                  <p className="text-gray-600">
-                    {language === 'tr'
-                      ? 'Ölçeklenebilir çözüm mimarisi ve uygulama planı tasarlayın'
-                      : 'Design scalable solution architecture and implementation plan'}
-                  </p>
-                </div>
-                <div className="relative text-center">
-                  <div className="w-24 h-24 bg-white border-4 border-gold-400 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg relative z-10">
-                    <Code className="w-10 h-10 text-gold-500" />
-                  </div>
-                  <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-gold-500 text-white rounded-full flex items-center justify-center font-bold text-xl z-20">
-                    3
-                  </div>
-                  <h3 className="text-xl font-bold text-navy-900 mb-3">
-                    {language === 'tr' ? 'Geliştirme & Dağıtım' : 'Build & Deploy'}
-                  </h3>
-                  <p className="text-gray-600">
-                    {language === 'tr'
-                      ? 'Minimum iş kesintisiyle geliştirme, test etme ve dağıtma'
-                      : 'Develop, test, and deploy with minimal business disruption'}
-                  </p>
-                </div>
-                <div className="relative text-center">
-                  <div className="w-24 h-24 bg-white border-4 border-copper-500 rounded-full flex items-center justify-center mx-auto mb-6 shadow-lg relative z-10">
-                    <Repeat className="w-10 h-10 text-copper-500" />
-                  </div>
-                  <div className="absolute top-8 left-1/2 transform -translate-x-1/2 w-12 h-12 bg-copper-500 text-white rounded-full flex items-center justify-center font-bold text-xl z-20">
-                    4
-                  </div>
-                  <h3 className="text-xl font-bold text-navy-900 mb-3">
-                    {language === 'tr' ? 'Optimize Etme & Ölçeklendirme' : 'Optimize & Scale'}
-                  </h3>
-                  <p className="text-gray-600">
-                    {language === 'tr'
-                      ? 'Sürekli izleme, optimizasyon ve genişleme'
-                      : 'Continuous monitoring, optimization, and expansion'}
-                  </p>
-                </div>
-              </>
-            )}
-          </div>
-        </div>
-      </section>
-
-      {/* Results Metrics */}
-      <section className="section-padding bg-gradient-to-r from-navy-900 via-azure-700 to-navy-900">
-        <div className="container-custom">
-          <h2 className="text-4xl font-bold text-center text-white mb-16">
-            {language === 'tr' ? 'Gerçek İş Etkisi Sağlama' : 'Delivering Real Business Impact'}
-          </h2>
-          <div className="grid md:grid-cols-4 gap-8">
-            {safeMetrics.map((metric: Metric & {id: number}) => (
-              <div key={metric.id} className="text-center">
-                <div className="text-5xl lg:text-6xl font-bold text-white mb-4">
-                  {metric.value}
-                </div>
-                <p className="text-xl text-gray-200">{metric.label}</p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Featured Case Study */}
-      <section id="case-studies" className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="text-4xl font-bold text-center text-navy-900 mb-12">
-            {language === 'tr' ? 'Son Başarı Hikayesi' : 'Latest Success Story'}
-          </h2>
-          {featuredCaseStudy && (
-            <div className="grid lg:grid-cols-2 gap-8 items-center bg-gray-50 rounded-2xl overflow-hidden shadow-xl">
-              <div className="relative h-64 lg:h-full bg-gradient-to-br from-gold-400 to-copper-500 flex items-center justify-center">
-                <div className="text-center p-8">
-                  <DynamicIcon
-                    icon={featuredCaseStudy.icon}
-                    className="w-20 h-20 text-white mx-auto mb-4"
-                    size={80}
-                  />
-                  <h3 className="text-2xl font-bold text-white">
-                    {featuredCaseStudy.subtitle ||
-                      featuredCaseStudy.title}
-                  </h3>
-                </div>
-              </div>
-              <div className="p-8 lg:p-12">
-                <h3 className="text-3xl font-bold text-navy-900 mb-6">
-                  {featuredCaseStudy.title}
-                </h3>
-                <p className="text-gray-600 mb-6 leading-relaxed">
-                  {featuredCaseStudy.description}
-                </p>
-                <div className="space-y-4 mb-8">
-                  {featuredCaseStudy.results.map((result: { metric: string; value: string }, index: number) => (
-                    <div key={index} className="flex items-start space-x-3">
-                      <div className="w-6 h-6 bg-gold-500 rounded-full flex items-center justify-center flex-shrink-0 mt-1">
-                        <span className="text-navy-900 text-sm font-bold">✓</span>
-                      </div>
-                      <p className="text-gray-700">
-                        <span className="font-bold">{result.value}</span>{' '}
-                        {result.metric}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-                <button className="bg-azure-500 hover:bg-azure-600 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-md">
-                  {featuredCaseStudy.buttonText}
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Testimonial */}
-      <section className="section-padding bg-gray-50">
-        <div className="container-custom">
-          {featuredTestimonial && (
-            <div className="max-w-4xl mx-auto bg-white rounded-2xl shadow-xl p-8 lg:p-12 text-center">
-              <div className="flex justify-center mb-6">
-                {[...Array(featuredTestimonial.rating)].map((_, i) => (
-                  <Star key={i} className="w-6 h-6 text-yellow-400 fill-current" />
-                ))}
-              </div>
-              <blockquote className="text-2xl lg:text-3xl font-medium text-navy-900 mb-8 leading-relaxed">
-                &ldquo;{featuredTestimonial.quote}&rdquo;
-              </blockquote>
-              <div className="flex items-center justify-center space-x-4">
-                <div className="w-16 h-16 bg-gradient-to-br from-brand-secondary to-brand-accent rounded-full flex items-center justify-center text-white text-xl font-bold">
-                  {featuredTestimonial.authorInitials ||
-                    featuredTestimonial.authorName
-                      .split(' ')
-                      .map((n: string) => n[0])
-                      .join('')
-                      .toUpperCase()}
-                </div>
-                <div className="text-left">
-                  <p className="font-bold text-navy-900 text-lg">
-                    {featuredTestimonial.authorName}
-                  </p>
-                  <p className="text-gray-600">
-                    {featuredTestimonial.authorTitle}
-                  </p>
-                </div>
-              </div>
-            </div>
-          )}
-        </div>
-      </section>
-
-      {/* Resources Section */}
-      <section id="resources" className="section-padding bg-white">
-        <div className="container-custom">
-          <h2 className="text-4xl font-bold text-center text-navy-900 mb-12">
-            {language === 'tr' ? 'Son Görüşler' : 'Latest Insights'}
-          </h2>
-          <div className="grid md:grid-cols-3 gap-8">
-            {safeBlogPosts.length > 0 ? (
-              safeBlogPosts.slice(0, 3).map((post: BlogPost & {id: number}, index: number) => {
-                const gradients = [
-                  'from-gold-400 to-copper-500',
-                  'from-copper-500 to-gold-400',
-                  'from-navy-900 to-azure-700'
-                ];
-                const icons = [Brain, Bot, TrendingUp];
-                const Icon = icons[index % icons.length];
-                const gradient = gradients[index % gradients.length];
-                const categoryColors = {
-                  'AI/ML': 'bg-gold-400/10 text-gold-600',
-                  'RPA': 'bg-copper-500/10 text-copper-600',
-                  'Case Study': 'bg-navy-900/10 text-navy-900'
-                };
-                const categoryColor = categoryColors[post.category as keyof typeof categoryColors] || 'bg-gray-100 text-gray-700';
-                const linkColors = ['text-gold-600', 'text-copper-600', 'text-navy-900'];
-                const linkColor = linkColors[index % linkColors.length];
-
-                return (
-                  <article key={post.id} className="bg-white rounded-lg shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                    <div className={`h-48 bg-gradient-to-br ${gradient} flex items-center justify-center`}>
-                      <Icon className="w-16 h-16 text-white" />
-                    </div>
-                    <div className="p-6">
-                      {post.category && (
-                        <span className={`inline-block px-3 py-1 ${categoryColor} text-sm font-semibold rounded-full mb-3`}>
-                          {post.category}
-                        </span>
-                      )}
-                      <h3 className="text-xl font-bold text-navy-900 mb-3 line-clamp-2">
-                        {post.title}
-                      </h3>
-                      {post.excerpt && (
-                        <p className="text-gray-600 mb-4 line-clamp-3">
-                          {post.excerpt}
-                        </p>
-                      )}
-                      {post.publishDate && (
-                        <div className="flex items-center justify-between text-sm text-gray-500 mb-4">
-                          <span>{language === 'tr' ? 'Oku' : 'Read'}</span>
-                          <span>{new Date(post.publishDate).toLocaleDateString(language === 'tr' ? 'tr-TR' : 'en-US', { month: 'short', day: 'numeric', year: 'numeric' })}</span>
-                        </div>
-                      )}
-                      <a
-                        href="#"
-                        className={`inline-flex items-center ${linkColor} font-semibold hover:underline`}
-                      >
-                        {language === 'tr' ? 'Devamını Oku' : 'Read More'} <ArrowRight className="w-4 h-4 ml-1" />
-                      </a>
-                    </div>
-                  </article>
-                );
-              })
-            ) : null}
-          </div>
-        </div>
-      </section>
-
       {/* Final CTA Section */}
       <section
         id="contact"
         className="section-padding bg-gradient-to-r from-gold-500 via-gold-400 to-copper-500"
       >
         <div className="container-custom text-center">
-          <h2 className="text-4xl lg:text-5xl font-bold text-navy-900 mb-6">
-            {ctaSection?.title || (language === 'tr' ? 'Operasyonlarınızı Dönüştürmeye Hazır mısınız?' : 'Ready to Transform Your Operations?')}
-          </h2>
-          <p className="text-xl text-navy-800 mb-8 max-w-2xl mx-auto">
-            {ctaSection?.description || (language === 'tr' ? 'Otomasyon fırsatlarınızı görüşmek için ücretsiz 30 dakikalık bir danışma planlayın' : 'Schedule a free 30-minute consultation to discuss your automation opportunities')}
-          </p>
-          <button className="bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
-            {ctaSection?.buttonText || (language === 'tr' ? 'Ücretsiz Danışmanlığınızı Ayırtın' : 'Book Your Free Consultation')}
-          </button>
-          <p className="text-navy-800 mb-2">
-            {language === 'tr' ? 'Veya bizi arayın: +1 (555) 123-4567' : 'Or call us: +1 (555) 123-4567'}
-          </p>
-          <p className="text-sm text-navy-700">
-            {language === 'tr' ? 'Taahhüt gerekli değil • %100 gizli' : 'No commitment required • 100% confidential'}
-          </p>
+          {ctaSection?.title && (
+            <h2 className="text-4xl lg:text-5xl font-bold text-navy-900 mb-6">
+              {ctaSection.title}
+            </h2>
+          )}
+          {ctaSection?.description && (
+            <p className="text-xl text-navy-800 mb-8 max-w-2xl mx-auto">
+              {ctaSection.description}
+            </p>
+          )}
+          {ctaSection?.buttonText && (
+            ctaSection.buttonUrl ? (
+              <a
+                href={ctaSection.buttonUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-block bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
+              >
+                {ctaSection.buttonText}
+              </a>
+            ) : (
+              <button className="bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
+                {ctaSection.buttonText}
+              </button>
+            )
+          )}
+          {ctaSection?.phoneText && (
+            <p className="text-navy-800 mb-2">
+              {ctaSection.phoneText}
+            </p>
+          )}
+          {ctaSection?.confidentialityText && (
+            <p className="text-sm text-navy-700">
+              {ctaSection.confidentialityText}
+            </p>
+          )}
         </div>
       </section>
 
@@ -650,14 +412,24 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
             {/* Company Info */}
             <div>
               <div className="flex items-center space-x-3 mb-4">
-                <Image
-                  src="/images/logo.png"
-                  alt="Sipsy Logo"
-                  width={40}
-                  height={40}
-                  className="w-10 h-10"
-                />
-                <span className="text-2xl font-bold text-white">sipsy.ai</span>
+                {footer?.logo ? (
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${footer.logo.url}`}
+                    alt={footer.logo.alternativeText || 'Logo'}
+                    width={40}
+                    height={40}
+                    className="w-10 h-10 object-contain"
+                  />
+                ) : (
+                  <Image
+                    src="/images/logo.png"
+                    alt="Sipsy Logo"
+                    width={40}
+                    height={40}
+                    className="w-10 h-10"
+                  />
+                )}
+                <span className="text-2xl font-bold text-white">{footer?.siteName || 'sipsy.ai'}</span>
               </div>
               <p className="text-gray-400 mb-6 leading-relaxed">
                 {footer?.companyDescription || (language === 'tr' ? 'Ölçülebilir ROI sağlayan kurumsal AI ve otomasyon çözümleri' : 'Enterprise AI and automation solutions that deliver measurable ROI')}

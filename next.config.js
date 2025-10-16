@@ -8,6 +8,21 @@ const nextConfig = {
         port: '1337',
         pathname: '/uploads/**',
       },
+      {
+        protocol: 'https',
+        hostname: 'sipsy.ai',
+        pathname: '/uploads/**',
+      },
+      {
+        protocol: 'https',
+        hostname: '*.s3.*.amazonaws.com',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 's3.*.amazonaws.com',
+        pathname: '/**',
+      },
     ],
   },
   // Enable React strict mode for better development experience

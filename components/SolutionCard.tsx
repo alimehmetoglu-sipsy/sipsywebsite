@@ -4,6 +4,7 @@ import { Solution } from '@/lib/types';
 import DynamicIcon from '@/components/DynamicIcon';
 import { ArrowRight, Clock, TrendingDown, DollarSign } from 'lucide-react';
 import Link from 'next/link';
+import Image from 'next/image';
 
 interface SolutionCardProps {
   solution: Solution & { id: number };
@@ -83,6 +84,34 @@ export default function SolutionCard({ solution, language }: SolutionCardProps) 
               </span>
             </div>
           )}
+        </div>
+      )}
+
+      {/* Key Tools */}
+      {solution.keyTools && solution.keyTools.length > 0 && (
+        <div className="mb-4">
+          <p className="text-sm font-semibold text-gray-600 mb-2">
+            {language === 'tr' ? 'Anahtar araçlar:' : 'Key tools:'}
+          </p>
+          <div className="flex flex-wrap gap-2">
+            {solution.keyTools.map((tool, index) => (
+              <span
+                key={index}
+                className={`inline-flex items-center gap-2 px-3 py-1 ${serviceBgColor} rounded-full text-sm`}
+              >
+                {tool.Logo && (
+                  <Image
+                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${tool.Logo.url}`}
+                    alt={tool.Logo.alternativeText || tool.Name}
+                    width={16}
+                    height={16}
+                    className="w-4 h-4 object-contain"
+                  />
+                )}
+                <span className="text-gray-900 font-medium">{tool.Name}</span>
+              </span>
+            ))}
+          </div>
         </div>
       )}
 

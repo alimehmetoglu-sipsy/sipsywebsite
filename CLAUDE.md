@@ -52,10 +52,11 @@ npm run upgrade:dry    # Preview upgrade changes
 
 ## Environment Configuration
 
-The application uses environment variables defined in `.env`:
+The application uses environment variables defined in `.env.local`:
 
 - `HOST`: Server host (default: 0.0.0.0)
 - `PORT`: Server port (default: 1337)
+- `STRAPI_TOKEN` : Bearer token
 - `APP_KEYS`: Application encryption keys
 - `API_TOKEN_SALT`: API token salt
 - `ADMIN_JWT_SECRET`: Admin JWT secret

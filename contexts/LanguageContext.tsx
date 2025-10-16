@@ -7,12 +7,14 @@ type Language = 'tr' | 'en';
 interface LanguageContextType {
   language: Language;
   setLanguage: (lang: Language) => void;
+  isHydrated: boolean;
 }
 
 const LanguageContext = createContext<LanguageContextType | undefined>(undefined);
 
 export function LanguageProvider({ children }: { children: ReactNode }) {
   const [language, setLanguageState] = useState<Language>('tr');
+  const [isHydrated, setIsHydrated] = useState(false);
 
   // Load language from localStorage on mount
   useEffect(() => {
@@ -20,6 +22,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
     if (savedLanguage && (savedLanguage === 'tr' || savedLanguage === 'en')) {
       setLanguageState(savedLanguage);
     }
+    setIsHydrated(true);
   }, []);
 
   const setLanguage = (lang: Language) => {
@@ -28,7 +31,7 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
   };
 
   return (
-    <LanguageContext.Provider value={{ language, setLanguage }}>
+    <LanguageContext.Provider value={{ language, setLanguage, isHydrated }}>
       {children}
     </LanguageContext.Provider>
   );

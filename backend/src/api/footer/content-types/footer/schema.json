@@ -15,17 +15,39 @@
     }
   },
   "attributes": {
+    "logo": {
+      "type": "media",
+      "multiple": false,
+      "required": false,
+      "allowedTypes": [
+        "images"
+      ]
+    },
+    "siteName": {
+      "type": "string",
+      "default": "sipsy.ai"
+    },
     "links": {
       "type": "json"
     },
     "companyDescription": {
-      "type": "text"
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     },
     "socialLinks": {
       "type": "json"
     },
     "copyright": {
-      "type": "string"
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
     }
   }
 }

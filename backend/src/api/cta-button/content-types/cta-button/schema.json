@@ -1,0 +1,61 @@
+{
+  "kind": "collectionType",
+  "collectionName": "cta_buttons",
+  "info": {
+    "singularName": "cta-button",
+    "pluralName": "cta-buttons",
+    "displayName": "CTA Button",
+    "description": "Call-to-action buttons for navigation and other sections"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "text": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "href": {
+      "type": "string",
+      "required": false
+    },
+    "variant": {
+      "type": "enumeration",
+      "enum": ["primary", "secondary", "outline"],
+      "default": "secondary"
+    },
+    "isVisible": {
+      "type": "boolean",
+      "default": true
+    },
+    "location": {
+      "type": "enumeration",
+      "enum": ["navigation", "hero", "footer", "other"],
+      "default": "navigation",
+      "required": true
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    },
+    "opensContactForm": {
+      "type": "boolean",
+      "default": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": false
+        }
+      }
+    }
+  }
+}

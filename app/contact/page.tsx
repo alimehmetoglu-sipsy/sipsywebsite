@@ -13,30 +13,14 @@ import {
   MapPin,
   ChevronDown,
   ChevronUp,
-  Video,
-  PhoneCall,
-  Users,
-  Clock,
-  FileText,
-  TrendingUp,
-  Zap,
   Shield,
   Award,
   MessageCircle,
 } from 'lucide-react';
+import { submitContactForm } from '@/lib/strapi';
+import { ContactFormData } from '@/lib/types';
 
-interface FormData {
-  firstName: string;
-  lastName: string;
-  email: string;
-  phone: string;
-  company: string;
-  industry: string;
-  companySize: string;
-  primaryInterest: string;
-  currentChallenge: string;
-  consultationType: string;
-  preferredTime: string;
+interface FormData extends ContactFormData {
   privacyAgreement: boolean;
 }
 
@@ -51,17 +35,10 @@ export default function ContactPage() {
   const [submitSuccess, setSubmitSuccess] = useState(false);
 
   const [formData, setFormData] = useState<FormData>({
-    firstName: '',
-    lastName: '',
+    fullName: '',
     email: '',
     phone: '',
-    company: '',
-    industry: '',
-    companySize: '',
-    primaryInterest: '',
-    currentChallenge: '',
-    consultationType: 'video',
-    preferredTime: '',
+    message: '',
     privacyAgreement: false,
   });
 
@@ -70,25 +47,14 @@ export default function ContactPage() {
 
   const validateField = (name: string, value: string | boolean): string => {
     switch (name) {
-      case 'firstName':
-      case 'lastName':
-        return !value ? 'This field is required' : '';
+      case 'fullName':
+        return !value ? 'Ad Soyad zorunludur' : '';
       case 'email':
-        if (!value) return 'Email is required';
+        if (!value) return 'Email zorunludur';
         const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
-        return !emailRegex.test(value as string) ? 'Invalid email address' : '';
-      case 'company':
-        return !value ? 'Company name is required' : '';
-      case 'industry':
-        return !value ? 'Please select an industry' : '';
-      case 'companySize':
-        return !value ? 'Please select company size' : '';
-      case 'primaryInterest':
-        return !value ? 'Please select your primary interest' : '';
-      case 'preferredTime':
-        return !value ? 'Please select a preferred time' : '';
+        return !emailRegex.test(value as string) ? 'Geçersiz email adresi' : '';
       case 'privacyAgreement':
-        return !value ? 'You must agree to continue' : '';
+        return !value ? 'Devam etmek için kabul etmelisiniz' : '';
       default:
         return '';
     }
@@ -156,26 +122,24 @@ export default function ContactPage() {
     setIsSubmitting(true);
 
     try {
-      // TODO: Replace with actual API endpoint
-      await new Promise((resolve) => setTimeout(resolve, 2000));
+      // Submit to Strapi API
+      await submitContactForm({
+        fullName: formData.fullName,
+        email: formData.email,
+        phone: formData.phone,
+        message: formData.message,
+      });
 
-      console.log('Form submitted:', formData);
+      console.log('Form submitted successfully');
       setSubmitSuccess(true);
 
       // Reset form after successful submission
       setTimeout(() => {
         setFormData({
-          firstName: '',
-          lastName: '',
+          fullName: '',
           email: '',
           phone: '',
-          company: '',
-          industry: '',
-          companySize: '',
-          primaryInterest: '',
-          currentChallenge: '',
-          consultationType: 'video',
-          preferredTime: '',
+          message: '',
           privacyAgreement: false,
         });
         setSubmitSuccess(false);
@@ -184,6 +148,8 @@ export default function ContactPage() {
       }, 3000);
     } catch (error) {
       console.error('Form submission error:', error);
+      // You can add error handling here (e.g., show error message to user)
+      alert('Form gönderilirken bir hata oluştu. Lütfen tekrar deneyin.');
     } finally {
       setIsSubmitting(false);
     }
@@ -334,9 +300,9 @@ export default function ContactPage() {
                   <div className="mb-6 p-4 bg-gold-50 border border-gold-200 rounded-lg flex items-start space-x-3">
                     <CheckCircle className="w-6 h-6 text-gold-600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-gold-900">Success!</p>
+                      <p className="font-semibold text-gold-900">Başarılı!</p>
                       <p className="text-gold-800 text-sm">
-                        Your consultation request has been submitted. We&apos;ll contact you shortly!
+                        Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız!
                       </p>
                     </div>
                   </div>
@@ -346,310 +312,83 @@ export default function ContactPage() {
                   {/* Contact Information */}
                   <div>
                     <h3 className="text-lg font-semibold text-navy-900 mb-4">
-                      Contact Information
+                      İletişim Bilgileri
                     </h3>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <label htmlFor="firstName" className="block text-sm font-medium text-gray-700 mb-1">
-                          First Name <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          id="firstName"
-                          name="firstName"
-                          value={formData.firstName}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          placeholder="John"
-                          className={`w-full px-4 py-3 border rounded-lg text-navy-900 focus:outline-none focus:ring-2 transition ${
-                            errors.firstName && touchedFields.has('firstName')
-                              ? 'border-red-500 focus:ring-red-200'
-                              : 'border-gray-300 focus:ring-brand-secondary'
-                          }`}
-                        />
-                        {errors.firstName && touchedFields.has('firstName') && (
-                          <p className="mt-1 text-sm text-red-500">{errors.firstName}</p>
-                        )}
-                      </div>
 
-                      <div>
-                        <label htmlFor="lastName" className="block text-sm font-medium text-gray-700 mb-1">
-                          Last Name <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="text"
-                          id="lastName"
-                          name="lastName"
-                          value={formData.lastName}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          placeholder="Smith"
-                          className={`w-full px-4 py-3 border rounded-lg text-navy-900 focus:outline-none focus:ring-2 transition ${
-                            errors.lastName && touchedFields.has('lastName')
-                              ? 'border-red-500 focus:ring-red-200'
-                              : 'border-gray-300 focus:ring-brand-secondary'
-                          }`}
-                        />
-                        {errors.lastName && touchedFields.has('lastName') && (
-                          <p className="mt-1 text-sm text-red-500">{errors.lastName}</p>
-                        )}
-                      </div>
-                    </div>
-
-                    <div className="grid md:grid-cols-2 gap-4 mt-4">
-                      <div>
-                        <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
-                          Email <span className="text-red-500">*</span>
-                        </label>
-                        <input
-                          type="email"
-                          id="email"
-                          name="email"
-                          value={formData.email}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          placeholder="john@company.com"
-                          className={`w-full px-4 py-3 border rounded-lg text-navy-900 focus:outline-none focus:ring-2 transition ${
-                            errors.email && touchedFields.has('email')
-                              ? 'border-red-500 focus:ring-red-200'
-                              : 'border-gray-300 focus:ring-brand-secondary'
-                          }`}
-                        />
-                        {errors.email && touchedFields.has('email') && (
-                          <p className="mt-1 text-sm text-red-500">{errors.email}</p>
-                        )}
-                      </div>
-
-                      <div>
-                        <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
-                          Phone
-                        </label>
-                        <input
-                          type="tel"
-                          id="phone"
-                          name="phone"
-                          value={formData.phone}
-                          onChange={handleChange}
-                          placeholder="+1 (555) 123-4567"
-                          className="w-full px-4 py-3 border border-gray-300 rounded-lg text-navy-900 focus:outline-none focus:ring-2 focus:ring-brand-secondary transition"
-                        />
-                      </div>
-                    </div>
-
-                    <div className="mt-4">
-                      <label htmlFor="company" className="block text-sm font-medium text-gray-700 mb-1">
-                        Company Name <span className="text-red-500">*</span>
+                    <div className="mb-4">
+                      <label htmlFor="fullName" className="block text-sm font-medium text-gray-700 mb-1">
+                        Ad Soyad <span className="text-red-500">*</span>
                       </label>
                       <input
                         type="text"
-                        id="company"
-                        name="company"
-                        value={formData.company}
+                        id="fullName"
+                        name="fullName"
+                        value={formData.fullName}
                         onChange={handleChange}
                         onBlur={handleBlur}
-                        placeholder="Your Company"
+                        placeholder="Adınız ve Soyadınız"
                         className={`w-full px-4 py-3 border rounded-lg text-navy-900 focus:outline-none focus:ring-2 transition ${
-                          errors.company && touchedFields.has('company')
+                          errors.fullName && touchedFields.has('fullName')
                             ? 'border-red-500 focus:ring-red-200'
                             : 'border-gray-300 focus:ring-brand-secondary'
                         }`}
                       />
-                      {errors.company && touchedFields.has('company') && (
-                        <p className="mt-1 text-sm text-red-500">{errors.company}</p>
+                      {errors.fullName && touchedFields.has('fullName') && (
+                        <p className="mt-1 text-sm text-red-500">{errors.fullName}</p>
                       )}
                     </div>
-                  </div>
 
-                  {/* Company Details */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-navy-900 mb-4">
-                      Company Details
-                    </h3>
-                    <div className="grid md:grid-cols-2 gap-4">
-                      <div>
-                        <label htmlFor="industry" className="block text-sm font-medium text-gray-700 mb-1">
-                          Industry <span className="text-red-500">*</span>
-                        </label>
-                        <select
-                          id="industry"
-                          name="industry"
-                          value={formData.industry}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          className={`w-full px-4 py-3 border rounded-lg text-navy-900 focus:outline-none focus:ring-2 transition ${
-                            errors.industry && touchedFields.has('industry')
-                              ? 'border-red-500 focus:ring-red-200'
-                              : 'border-gray-300 focus:ring-brand-secondary'
-                          }`}
-                        >
-                          <option value="">Select Industry</option>
-                          <option value="manufacturing">Manufacturing</option>
-                          <option value="financial">Financial Services</option>
-                          <option value="healthcare">Healthcare</option>
-                          <option value="retail">Retail & E-commerce</option>
-                          <option value="technology">Technology</option>
-                          <option value="logistics">Logistics & Supply Chain</option>
-                          <option value="professional">Professional Services</option>
-                          <option value="other">Other</option>
-                        </select>
-                        {errors.industry && touchedFields.has('industry') && (
-                          <p className="mt-1 text-sm text-red-500">{errors.industry}</p>
-                        )}
-                      </div>
-
-                      <div>
-                        <label htmlFor="companySize" className="block text-sm font-medium text-gray-700 mb-1">
-                          Company Size <span className="text-red-500">*</span>
-                        </label>
-                        <select
-                          id="companySize"
-                          name="companySize"
-                          value={formData.companySize}
-                          onChange={handleChange}
-                          onBlur={handleBlur}
-                          className={`w-full px-4 py-3 border rounded-lg text-navy-900 focus:outline-none focus:ring-2 transition ${
-                            errors.companySize && touchedFields.has('companySize')
-                              ? 'border-red-500 focus:ring-red-200'
-                              : 'border-gray-300 focus:ring-brand-secondary'
-                          }`}
-                        >
-                          <option value="">Select Size</option>
-                          <option value="1-50">1-50 employees</option>
-                          <option value="51-200">51-200 employees</option>
-                          <option value="201-1000">201-1000 employees</option>
-                          <option value="1001-5000">1001-5000 employees</option>
-                          <option value="5000+">5000+ employees</option>
-                        </select>
-                        {errors.companySize && touchedFields.has('companySize') && (
-                          <p className="mt-1 text-sm text-red-500">{errors.companySize}</p>
-                        )}
-                      </div>
-                    </div>
-                  </div>
-
-                  {/* Project Information */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-navy-900 mb-4">
-                      Project Information
-                    </h3>
-                    <div>
-                      <label htmlFor="primaryInterest" className="block text-sm font-medium text-gray-700 mb-1">
-                        Primary Interest <span className="text-red-500">*</span>
+                    <div className="mb-4">
+                      <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">
+                        Email <span className="text-red-500">*</span>
                       </label>
-                      <select
-                        id="primaryInterest"
-                        name="primaryInterest"
-                        value={formData.primaryInterest}
+                      <input
+                        type="email"
+                        id="email"
+                        name="email"
+                        value={formData.email}
                         onChange={handleChange}
                         onBlur={handleBlur}
+                        placeholder="ornek@sirket.com"
                         className={`w-full px-4 py-3 border rounded-lg text-navy-900 focus:outline-none focus:ring-2 transition ${
-                          errors.primaryInterest && touchedFields.has('primaryInterest')
+                          errors.email && touchedFields.has('email')
                             ? 'border-red-500 focus:ring-red-200'
                             : 'border-gray-300 focus:ring-brand-secondary'
                         }`}
-                      >
-                        <option value="">Select Interest</option>
-                        <option value="rpa">RPA & Hyperautomation</option>
-                        <option value="ai-ml">AI/ML Integration</option>
-                        <option value="integration">Enterprise System Integration</option>
-                        <option value="data">Data Engineering & Analytics</option>
-                        <option value="consulting">Digital Transformation Consulting</option>
-                        <option value="guidance">Not Sure - Need Guidance</option>
-                      </select>
-                      {errors.primaryInterest && touchedFields.has('primaryInterest') && (
-                        <p className="mt-1 text-sm text-red-500">{errors.primaryInterest}</p>
+                      />
+                      {errors.email && touchedFields.has('email') && (
+                        <p className="mt-1 text-sm text-red-500">{errors.email}</p>
                       )}
                     </div>
 
-                    <div className="mt-4">
-                      <label htmlFor="currentChallenge" className="block text-sm font-medium text-gray-700 mb-1">
-                        Current Challenge
+                    <div className="mb-4">
+                      <label htmlFor="phone" className="block text-sm font-medium text-gray-700 mb-1">
+                        Telefon <span className="text-gray-500 text-xs">(opsiyonel)</span>
+                      </label>
+                      <input
+                        type="tel"
+                        id="phone"
+                        name="phone"
+                        value={formData.phone}
+                        onChange={handleChange}
+                        placeholder="+90 (555) 123-4567"
+                        className="w-full px-4 py-3 border border-gray-300 rounded-lg text-navy-900 focus:outline-none focus:ring-2 focus:ring-brand-secondary transition"
+                      />
+                    </div>
+
+                    <div className="mb-4">
+                      <label htmlFor="message" className="block text-sm font-medium text-gray-700 mb-1">
+                        Mesajınız <span className="text-gray-500 text-xs">(opsiyonel)</span>
                       </label>
                       <textarea
-                        id="currentChallenge"
-                        name="currentChallenge"
-                        value={formData.currentChallenge}
+                        id="message"
+                        name="message"
+                        value={formData.message}
                         onChange={handleChange}
                         rows={4}
-                        placeholder="Briefly describe your automation needs or challenges (optional)"
+                        placeholder="Bize iletmek istediğiniz mesajınızı yazabilirsiniz..."
                         className="w-full px-4 py-3 border border-gray-300 rounded-lg text-navy-900 focus:outline-none focus:ring-2 focus:ring-brand-secondary transition resize-none"
                       />
-                    </div>
-                  </div>
-
-                  {/* Preferred Meeting */}
-                  <div>
-                    <h3 className="text-lg font-semibold text-navy-900 mb-4">
-                      Preferred Meeting
-                    </h3>
-                    <div className="mb-4">
-                      <label className="block text-sm font-medium text-gray-700 mb-3">
-                        Consultation Type
-                      </label>
-                      <div className="space-y-3">
-                        <label className="flex items-center space-x-3 cursor-pointer">
-                          <input
-                            type="radio"
-                            name="consultationType"
-                            value="video"
-                            checked={formData.consultationType === 'video'}
-                            onChange={handleChange}
-                            className="w-4 h-4 text-brand-secondary focus:ring-brand-secondary"
-                          />
-                          <Video className="w-5 h-5 text-gray-600" />
-                          <span className="text-navy-900">Video Call (Zoom/Teams)</span>
-                        </label>
-                        <label className="flex items-center space-x-3 cursor-pointer">
-                          <input
-                            type="radio"
-                            name="consultationType"
-                            value="phone"
-                            checked={formData.consultationType === 'phone'}
-                            onChange={handleChange}
-                            className="w-4 h-4 text-brand-secondary focus:ring-brand-secondary"
-                          />
-                          <PhoneCall className="w-5 h-5 text-gray-600" />
-                          <span className="text-navy-900">Phone Call</span>
-                        </label>
-                        <label className="flex items-center space-x-3 cursor-pointer">
-                          <input
-                            type="radio"
-                            name="consultationType"
-                            value="in-person"
-                            checked={formData.consultationType === 'in-person'}
-                            onChange={handleChange}
-                            className="w-4 h-4 text-brand-secondary focus:ring-brand-secondary"
-                          />
-                          <Users className="w-5 h-5 text-gray-600" />
-                          <span className="text-navy-900">In-Person (if near our office)</span>
-                        </label>
-                      </div>
-                    </div>
-
-                    <div>
-                      <label htmlFor="preferredTime" className="block text-sm font-medium text-gray-700 mb-1">
-                        Preferred Time <span className="text-red-500">*</span>
-                      </label>
-                      <select
-                        id="preferredTime"
-                        name="preferredTime"
-                        value={formData.preferredTime}
-                        onChange={handleChange}
-                        onBlur={handleBlur}
-                        className={`w-full px-4 py-3 border rounded-lg text-navy-900 focus:outline-none focus:ring-2 transition ${
-                          errors.preferredTime && touchedFields.has('preferredTime')
-                            ? 'border-red-500 focus:ring-red-200'
-                            : 'border-gray-300 focus:ring-brand-secondary'
-                        }`}
-                      >
-                        <option value="">Select Preferred Time</option>
-                        <option value="morning">Morning (9am-12pm EST)</option>
-                        <option value="afternoon">Afternoon (12pm-3pm EST)</option>
-                        <option value="late">Late Afternoon (3pm-6pm EST)</option>
-                      </select>
-                      {errors.preferredTime && touchedFields.has('preferredTime') && (
-                        <p className="mt-1 text-sm text-red-500">{errors.preferredTime}</p>
-                      )}
                     </div>
                   </div>
 
@@ -669,14 +408,14 @@ export default function ContactPage() {
                         }`}
                       />
                       <span className="text-sm text-gray-700">
-                        I agree to the{' '}
                         <Link href="/privacy" className="text-brand-secondary hover:underline">
-                          Privacy Policy
-                        </Link>{' '}
-                        and{' '}
-                        <Link href="/terms" className="text-brand-secondary hover:underline">
-                          Terms of Service
+                          Gizlilik Politikası
                         </Link>
+                        &apos;nı ve{' '}
+                        <Link href="/terms" className="text-brand-secondary hover:underline">
+                          Kullanım Koşulları
+                        </Link>
+                        &apos;nı kabul ediyorum
                         <span className="text-red-500"> *</span>
                       </span>
                     </label>
@@ -684,7 +423,7 @@ export default function ContactPage() {
                       <p className="mt-1 text-sm text-red-500 ml-7">{errors.privacyAgreement}</p>
                     )}
                     <p className="text-xs text-gray-500 mt-2 ml-7">
-                      We respect your privacy. Your information will never be shared.
+                      Gizliliğinize saygı duyuyoruz. Bilgileriniz asla paylaşılmayacaktır.
                     </p>
                   </div>
 
@@ -698,14 +437,14 @@ export default function ContactPage() {
                         : 'bg-brand-secondary hover:bg-gold-500 hover:scale-105 text-navy-900'
                     }`}
                   >
-                    {isSubmitting ? 'Submitting...' : 'Schedule My Free Consultation'}
+                    {isSubmitting ? 'Gönderiliyor...' : 'Formu Gönder'}
                   </button>
 
                   <div className="text-center mt-4">
                     <p className="text-gray-600 text-sm">
-                      Or call us directly:{' '}
-                      <a href="tel:+15551234567" className="text-brand-secondary font-semibold hover:underline">
-                        +1 (555) 123-4567
+                      Ya da bizi doğrudan arayın:{' '}
+                      <a href="tel:+905551234567" className="text-brand-secondary font-semibold hover:underline">
+                        +90 (555) 123-4567
                       </a>
                     </p>
                   </div>

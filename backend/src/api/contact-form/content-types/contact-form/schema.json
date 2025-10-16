@@ -1,0 +1,172 @@
+{
+  "kind": "singleType",
+  "collectionName": "contact_form",
+  "info": {
+    "singularName": "contact-form",
+    "pluralName": "contact-forms",
+    "displayName": "Contact Form",
+    "description": "Contact form popup content and configuration"
+  },
+  "options": {
+    "draftAndPublish": false
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "text",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "fullNameLabel": {
+      "type": "string",
+      "default": "Ad Soyad",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "fullNamePlaceholder": {
+      "type": "string",
+      "default": "Adınız ve Soyadınız",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "emailLabel": {
+      "type": "string",
+      "default": "Email",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "emailPlaceholder": {
+      "type": "string",
+      "default": "ornek@sirket.com",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "phoneLabel": {
+      "type": "string",
+      "default": "Telefon",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "phonePlaceholder": {
+      "type": "string",
+      "default": "+90 (555) 123-4567",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "messageLabel": {
+      "type": "string",
+      "default": "Mesajınız",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "messagePlaceholder": {
+      "type": "text",
+      "default": "Bize iletmek istediğiniz mesajınızı yazabilirsiniz...",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "submitButtonText": {
+      "type": "string",
+      "default": "Formu Gönder",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "privacyPolicyText": {
+      "type": "string",
+      "default": "Gizlilik Politikası",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "privacyPolicyUrl": {
+      "type": "string",
+      "default": "/privacy",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "termsText": {
+      "type": "string",
+      "default": "Kullanım Koşulları",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "termsUrl": {
+      "type": "string",
+      "default": "/terms",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "privacyAgreementText": {
+      "type": "string",
+      "default": "'nı ve ... 'nı kabul ediyorum",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "successMessage": {
+      "type": "text",
+      "default": "Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız!",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    }
+  }
+}

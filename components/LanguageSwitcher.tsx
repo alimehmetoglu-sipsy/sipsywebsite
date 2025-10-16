@@ -3,7 +3,17 @@
 import { useLanguage } from '@/contexts/LanguageContext';
 
 export default function LanguageSwitcher() {
-  const { language, setLanguage } = useLanguage();
+  const { language, setLanguage, isHydrated } = useLanguage();
+
+  // Prevent hydration mismatch by not rendering until client-side hydration is complete
+  if (!isHydrated) {
+    return (
+      <div className="flex items-center space-x-2">
+        <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse"></div>
+        <div className="w-8 h-8 rounded-full bg-gray-200 animate-pulse"></div>
+      </div>
+    );
+  }
 
   return (
     <div className="flex items-center space-x-2">

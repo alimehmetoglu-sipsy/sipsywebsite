@@ -11,6 +11,17 @@ export interface NavigationItem {
   order: number;
 }
 
+// CTA Button
+export interface CtaButton {
+  text: string;
+  href?: string;
+  variant: 'primary' | 'secondary' | 'outline';
+  isVisible: boolean;
+  location: 'navigation' | 'hero' | 'footer' | 'other';
+  order: number;
+  opensContactForm?: boolean;
+}
+
 // Hero Section
 export interface HeroSection {
   title: string;
@@ -34,12 +45,23 @@ export interface StrapiIcon {
   isIconNameEditable?: boolean;
 }
 
+// Tool
+export interface Tool {
+  Name: string;
+  Logo?: {
+    url: string;
+    alternativeText?: string;
+    width?: number;
+    height?: number;
+  };
+}
+
 // Service
 export interface Service {
   title: string;
   description: string;
   icon: StrapiIcon | string | null;
-  keyTools?: string;
+  keyTools?: Tool[];
   link?: string;
   linkText: string;
   color: 'accent' | 'secondary';
@@ -114,6 +136,9 @@ export interface CtaSection {
   title: string;
   description?: string;
   buttonText?: string;
+  buttonUrl?: string;
+  phoneText?: string;
+  confidentialityText?: string;
 }
 
 // Footer
@@ -135,11 +160,8 @@ export interface Solution {
   featured: boolean;
   order: number;
 
-  // Tools used
-  tools?: Array<{
-    name: string;
-    description?: string;
-  }>;
+  // Key Tools (matches backend schema)
+  keyTools?: Tool[];
 
   // Project details
   project?: {
@@ -233,4 +255,56 @@ export interface Solution {
     type: string;
     description: string;
   }>;
+}
+
+// Contact Form Content (from Strapi)
+export interface ContactFormContent {
+  title: string;
+  description?: string;
+  fullNameLabel: string;
+  fullNamePlaceholder: string;
+  emailLabel: string;
+  emailPlaceholder: string;
+  phoneLabel: string;
+  phonePlaceholder: string;
+  messageLabel: string;
+  messagePlaceholder: string;
+  submitButtonText: string;
+  privacyPolicyText?: string;
+  privacyPolicyUrl?: string;
+  termsText?: string;
+  termsUrl?: string;
+  privacyAgreementText?: string;
+  successMessage: string;
+}
+
+// Contact Form Submission
+export interface ContactFormData {
+  fullName: string;
+  email: string;
+  phone?: string;
+  message?: string;
+}
+
+// Contact Submission (from Strapi)
+export interface ContactSubmission {
+  fullName: string;
+  email: string;
+  phone?: string;
+  message?: string;
+  status: 'new' | 'contacted' | 'closed';
+  createdAt?: string;
+  updatedAt?: string;
+}
+
+// Page (for static pages like Privacy, Terms)
+export interface Page {
+  title: string;
+  slug: string;
+  content: string;
+  seo?: {
+    metaTitle?: string;
+    metaDescription?: string;
+    keywords?: string;
+  };
 }

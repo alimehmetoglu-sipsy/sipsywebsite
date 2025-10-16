@@ -11,7 +11,11 @@ export default factories.createCoreController('api::solution.solution', ({ strap
       ...ctx.query,
       populate: {
         service: true,
-        tools: true,
+        keyTools: {
+          populate: {
+            Logo: true
+          }
+        },
         visuals: true,
         project: {
           populate: {
@@ -35,7 +39,11 @@ export default factories.createCoreController('api::solution.solution', ({ strap
       ...ctx.query,
       populate: {
         service: true,
-        tools: true,
+        keyTools: {
+          populate: {
+            Logo: true
+          }
+        },
         visuals: true,
         project: {
           populate: {

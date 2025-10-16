@@ -52,6 +52,17 @@ export async function getNavigationItems(locale: string = 'tr') {
   return data.data;
 }
 
+// CTA Buttons
+export async function getCtaButtons(locale: string = 'tr', location?: string) {
+  const locationFilter = location ? `&filters[location][$eq]=${location}` : '';
+  const data = await fetchAPI(`/cta-buttons?sort=order:asc&filters[isVisible][$eq]=true${locationFilter}`, locale);
+  return data.data;
+}
+
+export async function getNavigationCtaButtons(locale: string = 'tr') {
+  return getCtaButtons(locale, 'navigation');
+}
+
 // Hero Section
 export async function getHeroSection(locale: string = 'tr') {
   const data = await fetchAPI('/hero-section', locale);
@@ -60,6 +71,12 @@ export async function getHeroSection(locale: string = 'tr') {
 
 // Services
 export async function getServices(locale: string = 'tr') {
+  const data = await fetchAPI('/services?sort=order:asc', locale);
+  return data.data;
+}
+
+// Services with all details including related solutions and tools
+export async function getServicesWithDetails(locale: string = 'tr') {
   const data = await fetchAPI('/services?sort=order:asc', locale);
   return data.data;
 }
@@ -124,7 +141,7 @@ export async function getCtaSection(locale: string = 'tr') {
 
 // Footer
 export async function getFooter(locale: string = 'tr') {
-  const data = await fetchAPI('/footer', locale);
+  const data = await fetchAPI('/footer?populate=*', locale);
   return data.data;
 }
 
@@ -148,4 +165,53 @@ export async function getSolutionBySlug(slug: string, locale: string = 'tr') {
 export async function getSolutionsByService(serviceId: number, locale: string = 'tr') {
   const data = await fetchAPI(`/solutions?filters[service][id][$eq]=${serviceId}&sort=order:asc&populate=*`, locale);
   return data.data;
+}
+
+// Contact Form Content
+export async function getContactFormContent(locale: string = 'tr') {
+  const data = await fetchAPI('/contact-form', locale);
+  return data.data;
+}
+
+// Contact Form Submission
+export async function submitContactForm(formData: {
+  fullName: string;
+  email: string;
+  phone?: string;
+  message?: string;
+}, locale: string = 'tr') {
+  try {
+    const response = await fetch(`${STRAPI_URL}/api/contact-submissions`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify({
+        data: {
+          fullName: formData.fullName,
+          email: formData.email,
+          phone: formData.phone || '',
+          message: formData.message || '',
+          locale: locale,
+          publishedAt: null, // Will be in draft initially
+        }
+      }),
+    });
+
+    if (!response.ok) {
+      const errorData = await response.json();
+      throw new Error(errorData.error?.message || 'Failed to submit contact form');
+    }
+
+    return await response.json();
+  } catch (error) {
+    console.error('Contact form submission error:', error);
+    throw error;
+  }
+}
+
+// Pages (for static pages like Privacy, Terms)
+export async function getPageBySlug(slug: string, locale: string = 'tr') {
+  const data = await fetchAPI(`/pages?filters[slug][$eq]=${slug}&populate=*`, locale);
+  return data.data?.[0];
 }
