@@ -132,5 +132,111 @@ When answering questions about Strapi features, architecture, or best practices,
 - **Webhooks**: `https://docs.strapi.io/cms/backend-customization/webhooks`
 - **CRON Jobs**: `https://docs.strapi.io/cms/configurations/cron`
 
-Connect to AWS Production Cloud Server
-- ssh -i sipsy-lightsail-key.pem bitnami@54.243.251.248 C:\Users\Ali\Documents\Projects\sipsywebsite sipsy-lightsail-key.pem
+## Data Transfer & Deployment
+
+### Export Data from Local Strapi
+
+To export data from local Strapi instance (content, files, and configurations):
+
+```bash
+cd backend
+npm run strapi export
+```
+
+This creates an encrypted export file: `backend/export_YYYYMMDDHHMMSS.tar.gz.enc`
+
+**Note**:
+- Export includes: entities, assets, links, and configurations
+- Admin users and API tokens are NOT exported
+- Leave encryption password empty when prompted (press Enter)
+
+### Import Data to Production
+
+1. **Copy export file to AWS server:**
+```bash
+scp -i sipsy-lightsail-key.pem backend/export_*.tar.gz.enc bitnami@54.243.251.248:~/sipsywebsite/backend/
+```
+
+2. **SSH to AWS server:**
+```bash
+ssh -i sipsy-lightsail-key.pem bitnami@54.243.251.248
+```
+
+3. **Import data:**
+```bash
+cd ~/sipsywebsite/backend
+npm run strapi import -- -f ./export_YYYYMMDDHHMMSS.tar.gz.enc
+```
+
+When prompted:
+- Press Enter for decryption key (if no password was used during export)
+- Type "Yes" to confirm data deletion warning
+
+4. **Restart services:**
+```bash
+pm2 restart strapi-backend
+pm2 restart nextjs-frontend
+```
+
+### Alternative: Strapi Transfer Command
+
+For direct transfer between instances (requires transfer token):
+
+```bash
+cd backend
+npm run strapi transfer -- --to https://sipsy.ai/admin --to-token YOUR_TRANSFER_TOKEN --exclude files --force
+```
+
+**Important Notes**:
+- `--exclude files`: Recommended to avoid S3 ACL issues during transfer
+- `--force`: Bypasses confirmation prompts (use with caution)
+- Transfer token can be found in `.env.local` under `STRAPI_TRANSFER_TOKEN`
+- Both instances must have matching schemas
+
+### Common Issues & Solutions
+
+**S3 ACL Error during import:**
+- **Cause**: Modern S3 buckets don't support ACLs by default
+- **Solution**: Already fixed in `backend/config/plugins.ts` by removing `ACL: 'public-read'` parameter
+- Files will rely on bucket policy for public access
+
+**Memory error during build on AWS:**
+- **Cause**: Insufficient RAM for admin panel build
+- **Solution**: Use export/import instead of live transfer for large datasets
+
+**Schema mismatch warnings:**
+- **Cause**: Content types don't exist on destination
+- **Solution**: Import includes configurations which will create missing content types automatically
+
+### AWS Production Server
+
+**SSH Connection:**
+```bash
+ssh -i sipsy-lightsail-key.pem bitnami@54.243.251.248
+```
+
+**Project Location:**
+```bash
+cd ~/sipsywebsite
+```
+
+**Check Services:**
+```bash
+pm2 list
+pm2 logs strapi-backend --lines 50
+pm2 logs nextjs-frontend --lines 50
+```
+
+**Restart Services:**
+```bash
+pm2 restart strapi-backend
+pm2 restart nextjs-frontend
+```
+
+**Update Code from Git:**
+```bash
+cd ~/sipsywebsite
+git pull origin master
+npm run build  # if needed (may fail due to memory constraints)
+pm2 restart all
+```
