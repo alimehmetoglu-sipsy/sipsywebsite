@@ -16,8 +16,7 @@ import Image from 'next/image';
 const DynamicIcon = ({ iconName, className = 'w-8 h-8' }: { iconName?: string; className?: string }) => {
   if (!iconName) return null;
 
-  // @ts-ignore - Dynamic icon access
-  const IconComponent = LucideIcons[iconName as keyof typeof LucideIcons];
+  const IconComponent = LucideIcons[iconName as keyof typeof LucideIcons] as React.ComponentType<{ className?: string }>;
 
   if (!IconComponent) return null;
 
