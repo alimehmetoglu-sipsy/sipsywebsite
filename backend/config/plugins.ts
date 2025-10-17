@@ -17,7 +17,6 @@ export default ({ env }) => ({
           },
           region: env('AWS_REGION'),
           params: {
-            ACL: 'public-read',
             signedUrlExpires: env('AWS_SIGNED_URL_EXPIRES', 15 * 60),
             Bucket: env('AWS_BUCKET'),
           },
