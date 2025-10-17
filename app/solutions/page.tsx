@@ -63,7 +63,7 @@ export default function SolutionsPage() {
                   className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
                     selectedService === null
                       ? 'bg-brand-secondary text-navy-900 shadow-lg'
-                      : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                      : 'bg-neutral-light text-gray-700 hover:bg-gray-200'
                   }`}
                 >
                   {language === 'tr' ? 'Tümü' : 'All'}
@@ -75,9 +75,9 @@ export default function SolutionsPage() {
                     className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
                       selectedService === service.id
                         ? service.color === 'accent'
-                          ? 'bg-copper-500 text-white shadow-lg'
-                          : 'bg-gold-500 text-navy-900 shadow-lg'
-                        : 'bg-gray-100 text-gray-700 hover:bg-gray-200'
+                          ? 'bg-cyan-500 text-white shadow-lg'
+                          : 'bg-cyan-500 text-navy-900 shadow-lg'
+                        : 'bg-neutral-light text-gray-700 hover:bg-gray-200'
                     }`}
                   >
                     {service.title}
@@ -89,11 +89,11 @@ export default function SolutionsPage() {
         )}
 
         {/* Solutions Grid */}
-        <section className="section-padding bg-gray-50">
+        <section className="section-padding bg-neutral-light">
           <div className="container-custom">
             {isLoading ? (
               <div className="flex justify-center items-center min-h-[400px]">
-                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-brand-accent"></div>
+                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-brand-primary"></div>
               </div>
             ) : filteredSolutions.length > 0 ? (
               <>
@@ -146,15 +146,15 @@ export default function SolutionsPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="section-padding bg-gradient-to-r from-gold-500 via-gold-400 to-copper-500">
+        <section className="section-padding bg-gradient-to-r from-navy-800 via-brand-primary to-cyan-500">
           <div className="container-custom text-center">
             {ctaSection?.title && (
-              <h2 className="text-4xl lg:text-5xl font-bold text-navy-900 mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
                 {ctaSection.title}
               </h2>
             )}
             {ctaSection?.description && (
-              <p className="text-xl text-navy-800 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-neutral-light mb-8 max-w-2xl mx-auto">
                 {ctaSection.description}
               </p>
             )}
@@ -164,23 +164,23 @@ export default function SolutionsPage() {
                   href={ctaSection.buttonUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
+                  className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
                 >
                   {ctaSection.buttonText}
                 </a>
               ) : (
-                <button className="bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
+                <button className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
                   {ctaSection.buttonText}
                 </button>
               )
             )}
             {ctaSection?.phoneText && (
-              <p className="text-navy-800 mb-2">
+              <p className="text-white mb-2">
                 {ctaSection.phoneText}
               </p>
             )}
             {ctaSection?.confidentialityText && (
-              <p className="text-sm text-navy-700">
+              <p className="text-sm text-white">
                 {ctaSection.confidentialityText}
               </p>
             )}
@@ -203,7 +203,7 @@ export default function SolutionsPage() {
                       className="w-10 h-10 object-contain"
                     />
                   ) : (
-                    <div className="w-10 h-10 bg-gradient-to-br from-gold-400 to-copper-500 rounded-lg flex items-center justify-center">
+                    <div className="w-10 h-10 bg-gradient-to-br from-brand-primary to-cyan-500 rounded-lg flex items-center justify-center">
                       <Bot className="w-6 h-6 text-navy-900" />
                     </div>
                   )}
@@ -221,7 +221,7 @@ export default function SolutionsPage() {
                       {footer.socialLinks.linkedin && (
                         <a
                           href={footer.socialLinks.linkedin}
-                          className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                          className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                           aria-label="LinkedIn"
                         >
                           <Linkedin className="w-5 h-5" />
@@ -230,7 +230,7 @@ export default function SolutionsPage() {
                       {footer.socialLinks.twitter && (
                         <a
                           href={footer.socialLinks.twitter}
-                          className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                          className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                           aria-label="Twitter"
                         >
                           <Twitter className="w-5 h-5" />
@@ -239,7 +239,7 @@ export default function SolutionsPage() {
                       {footer.socialLinks.github && (
                         <a
                           href={footer.socialLinks.github}
-                          className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                          className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                           aria-label="GitHub"
                         >
                           <Github className="w-5 h-5" />
@@ -250,21 +250,21 @@ export default function SolutionsPage() {
                     <>
                       <a
                         href="#"
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                         aria-label="LinkedIn"
                       >
                         <Linkedin className="w-5 h-5" />
                       </a>
                       <a
                         href="#"
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                         aria-label="Twitter"
                       >
                         <Twitter className="w-5 h-5" />
                       </a>
                       <a
                         href="#"
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                         aria-label="GitHub"
                       >
                         <Github className="w-5 h-5" />
@@ -283,7 +283,7 @@ export default function SolutionsPage() {
                   {footer?.links?.services ? (
                     footer.links.services.map((link: { label: string; href: string }, index: number) => (
                       <li key={index}>
-                        <a href={link.href} className="hover:text-gold-400 transition-colors">
+                        <a href={link.href} className="hover:text-brand-primary400 transition-colors">
                           {link.label}
                         </a>
                       </li>
@@ -291,7 +291,7 @@ export default function SolutionsPage() {
                   ) : (
                     services.slice(0, 5).map((service) => (
                       <li key={service.id}>
-                        <a href={service.link || '#'} className="hover:text-brand-accent transition-colors">
+                        <a href={service.link || '#'} className="hover:text-brand-primary transition-colors">
                           {service.title}
                         </a>
                       </li>
@@ -309,7 +309,7 @@ export default function SolutionsPage() {
                   {footer?.links?.company ? (
                     footer.links.company.map((link: { label: string; href: string }, index: number) => (
                       <li key={index}>
-                        <a href={link.href} className="hover:text-gold-400 transition-colors">
+                        <a href={link.href} className="hover:text-brand-primary400 transition-colors">
                           {link.label}
                         </a>
                       </li>
@@ -317,22 +317,22 @@ export default function SolutionsPage() {
                   ) : (
                     <>
                       <li>
-                        <a href="/#about" className="hover:text-brand-accent transition-colors">
+                        <a href="/#about" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Hakkımızda' : 'About Us'}
                         </a>
                       </li>
                       <li>
-                        <a href="/#case-studies" className="hover:text-brand-accent transition-colors">
+                        <a href="/#case-studies" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Vaka Çalışmaları' : 'Case Studies'}
                         </a>
                       </li>
                       <li>
-                        <a href="/#resources" className="hover:text-brand-accent transition-colors">
+                        <a href="/#resources" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Blog' : 'Blog'}
                         </a>
                       </li>
                       <li>
-                        <a href="/#contact" className="hover:text-brand-accent transition-colors">
+                        <a href="/#contact" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'İletişim' : 'Contact'}
                         </a>
                       </li>
@@ -350,7 +350,7 @@ export default function SolutionsPage() {
                   {footer?.links?.resources ? (
                     footer.links.resources.map((link: { label: string; href: string }, index: number) => (
                       <li key={index}>
-                        <a href={link.href} className="hover:text-gold-400 transition-colors">
+                        <a href={link.href} className="hover:text-brand-primary400 transition-colors">
                           {link.label}
                         </a>
                       </li>
@@ -358,17 +358,17 @@ export default function SolutionsPage() {
                   ) : (
                     <>
                       <li>
-                        <a href="#" className="hover:text-brand-accent transition-colors">
+                        <a href="#" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'ROI Hesaplayıcı' : 'ROI Calculator'}
                         </a>
                       </li>
                       <li>
-                        <a href="#" className="hover:text-brand-accent transition-colors">
+                        <a href="#" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Uygulama Kılavuzu' : 'Implementation Guide'}
                         </a>
                       </li>
                       <li>
-                        <a href="#" className="hover:text-brand-accent transition-colors">
+                        <a href="#" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Teknik Dökümanlar' : 'Whitepapers'}
                         </a>
                       </li>
@@ -385,15 +385,15 @@ export default function SolutionsPage() {
                   {footer?.copyright || '© 2025 sipsy.ai. All rights reserved.'}
                 </p>
                 <div className="flex flex-wrap justify-center gap-6 text-sm">
-                  <a href="#" className="hover:text-gold-400 transition-colors">
+                  <a href="#" className="hover:text-brand-primary400 transition-colors">
                     {language === 'tr' ? 'Gizlilik Politikası' : 'Privacy Policy'}
                   </a>
                   <span className="text-gray-600">•</span>
-                  <a href="#" className="hover:text-gold-400 transition-colors">
+                  <a href="#" className="hover:text-brand-primary400 transition-colors">
                     {language === 'tr' ? 'Hizmet Şartları' : 'Terms of Service'}
                   </a>
                   <span className="text-gray-600">•</span>
-                  <a href="#" className="hover:text-gold-400 transition-colors">
+                  <a href="#" className="hover:text-brand-primary400 transition-colors">
                     {language === 'tr' ? 'Çerez Politikası' : 'Cookie Policy'}
                   </a>
                 </div>

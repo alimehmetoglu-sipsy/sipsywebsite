@@ -81,11 +81,11 @@ export default function ServicesPage() {
 
       <main className="min-h-screen pt-20">
         {/* Main Content with Sidebar */}
-        <section className="section-padding bg-gray-50">
+        <section className="section-padding bg-neutral-light">
           <div className="container-custom">
             {isLoading ? (
               <div className="flex justify-center items-center min-h-[400px]">
-                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-brand-accent"></div>
+                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-brand-primary"></div>
               </div>
             ) : services.length > 0 ? (
               <div className="flex flex-col lg:flex-row gap-8">
@@ -96,7 +96,7 @@ export default function ServicesPage() {
                     <div className="lg:hidden flex gap-2 overflow-x-auto pb-4 mb-6">
                       {services.map((service) => {
                         const isActive = activeSection === service.id;
-                        const bgColor = service.color === 'accent' ? 'bg-copper-500' : 'bg-gold-500';
+                        const bgColor = service.color === 'accent' ? 'bg-cyan-500' : 'bg-cyan-500';
                         return (
                           <button
                             key={service.id}
@@ -104,7 +104,7 @@ export default function ServicesPage() {
                             className={`px-4 py-2 rounded-full font-semibold whitespace-nowrap transition-all duration-300 ${
                               isActive
                                 ? `${bgColor} text-white shadow-lg`
-                                : 'bg-white text-gray-700 hover:bg-gray-100'
+                                : 'bg-white text-gray-700 hover:bg-neutral-light'
                             }`}
                           >
                             {service.title}
@@ -121,16 +121,16 @@ export default function ServicesPage() {
                       <nav className="space-y-2">
                         {services.map((service) => {
                           const isActive = activeSection === service.id;
-                          const borderColor = service.color === 'accent' ? 'border-copper-500' : 'border-gold-500';
-                          const textColor = service.color === 'accent' ? 'text-copper-600' : 'text-gold-600';
+                          const borderColor = service.color === 'accent' ? 'border-cyan-500' : 'border-cyan-500';
+                          const textColor = service.color === 'accent' ? 'text-brand-primary600' : 'text-brand-primary600';
                           return (
                             <button
                               key={service.id}
                               onClick={() => scrollToService(service.id)}
                               className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${
                                 isActive
-                                  ? `bg-gray-100 border-l-4 ${borderColor} ${textColor} font-semibold`
-                                  : 'text-gray-600 hover:bg-gray-50 border-l-4 border-transparent'
+                                  ? `bg-neutral-light border-l-4 ${borderColor} ${textColor} font-semibold`
+                                  : 'text-gray-600 hover:bg-neutral-light border-l-4 border-transparent'
                               }`}
                             >
                               <div className="flex items-center gap-2">
@@ -154,9 +154,9 @@ export default function ServicesPage() {
                 {/* Main Content Area */}
                 <div className="flex-1 space-y-16">
                   {services.map((service) => {
-                    const bgColor = service.color === 'accent' ? 'bg-copper-500/10' : 'bg-gold-400/10';
-                    const iconBgColor = service.color === 'accent' ? 'bg-copper-500' : 'bg-gold-500';
-                    const borderColor = service.color === 'accent' ? 'border-copper-500' : 'border-gold-400';
+                    const bgColor = service.color === 'accent' ? 'bg-cyan-500/10' : 'bg-cyan-400/10';
+                    const iconBgColor = service.color === 'accent' ? 'bg-cyan-500' : 'bg-cyan-500';
+                    const borderColor = service.color === 'accent' ? 'border-cyan-500' : 'border-cyan-400';
 
                     return (
                       <div
@@ -193,7 +193,7 @@ export default function ServicesPage() {
                           {service.keyTools && service.keyTools.length > 0 && (
                             <div className="mt-6 pt-6 border-t border-gray-200">
                               <div className="flex items-center gap-2 mb-3">
-                                <Zap className="w-5 h-5 text-brand-accent" />
+                                <Zap className="w-5 h-5 text-brand-primary" />
                                 <h3 className="text-sm font-semibold text-gray-600 uppercase">
                                   {language === 'tr' ? 'Kullandığımız Teknolojiler' : 'Technologies We Use'}
                                 </h3>
@@ -268,15 +268,15 @@ export default function ServicesPage() {
         </section>
 
         {/* CTA Section */}
-        <section className="section-padding bg-gradient-to-r from-gold-500 via-gold-400 to-copper-500">
+        <section className="section-padding bg-gradient-to-r from-navy-800 via-brand-primary to-cyan-500">
           <div className="container-custom text-center">
             {ctaSection?.title && (
-              <h2 className="text-4xl lg:text-5xl font-bold text-navy-900 mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
                 {ctaSection.title}
               </h2>
             )}
             {ctaSection?.description && (
-              <p className="text-xl text-navy-800 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-neutral-light mb-8 max-w-2xl mx-auto">
                 {ctaSection.description}
               </p>
             )}
@@ -286,23 +286,23 @@ export default function ServicesPage() {
                   href={ctaSection.buttonUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
+                  className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
                 >
                   {ctaSection.buttonText}
                 </a>
               ) : (
-                <button className="bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
+                <button className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
                   {ctaSection.buttonText}
                 </button>
               )
             )}
             {ctaSection?.phoneText && (
-              <p className="text-navy-800 mb-2">
+              <p className="text-white mb-2">
                 {ctaSection.phoneText}
               </p>
             )}
             {ctaSection?.confidentialityText && (
-              <p className="text-sm text-navy-700">
+              <p className="text-sm text-white">
                 {ctaSection.confidentialityText}
               </p>
             )}
@@ -325,7 +325,7 @@ export default function ServicesPage() {
                       className="w-10 h-10 object-contain"
                     />
                   ) : (
-                    <div className="w-10 h-10 bg-gradient-to-br from-gold-400 to-copper-500 rounded-lg flex items-center justify-center">
+                    <div className="w-10 h-10 bg-gradient-to-br from-brand-primary to-cyan-500 rounded-lg flex items-center justify-center">
                       <Bot className="w-6 h-6 text-navy-900" />
                     </div>
                   )}
@@ -343,7 +343,7 @@ export default function ServicesPage() {
                       {footer.socialLinks.linkedin && (
                         <a
                           href={footer.socialLinks.linkedin}
-                          className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                          className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                           aria-label="LinkedIn"
                         >
                           <Linkedin className="w-5 h-5" />
@@ -352,7 +352,7 @@ export default function ServicesPage() {
                       {footer.socialLinks.twitter && (
                         <a
                           href={footer.socialLinks.twitter}
-                          className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                          className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                           aria-label="Twitter"
                         >
                           <Twitter className="w-5 h-5" />
@@ -361,7 +361,7 @@ export default function ServicesPage() {
                       {footer.socialLinks.github && (
                         <a
                           href={footer.socialLinks.github}
-                          className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                          className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                           aria-label="GitHub"
                         >
                           <Github className="w-5 h-5" />
@@ -372,21 +372,21 @@ export default function ServicesPage() {
                     <>
                       <a
                         href="#"
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                         aria-label="LinkedIn"
                       >
                         <Linkedin className="w-5 h-5" />
                       </a>
                       <a
                         href="#"
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                         aria-label="Twitter"
                       >
                         <Twitter className="w-5 h-5" />
                       </a>
                       <a
                         href="#"
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                         aria-label="GitHub"
                       >
                         <Github className="w-5 h-5" />
@@ -405,7 +405,7 @@ export default function ServicesPage() {
                   {footer?.links?.services ? (
                     footer.links.services.map((link: { label: string; href: string }, index: number) => (
                       <li key={index}>
-                        <a href={link.href} className="hover:text-gold-400 transition-colors">
+                        <a href={link.href} className="hover:text-brand-primary400 transition-colors">
                           {link.label}
                         </a>
                       </li>
@@ -415,7 +415,7 @@ export default function ServicesPage() {
                       <li key={service.id}>
                         <button
                           onClick={() => scrollToService(service.id)}
-                          className="hover:text-brand-accent transition-colors text-left"
+                          className="hover:text-brand-primary transition-colors text-left"
                         >
                           {service.title}
                         </button>
@@ -434,7 +434,7 @@ export default function ServicesPage() {
                   {footer?.links?.company ? (
                     footer.links.company.map((link: { label: string; href: string }, index: number) => (
                       <li key={index}>
-                        <a href={link.href} className="hover:text-gold-400 transition-colors">
+                        <a href={link.href} className="hover:text-brand-primary400 transition-colors">
                           {link.label}
                         </a>
                       </li>
@@ -442,17 +442,17 @@ export default function ServicesPage() {
                   ) : (
                     <>
                       <li>
-                        <Link href="/#about" className="hover:text-brand-accent transition-colors">
+                        <Link href="/#about" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Hakkımızda' : 'About Us'}
                         </Link>
                       </li>
                       <li>
-                        <Link href="/solutions" className="hover:text-brand-accent transition-colors">
+                        <Link href="/solutions" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Çözümler' : 'Solutions'}
                         </Link>
                       </li>
                       <li>
-                        <Link href="/#contact" className="hover:text-brand-accent transition-colors">
+                        <Link href="/#contact" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'İletişim' : 'Contact'}
                         </Link>
                       </li>
@@ -470,7 +470,7 @@ export default function ServicesPage() {
                   {footer?.links?.resources ? (
                     footer.links.resources.map((link: { label: string; href: string }, index: number) => (
                       <li key={index}>
-                        <a href={link.href} className="hover:text-gold-400 transition-colors">
+                        <a href={link.href} className="hover:text-brand-primary400 transition-colors">
                           {link.label}
                         </a>
                       </li>
@@ -478,17 +478,17 @@ export default function ServicesPage() {
                   ) : (
                     <>
                       <li>
-                        <a href="#" className="hover:text-brand-accent transition-colors">
+                        <a href="#" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'ROI Hesaplayıcı' : 'ROI Calculator'}
                         </a>
                       </li>
                       <li>
-                        <a href="#" className="hover:text-brand-accent transition-colors">
+                        <a href="#" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Uygulama Kılavuzu' : 'Implementation Guide'}
                         </a>
                       </li>
                       <li>
-                        <a href="#" className="hover:text-brand-accent transition-colors">
+                        <a href="#" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Teknik Dökümanlar' : 'Whitepapers'}
                         </a>
                       </li>
@@ -505,15 +505,15 @@ export default function ServicesPage() {
                   {footer?.copyright || '© 2025 sipsy.ai. All rights reserved.'}
                 </p>
                 <div className="flex flex-wrap justify-center gap-6 text-sm">
-                  <a href="#" className="hover:text-gold-400 transition-colors">
+                  <a href="#" className="hover:text-brand-primary400 transition-colors">
                     {language === 'tr' ? 'Gizlilik Politikası' : 'Privacy Policy'}
                   </a>
                   <span className="text-gray-600">•</span>
-                  <a href="#" className="hover:text-gold-400 transition-colors">
+                  <a href="#" className="hover:text-brand-primary400 transition-colors">
                     {language === 'tr' ? 'Hizmet Şartları' : 'Terms of Service'}
                   </a>
                   <span className="text-gray-600">•</span>
-                  <a href="#" className="hover:text-gold-400 transition-colors">
+                  <a href="#" className="hover:text-brand-primary400 transition-colors">
                     {language === 'tr' ? 'Çerez Politikası' : 'Cookie Policy'}
                   </a>
                 </div>

@@ -88,7 +88,7 @@ export default function CaseStudyPage() {
 
             {/* Mobile menu button */}
             <button
-              className="md:hidden p-2 rounded-lg hover:bg-gray-100"
+              className="md:hidden p-2 rounded-lg hover:bg-neutral-light"
               onClick={() => setIsMenuOpen(!isMenuOpen)}
             >
               {isMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -168,7 +168,7 @@ export default function CaseStudyPage() {
                 </div>
 
                 {/* Hero Image */}
-                <div className="rounded-xl overflow-hidden bg-gradient-to-br from-brand-secondary to-brand-accent mb-8 h-80 flex items-center justify-center">
+                <div className="rounded-xl overflow-hidden bg-gradient-to-br from-navy-800 to-cyan-500 mb-8 h-80 flex items-center justify-center">
                   <div className="text-center text-white p-8">
                     <FileText className="w-24 h-24 mx-auto mb-4 opacity-80" />
                     <p className="text-xl font-semibold">Invoice Automation Success Story</p>
@@ -178,7 +178,7 @@ export default function CaseStudyPage() {
 
               {/* Executive Summary */}
               <section className="mb-12">
-                <div className="bg-blue-50 border-l-4 border-brand-accent p-8 rounded-r-lg">
+                <div className="bg-blue-50 border-l-4 border-brand-primary p-8 rounded-r-lg">
                   <h2 className="text-2xl font-bold text-navy-900 mb-6">Executive Summary</h2>
                   <div className="space-y-4">
                     <div>
@@ -195,7 +195,7 @@ export default function CaseStudyPage() {
                     </div>
                     <div>
                       <p className="text-sm font-semibold text-gray-600 mb-1">RESULTS</p>
-                      <p className="text-lg font-bold text-brand-accent">
+                      <p className="text-lg font-bold text-brand-primary">
                         60% cost reduction, 99.9% accuracy, $2.4M annual savings
                       </p>
                     </div>
@@ -293,7 +293,7 @@ export default function CaseStudyPage() {
                   <div className="absolute -left-4 -top-4 text-brand-secondary opacity-20">
                     <Quote className="w-16 h-16" />
                   </div>
-                  <blockquote className="border-l-4 border-brand-accent pl-8 py-4 italic text-xl text-gray-800 relative">
+                  <blockquote className="border-l-4 border-brand-primary pl-8 py-4 italic text-xl text-gray-800 relative">
                     "We were drowning in manual processes. Our team was processing 500+ invoices weekly, taking 5 days
                     each cycle with frequent errors. It was unsustainable."
                     <footer className="mt-4 text-base font-semibold text-navy-900 not-italic">
@@ -322,27 +322,27 @@ export default function CaseStudyPage() {
                     </p>
                     <ul className="space-y-2 ml-5">
                       <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                         <span>
                           <strong>Analyzed 2,000+ invoices</strong> to identify patterns, common formats, and edge
                           cases
                         </span>
                       </li>
                       <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                         <span>
                           <strong>Mapped integration points</strong> across SAP, email systems, and document storage
                         </span>
                       </li>
                       <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                         <span>
                           <strong>Identified quick wins</strong>: 70% of invoices followed standard formats suitable for
                           immediate automation
                         </span>
                       </li>
                       <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                         <span>
                           <strong>Prioritization</strong>: Focused first on high-volume, low-complexity vendors
                         </span>
@@ -364,7 +364,7 @@ export default function CaseStudyPage() {
                       We designed an intelligent automation system combining RPA, AI/ML, and seamless integrations to
                       handle the entire invoice lifecycle.
                     </p>
-                    <div className="bg-gray-50 rounded-lg p-6 border border-gray-200">
+                    <div className="bg-white rounded-lg p-6 border border-gray-200">
                       <div className="space-y-4">
                         <div className="flex items-center justify-between">
                           <div className="flex items-center space-x-3">
@@ -378,7 +378,7 @@ export default function CaseStudyPage() {
                           </div>
                           <ArrowRight className="w-5 h-5 text-brand-secondary" />
                           <div className="flex items-center space-x-3">
-                            <CheckCircle className="w-8 h-8 text-brand-accent" />
+                            <CheckCircle className="w-8 h-8 text-brand-primary" />
                             <span className="font-semibold">Validation</span>
                           </div>
                           <ArrowRight className="w-5 h-5 text-brand-secondary" />
@@ -503,26 +503,26 @@ export default function CaseStudyPage() {
                   <div className="ml-13 space-y-3 text-gray-700">
                     <ul className="space-y-2 ml-5">
                       <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                         <span>
                           <strong>QA Process</strong>: Every automated invoice was validated against manual processing
                           for the first month
                         </span>
                       </li>
                       <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                         <span>
                           <strong>Pilot Results</strong>: 98.5% accuracy in phase 1, improved to 99.9% after refinement
                         </span>
                       </li>
                       <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                         <span>
                           <strong>Go-Live Strategy</strong>: Gradual cutover with manual backup for 2 weeks
                         </span>
                       </li>
                       <li className="flex items-start">
-                        <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                        <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                         <span>
                           <strong>User Adoption</strong>: Finance team enthusiastically adopted the new system, with 95%
                           satisfaction in post-deployment survey
@@ -545,7 +545,7 @@ export default function CaseStudyPage() {
                     <p className="text-xl font-semibold mb-1">Time Savings</p>
                     <p className="text-blue-100">From 5 days to 4 hours</p>
                   </div>
-                  <div className="bg-gradient-to-br from-brand-accent to-green-600 rounded-xl p-8 text-white">
+                  <div className="bg-gradient-to-br from-brand-primary to-green-600 rounded-xl p-8 text-white">
                     <DollarSign className="w-12 h-12 mb-4 opacity-80" />
                     <div className="text-5xl font-bold mb-2">$2.4M</div>
                     <p className="text-xl font-semibold mb-1">Annual Savings</p>
@@ -566,7 +566,7 @@ export default function CaseStudyPage() {
                 </div>
 
                 {/* Before/After Comparison */}
-                <div className="bg-gray-50 rounded-xl p-8 mb-10">
+                <div className="bg-white rounded-xl p-8 mb-10">
                   <h3 className="text-2xl font-bold text-navy-900 mb-6 text-center">Before & After Comparison</h3>
                   <div className="grid md:grid-cols-2 gap-8">
                     {/* Before */}
@@ -602,28 +602,28 @@ export default function CaseStudyPage() {
                     {/* After */}
                     <div className="bg-white rounded-lg p-6 border-2 border-green-200">
                       <div className="flex items-center justify-between mb-4">
-                        <h4 className="text-xl font-bold text-brand-accent">AFTER</h4>
-                        <TrendingUp className="w-6 h-6 text-brand-accent" />
+                        <h4 className="text-xl font-bold text-brand-primary">AFTER</h4>
+                        <TrendingUp className="w-6 h-6 text-brand-primary" />
                       </div>
                       <ul className="space-y-3">
                         <li className="flex items-center text-gray-700">
-                          <Zap className="w-5 h-5 text-brand-accent mr-3 flex-shrink-0" />
+                          <Zap className="w-5 h-5 text-brand-primary mr-3 flex-shrink-0" />
                           <span>4 hours processing time</span>
                         </li>
                         <li className="flex items-center text-gray-700">
-                          <CheckCircle className="w-5 h-5 text-brand-accent mr-3 flex-shrink-0" />
+                          <CheckCircle className="w-5 h-5 text-brand-primary mr-3 flex-shrink-0" />
                           <span>0.1% error rate</span>
                         </li>
                         <li className="flex items-center text-gray-700">
-                          <Users className="w-5 h-5 text-brand-accent mr-3 flex-shrink-0" />
+                          <Users className="w-5 h-5 text-brand-primary mr-3 flex-shrink-0" />
                           <span>0.5 FTE oversight</span>
                         </li>
                         <li className="flex items-center text-gray-700">
-                          <DollarSign className="w-5 h-5 text-brand-accent mr-3 flex-shrink-0" />
+                          <DollarSign className="w-5 h-5 text-brand-primary mr-3 flex-shrink-0" />
                           <span>$160K annual cost</span>
                         </li>
                         <li className="flex items-center text-gray-700">
-                          <Bot className="w-5 h-5 text-brand-accent mr-3 flex-shrink-0" />
+                          <Bot className="w-5 h-5 text-brand-primary mr-3 flex-shrink-0" />
                           <span>Automated with AI validation</span>
                         </li>
                       </ul>
@@ -636,31 +636,31 @@ export default function CaseStudyPage() {
                   <h3 className="text-xl font-bold text-navy-900 mb-4">Additional Benefits</h3>
                   <div className="grid md:grid-cols-2 gap-4">
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-brand-accent flex-shrink-0 mt-1" />
+                      <CheckCircle className="w-5 h-5 text-brand-primary flex-shrink-0 mt-1" />
                       <span className="text-gray-700">Freed up team for strategic work and financial analysis</span>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-brand-accent flex-shrink-0 mt-1" />
+                      <CheckCircle className="w-5 h-5 text-brand-primary flex-shrink-0 mt-1" />
                       <span className="text-gray-700">
                         Improved vendor relationships through faster, more reliable payments
                       </span>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-brand-accent flex-shrink-0 mt-1" />
+                      <CheckCircle className="w-5 h-5 text-brand-primary flex-shrink-0 mt-1" />
                       <span className="text-gray-700">
                         Better cash flow visibility with real-time processing status
                       </span>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-brand-accent flex-shrink-0 mt-1" />
+                      <CheckCircle className="w-5 h-5 text-brand-primary flex-shrink-0 mt-1" />
                       <span className="text-gray-700">Scalable to handle 3x volume without adding headcount</span>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-brand-accent flex-shrink-0 mt-1" />
+                      <CheckCircle className="w-5 h-5 text-brand-primary flex-shrink-0 mt-1" />
                       <span className="text-gray-700">Real-time reporting and analytics for better decision-making</span>
                     </div>
                     <div className="flex items-start space-x-3">
-                      <CheckCircle className="w-5 h-5 text-brand-accent flex-shrink-0 mt-1" />
+                      <CheckCircle className="w-5 h-5 text-brand-primary flex-shrink-0 mt-1" />
                       <span className="text-gray-700">
                         Captured early payment discounts worth $120K+ annually
                       </span>
@@ -788,7 +788,7 @@ export default function CaseStudyPage() {
                       <h3 className="font-bold text-navy-900 text-lg mt-2 mb-3 group-hover:text-brand-secondary transition">
                         Patient Onboarding Automation Reduces Wait Times by 70%
                       </h3>
-                      <p className="text-3xl font-bold text-brand-accent mb-3">70% Faster</p>
+                      <p className="text-3xl font-bold text-brand-primary mb-3">70% Faster</p>
                       <Link
                         href="/case-studies/healthcare-patient-onboarding"
                         className="text-brand-secondary font-semibold hover:underline inline-flex items-center"
@@ -807,7 +807,7 @@ export default function CaseStudyPage() {
                       <h3 className="font-bold text-navy-900 text-lg mt-2 mb-3 group-hover:text-brand-secondary transition">
                         Supply Chain Integration Saves $5M Annually
                       </h3>
-                      <p className="text-3xl font-bold text-brand-accent mb-3">$5M Saved</p>
+                      <p className="text-3xl font-bold text-brand-primary mb-3">$5M Saved</p>
                       <Link
                         href="/case-studies/manufacturing-supply-chain"
                         className="text-brand-secondary font-semibold hover:underline inline-flex items-center"
@@ -826,7 +826,7 @@ export default function CaseStudyPage() {
                       <h3 className="font-bold text-navy-900 text-lg mt-2 mb-3 group-hover:text-brand-secondary transition">
                         Customer Service Bot Handles 80% of Inquiries
                       </h3>
-                      <p className="text-3xl font-bold text-brand-accent mb-3">80% Automated</p>
+                      <p className="text-3xl font-bold text-brand-primary mb-3">80% Automated</p>
                       <Link
                         href="/case-studies/retail-customer-service"
                         className="text-brand-secondary font-semibold hover:underline inline-flex items-center"
@@ -840,15 +840,15 @@ export default function CaseStudyPage() {
 
               {/* Next Steps CTA */}
               <section className="mb-12">
-                <div className="bg-gradient-to-br from-brand-secondary via-blue-600 to-brand-accent rounded-xl p-10 text-white text-center">
+                <div className="bg-gradient-to-r from-navy-800 via-brand-primary to-cyan-500 rounded-xl p-10 text-white text-center">
                   <h2 className="text-3xl md:text-4xl font-bold mb-4">See Similar Results in Your Business</h2>
-                  <p className="text-xl mb-8 text-blue-100">
+                  <p className="text-xl mb-8 text-neutral-light">
                     Ready to transform your operations? Let's explore how intelligent automation can work for you.
                   </p>
                   <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
                     <Link
                       href="/#contact"
-                      className="px-8 py-4 bg-white text-brand-secondary rounded-lg hover:bg-gray-100 transition font-bold text-lg inline-flex items-center justify-center"
+                      className="px-8 py-4 bg-white text-brand-primary rounded-lg hover:bg-neutral-light transition font-bold text-lg inline-flex items-center justify-center"
                     >
                       Schedule Your Assessment
                       <ArrowRight className="w-5 h-5 ml-2" />
@@ -905,7 +905,7 @@ export default function CaseStudyPage() {
             <aside className="lg:col-span-4">
               <div className="lg:sticky lg:top-24 space-y-6">
                 {/* Quick Facts */}
-                <div className="bg-gray-50 border border-gray-200 rounded-lg p-6">
+                <div className="bg-neutral-light border border-gray-200 rounded-lg p-6">
                   <h3 className="font-bold text-navy-900 text-lg mb-4">Quick Facts</h3>
                   <div className="space-y-3 text-sm">
                     <div>
@@ -918,11 +918,11 @@ export default function CaseStudyPage() {
                     </div>
                     <div>
                       <p className="text-gray-600 mb-1">ROI</p>
-                      <p className="font-semibold text-brand-accent">340% first year</p>
+                      <p className="font-semibold text-brand-primary">340% first year</p>
                     </div>
                     <div>
                       <p className="text-gray-600 mb-1">Annual Savings</p>
-                      <p className="font-semibold text-brand-accent">$2.4M</p>
+                      <p className="font-semibold text-brand-primary">$2.4M</p>
                     </div>
                   </div>
                 </div>
@@ -950,14 +950,14 @@ export default function CaseStudyPage() {
                 </div>
 
                 {/* Talk to Our Team CTA */}
-                <div className="bg-gradient-to-br from-brand-accent to-green-600 rounded-lg p-6 text-white">
+                <div className="bg-gradient-to-br from-brand-primary to-green-600 rounded-lg p-6 text-white">
                   <h3 className="font-bold text-xl mb-2">Talk to Our Team</h3>
                   <p className="text-green-100 mb-4 text-sm">
                     See how we can help your business achieve similar results.
                   </p>
                   <Link
                     href="/#contact"
-                    className="block w-full px-6 py-3 bg-white text-brand-accent rounded-lg hover:bg-gray-100 transition font-bold text-center"
+                    className="block w-full px-6 py-3 bg-white text-brand-primary rounded-lg hover:bg-neutral-light transition font-bold text-center"
                   >
                     Schedule a Call
                   </Link>

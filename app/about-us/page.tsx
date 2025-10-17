@@ -75,7 +75,7 @@ export default function AboutUsPage() {
           <section key={index} className="section-padding bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white">
             <div className="container-custom">
               <div className="max-w-6xl mx-auto">
-                <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-white via-gold-200 to-white bg-clip-text text-transparent">
+                <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
                   {section.sectionTitle}
                 </h2>
                 <p className="text-center text-gray-400 mb-12 max-w-3xl mx-auto">
@@ -85,7 +85,7 @@ export default function AboutUsPage() {
                   {technologies.map((tech, idx) => (
                     <span
                       key={idx}
-                      className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-gold-400/50
+                      className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-cyan-500/50
                                  px-5 py-3 rounded-xl text-sm font-medium text-gray-200 hover:text-white
                                  transition-all duration-300 hover:scale-105 hover:bg-white/15"
                     >
@@ -101,11 +101,11 @@ export default function AboutUsPage() {
 
       // Regular text section with enhanced styling
       return (
-        <section key={index} className={`section-padding ${index % 2 === 0 ? 'bg-white' : 'bg-gradient-to-br from-gray-50 to-gray-100'}`}>
+        <section key={index} className={`section-padding ${index % 2 === 0 ? 'bg-neutral-light' : 'bg-white'}`}>
           <div className="container-custom">
             <div className="max-w-4xl mx-auto">
               <div className="relative">
-                <div className="absolute -left-4 top-0 w-1 h-24 bg-gradient-to-b from-gold-500 to-copper-500 rounded-full"></div>
+                <div className="absolute -left-4 top-0 w-1 h-24 bg-gradient-to-b from-brand-primary to-cyan-500 rounded-full"></div>
                 <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-8">
                   {section.sectionTitle}
                 </h2>
@@ -120,10 +120,10 @@ export default function AboutUsPage() {
                                prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
                                prose-ul:my-8 prose-ul:space-y-3
                                prose-li:text-gray-700 prose-li:leading-relaxed prose-li:pl-2
-                               prose-li:marker:text-gold-500 prose-li:marker:text-xl
+                               prose-li:marker:text-brand-primary prose-li:marker:text-xl
                                prose-strong:text-navy-900 prose-strong:font-bold
-                               prose-a:text-gold-600 prose-a:font-semibold prose-a:no-underline
-                               hover:prose-a:text-gold-700 hover:prose-a:underline"
+                               prose-a:text-brand-primary prose-a:font-semibold prose-a:no-underline
+                               hover:prose-a:text-cyan-600 hover:prose-a:underline"
                     dangerouslySetInnerHTML={{ __html: section.description }}
                   />
                 </div>
@@ -140,7 +140,7 @@ export default function AboutUsPage() {
         <section key={index} className="section-padding bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white">
           <div className="container-custom">
             <div className="max-w-6xl mx-auto">
-              <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-white via-gold-200 to-white bg-clip-text text-transparent">
+              <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
                 {section.sectionTitle}
               </h2>
               <p className="text-center text-gray-400 mb-12 max-w-3xl mx-auto">
@@ -150,7 +150,7 @@ export default function AboutUsPage() {
                 {sortedCards.map((card, idx) => (
                   <span
                     key={idx}
-                    className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-gold-400/50
+                    className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-cyan-500/50
                                px-5 py-3 rounded-xl text-sm font-medium text-gray-200 hover:text-white
                                transition-all duration-300 hover:scale-105 hover:bg-white/15"
                   >
@@ -167,7 +167,7 @@ export default function AboutUsPage() {
       const sortedCards = [...section.cards].sort((a, b) => a.order - b.order);
 
       return (
-        <section key={index} className={`section-padding ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
+        <section key={index} className={`section-padding ${index % 2 === 0 ? 'bg-neutral-light' : 'bg-white'}`}>
           <div className="container-custom">
             <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-12 text-center">
               {section.sectionTitle}
@@ -207,7 +207,7 @@ export default function AboutUsPage() {
       <main className="min-h-screen pt-20">
         {isLoading ? (
           <div className="flex justify-center items-center min-h-screen">
-            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-gold-500"></div>
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-brand-primary"></div>
           </div>
         ) : aboutUsData ? (
           <>
@@ -218,15 +218,15 @@ export default function AboutUsPage() {
               <div className="container-custom relative z-10">
                 <div className="max-w-4xl mx-auto text-center">
                   {aboutUsData.heroSection.badgeText && (
-                    <div className="inline-flex items-center gap-2 bg-gold-500/20 backdrop-blur-sm border border-gold-400/30 rounded-full px-6 py-2 mb-6">
-                      <Sparkles className="w-4 h-4 text-gold-400" />
-                      <span className="text-sm font-semibold text-gold-300">
+                    <div className="inline-flex items-center gap-2 bg-cyan-light backdrop-blur-sm border border-cyan-500/30 rounded-full px-6 py-2 mb-6">
+                      <Sparkles className="w-4 h-4 text-brand-primary" />
+                      <span className="text-sm font-semibold text-cyan-200">
                         {aboutUsData.heroSection.badgeText}
                       </span>
                     </div>
                   )}
 
-                  <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight bg-gradient-to-r from-white via-gold-200 to-white bg-clip-text text-transparent">
+                  <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight bg-gradient-to-r from-white via-cyan-200 to-white bg-clip-text text-transparent">
                     {aboutUsData.heroSection.title}
                   </h1>
 
@@ -241,7 +241,7 @@ export default function AboutUsPage() {
                         .sort((a, b) => a.order - b.order)
                         .map((stat, index) => (
                           <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
-                            {stat.icon && <DynamicIcon iconName={stat.icon} className="w-8 h-8 text-gold-400 mx-auto mb-3" />}
+                            {stat.icon && <DynamicIcon iconName={stat.icon} className="w-8 h-8 text-brand-primary mx-auto mb-3" />}
                             <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
                             <div className="text-sm text-gray-300">{stat.label}</div>
                           </div>
@@ -292,15 +292,15 @@ export default function AboutUsPage() {
 
         {/* CTA Section */}
         {ctaSection && (
-          <section className="section-padding bg-gradient-to-r from-gold-500 via-gold-400 to-copper-500">
+          <section className="section-padding bg-gradient-to-r from-navy-800 via-brand-primary to-cyan-500">
             <div className="container-custom text-center">
               {ctaSection.title && (
-                <h2 className="text-4xl lg:text-5xl font-bold text-navy-900 mb-6">
+                <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
                   {ctaSection.title}
                 </h2>
               )}
               {ctaSection.description && (
-                <p className="text-xl text-navy-800 mb-8 max-w-2xl mx-auto">
+                <p className="text-xl text-neutral-light mb-8 max-w-2xl mx-auto">
                   {ctaSection.description}
                 </p>
               )}
@@ -310,23 +310,23 @@ export default function AboutUsPage() {
                     href={ctaSection.buttonUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
+                    className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
                   >
                     {ctaSection.buttonText}
                   </a>
                 ) : (
-                  <button className="bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
+                  <button className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
                     {ctaSection.buttonText}
                   </button>
                 )
               )}
               {ctaSection.phoneText && (
-                <p className="text-navy-800 mb-2">
+                <p className="text-white mb-2">
                   {ctaSection.phoneText}
                 </p>
               )}
               {ctaSection.confidentialityText && (
-                <p className="text-sm text-navy-700">
+                <p className="text-sm text-white">
                   {ctaSection.confidentialityText}
                 </p>
               )}
@@ -350,7 +350,7 @@ export default function AboutUsPage() {
                       className="w-10 h-10 object-contain"
                     />
                   ) : (
-                    <div className="w-10 h-10 bg-gradient-to-br from-gold-400 to-copper-500 rounded-lg flex items-center justify-center">
+                    <div className="w-10 h-10 bg-gradient-to-br from-brand-primary to-cyan-500 rounded-lg flex items-center justify-center">
                       <Bot className="w-6 h-6 text-navy-900" />
                     </div>
                   )}
@@ -368,7 +368,7 @@ export default function AboutUsPage() {
                       {footer.socialLinks.linkedin && (
                         <a
                           href={footer.socialLinks.linkedin}
-                          className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                          className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                           aria-label="LinkedIn"
                         >
                           <Linkedin className="w-5 h-5" />
@@ -377,7 +377,7 @@ export default function AboutUsPage() {
                       {footer.socialLinks.twitter && (
                         <a
                           href={footer.socialLinks.twitter}
-                          className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                          className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                           aria-label="Twitter"
                         >
                           <Twitter className="w-5 h-5" />
@@ -386,7 +386,7 @@ export default function AboutUsPage() {
                       {footer.socialLinks.github && (
                         <a
                           href={footer.socialLinks.github}
-                          className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                          className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                           aria-label="GitHub"
                         >
                           <Github className="w-5 h-5" />
@@ -397,21 +397,21 @@ export default function AboutUsPage() {
                     <>
                       <a
                         href="#"
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                         aria-label="LinkedIn"
                       >
                         <Linkedin className="w-5 h-5" />
                       </a>
                       <a
                         href="#"
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                         aria-label="Twitter"
                       >
                         <Twitter className="w-5 h-5" />
                       </a>
                       <a
                         href="#"
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                         aria-label="GitHub"
                       >
                         <Github className="w-5 h-5" />
@@ -430,7 +430,7 @@ export default function AboutUsPage() {
                   {footer?.links?.services ? (
                     footer.links.services.map((link: { label: string; href: string }, index: number) => (
                       <li key={index}>
-                        <a href={link.href} className="hover:text-gold-400 transition-colors">
+                        <a href={link.href} className="hover:text-brand-primary transition-colors">
                           {link.label}
                         </a>
                       </li>
@@ -438,12 +438,12 @@ export default function AboutUsPage() {
                   ) : (
                     <>
                       <li>
-                        <a href="/#services" className="hover:text-gold-400 transition-colors">
+                        <a href="/#services" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'RPA & Hiperotomasyon' : 'RPA & Hyperautomation'}
                         </a>
                       </li>
                       <li>
-                        <a href="/#services" className="hover:text-gold-400 transition-colors">
+                        <a href="/#services" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'AI/ML Entegrasyonu' : 'AI/ML Integration'}
                         </a>
                       </li>
@@ -461,7 +461,7 @@ export default function AboutUsPage() {
                   {footer?.links?.company ? (
                     footer.links.company.map((link: { label: string; href: string }, index: number) => (
                       <li key={index}>
-                        <a href={link.href} className="hover:text-gold-400 transition-colors">
+                        <a href={link.href} className="hover:text-brand-primary transition-colors">
                           {link.label}
                         </a>
                       </li>
@@ -469,12 +469,12 @@ export default function AboutUsPage() {
                   ) : (
                     <>
                       <li>
-                        <a href="/about-us" className="hover:text-gold-400 transition-colors">
+                        <a href="/about-us" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Hakkımızda' : 'About Us'}
                         </a>
                       </li>
                       <li>
-                        <a href="/contact" className="hover:text-gold-400 transition-colors">
+                        <a href="/contact" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'İletişim' : 'Contact'}
                         </a>
                       </li>
@@ -490,12 +490,12 @@ export default function AboutUsPage() {
                 </h4>
                 <ul className="space-y-2">
                   <li>
-                    <a href="/privacy" className="hover:text-gold-400 transition-colors">
+                    <a href="/privacy" className="hover:text-brand-primary transition-colors">
                       {language === 'tr' ? 'Gizlilik Politikası' : 'Privacy Policy'}
                     </a>
                   </li>
                   <li>
-                    <a href="/terms" className="hover:text-gold-400 transition-colors">
+                    <a href="/terms" className="hover:text-brand-primary transition-colors">
                       {language === 'tr' ? 'Kullanım Koşulları' : 'Terms of Service'}
                     </a>
                   </li>

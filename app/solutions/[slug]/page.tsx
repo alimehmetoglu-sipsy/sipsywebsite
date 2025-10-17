@@ -85,8 +85,8 @@ export default function SolutionDetailPage() {
     return (
       <>
         <Navigation />
-        <div className="min-h-screen flex justify-center items-center bg-gray-50 pt-20">
-          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-brand-accent"></div>
+        <div className="min-h-screen flex justify-center items-center bg-neutral-light pt-20">
+          <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-brand-primary"></div>
         </div>
       </>
     );
@@ -96,14 +96,14 @@ export default function SolutionDetailPage() {
     return (
       <>
         <Navigation />
-        <div className="min-h-screen flex flex-col justify-center items-center bg-gray-50 pt-20">
+        <div className="min-h-screen flex flex-col justify-center items-center bg-neutral-light pt-20">
           <div className="w-24 h-24 bg-gray-200 rounded-full flex items-center justify-center mb-6">
             <AlertCircle className="w-12 h-12 text-gray-400" />
           </div>
           <h1 className="text-3xl font-bold text-gray-700 mb-4">
             {language === 'tr' ? 'Çözüm Bulunamadı' : 'Solution Not Found'}
           </h1>
-          <Link href="/solutions" className="text-brand-accent hover:underline">
+          <Link href="/solutions" className="text-brand-primary hover:underline">
             {language === 'tr' ? '← Tüm Çözümler' : '← All Solutions'}
           </Link>
         </div>
@@ -111,10 +111,10 @@ export default function SolutionDetailPage() {
     );
   }
 
-  const serviceColor = solution.service?.color === 'accent' ? 'brand-accent' : 'brand-secondary';
-  const serviceBgColor = solution.service?.color === 'accent' ? 'bg-brand-accent' : 'bg-brand-secondary';
-  const serviceTextColor = solution.service?.color === 'accent' ? 'text-brand-accent' : 'text-brand-secondary';
-  const serviceBorderColor = solution.service?.color === 'accent' ? 'border-brand-accent' : 'border-brand-secondary';
+  const serviceColor = solution.service?.color === 'accent' ? 'brand-primary' : 'brand-secondary';
+  const serviceBgColor = solution.service?.color === 'accent' ? 'bg-brand-primary' : 'bg-brand-secondary';
+  const serviceTextColor = solution.service?.color === 'accent' ? 'text-brand-primary' : 'text-brand-secondary';
+  const serviceBorderColor = solution.service?.color === 'accent' ? 'border-brand-primary' : 'border-brand-secondary';
 
   const scrollToCTA = () => {
     const ctaSection = document.getElementById('final-cta');
@@ -145,7 +145,7 @@ export default function SolutionDetailPage() {
         <section className="relative min-h-screen flex items-center bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 overflow-hidden pt-20">
           <div className="absolute inset-0 opacity-10">
             <div className="absolute top-20 left-20 w-72 h-72 bg-brand-secondary rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute bottom-20 right-20 w-96 h-96 bg-brand-accent rounded-full blur-3xl animate-pulse delay-1000"></div>
+            <div className="absolute bottom-20 right-20 w-96 h-96 bg-brand-primary rounded-full blur-3xl animate-pulse delay-1000"></div>
           </div>
 
           <div className="container-custom relative z-10">
@@ -262,7 +262,7 @@ export default function SolutionDetailPage() {
 
         {/* Problem Section - Enhanced with Empathy */}
         {solution.project?.problemPoints && solution.project.problemPoints.length > 0 && (
-          <section className="section-padding bg-gradient-to-br from-red-50 via-orange-50 to-yellow-50">
+          <section className="section-padding bg-neutral-light">
             <div className="container-custom">
               <div className="max-w-4xl mx-auto">
                 {/* Empathy Header */}
@@ -315,7 +315,7 @@ export default function SolutionDetailPage() {
                   </p>
                   <button
                     onClick={scrollToCTA}
-                    className="bg-white text-red-600 hover:bg-gray-100 font-bold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
+                    className="bg-white text-red-600 hover:bg-neutral-light font-bold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
                   >
                     {language === 'tr' ? 'Çözümü Keşfet' : 'Discover the Solution'}
                   </button>
@@ -327,7 +327,7 @@ export default function SolutionDetailPage() {
 
         {/* Solution Section - Benefit-Focused */}
         {solution.project?.solutionSteps && solution.project.solutionSteps.length > 0 && (
-          <section className="section-padding bg-gradient-to-br from-green-50 via-blue-50 to-purple-50">
+          <section className="section-padding bg-white">
             <div className="container-custom">
               <div className="max-w-4xl mx-auto">
                 {/* Solution Header */}
@@ -379,7 +379,7 @@ export default function SolutionDetailPage() {
 
         {/* Technologies Section */}
         {solution.keyTools && solution.keyTools.length > 0 && (
-          <section className="section-padding bg-white">
+          <section className="section-padding bg-neutral-light">
             <div className="container-custom">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-navy-900 mb-4">
@@ -395,7 +395,7 @@ export default function SolutionDetailPage() {
                 {solution.keyTools.map((tool, index) => (
                   <div
                     key={index}
-                    className="bg-gradient-to-br from-gray-50 to-gray-100 rounded-xl p-6 hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-brand-accent group w-64"
+                    className="bg-gradient-to-br from-neutral-light to-neutral-light rounded-xl p-6 hover:shadow-xl transition-all duration-300 border-2 border-transparent hover:border-brand-primary group w-64"
                   >
                     {tool.Logo ? (
                       <div className="w-16 h-16 mb-4 flex items-center justify-center">
@@ -408,8 +408,8 @@ export default function SolutionDetailPage() {
                         />
                       </div>
                     ) : (
-                      <div className="w-12 h-12 bg-brand-accent/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
-                        <Zap className="w-6 h-6 text-brand-accent" />
+                      <div className="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4 group-hover:scale-110 transition-transform">
+                        <Zap className="w-6 h-6 text-brand-primary" />
                       </div>
                     )}
                     <h3 className="text-lg font-bold text-navy-900 mb-2">{tool.Name}</h3>
@@ -507,7 +507,7 @@ export default function SolutionDetailPage() {
 
         {/* Results Section - ROI Focused */}
         {solution.project?.results && solution.project.results.length > 0 && (
-          <section className="section-padding bg-white">
+          <section className="section-padding bg-neutral-light">
             <div className="container-custom">
               <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-12">
@@ -538,7 +538,7 @@ export default function SolutionDetailPage() {
                         <h3 className="text-lg font-semibold text-gray-700 mb-3">
                           {result.metric}
                         </h3>
-                        <p className="text-4xl font-bold text-brand-accent mb-2">
+                        <p className="text-4xl font-bold text-brand-primary mb-2">
                           {result.value}
                         </p>
                       </div>
@@ -551,15 +551,15 @@ export default function SolutionDetailPage() {
         )}
 
         {/* Final CTA Section */}
-        <section id="final-cta" className="section-padding bg-gradient-to-r from-gold-500 via-gold-400 to-copper-500">
+        <section id="final-cta" className="section-padding bg-gradient-to-r from-navy-800 via-brand-primary to-cyan-500">
           <div className="container-custom text-center">
             {ctaSection?.title && (
-              <h2 className="text-4xl lg:text-5xl font-bold text-navy-900 mb-6">
+              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
                 {ctaSection.title}
               </h2>
             )}
             {ctaSection?.description && (
-              <p className="text-xl text-navy-800 mb-8 max-w-2xl mx-auto">
+              <p className="text-xl text-neutral-light mb-8 max-w-2xl mx-auto">
                 {ctaSection.description}
               </p>
             )}
@@ -569,23 +569,23 @@ export default function SolutionDetailPage() {
                   href={ctaSection.buttonUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
+                  className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
                 >
                   {ctaSection.buttonText}
                 </a>
               ) : (
-                <button className="bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
+                <button className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
                   {ctaSection.buttonText}
                 </button>
               )
             )}
             {ctaSection?.phoneText && (
-              <p className="text-navy-800 mb-2">
+              <p className="text-white mb-2">
                 {ctaSection.phoneText}
               </p>
             )}
             {ctaSection?.confidentialityText && (
-              <p className="text-sm text-navy-700">
+              <p className="text-sm text-white">
                 {ctaSection.confidentialityText}
               </p>
             )}
@@ -593,7 +593,7 @@ export default function SolutionDetailPage() {
         </section>
 
         {/* Other Solutions Teaser */}
-        <section className="section-padding bg-gray-50">
+        <section className="section-padding bg-neutral-light">
           <div className="container-custom text-center">
             <h3 className="text-3xl font-bold text-navy-900 mb-4">
               {solution.relatedSolutionsSection?.title || (language === 'tr' ? 'Diğer Çözümlerimiz' : 'Our Other Solutions')}
@@ -628,7 +628,7 @@ export default function SolutionDetailPage() {
                       className="w-10 h-10 object-contain"
                     />
                   ) : (
-                    <div className="w-10 h-10 bg-gradient-to-br from-brand-accent to-brand-secondary rounded-lg flex items-center justify-center">
+                    <div className="w-10 h-10 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-lg flex items-center justify-center">
                       <Bot className="w-6 h-6 text-white" />
                     </div>
                   )}
@@ -646,7 +646,7 @@ export default function SolutionDetailPage() {
                       {footer.socialLinks.linkedin && (
                         <a
                           href={footer.socialLinks.linkedin}
-                          className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                          className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                           aria-label="LinkedIn"
                         >
                           <Linkedin className="w-5 h-5" />
@@ -655,7 +655,7 @@ export default function SolutionDetailPage() {
                       {footer.socialLinks.twitter && (
                         <a
                           href={footer.socialLinks.twitter}
-                          className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                          className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                           aria-label="Twitter"
                         >
                           <Twitter className="w-5 h-5" />
@@ -664,7 +664,7 @@ export default function SolutionDetailPage() {
                       {footer.socialLinks.github && (
                         <a
                           href={footer.socialLinks.github}
-                          className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                          className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                           aria-label="GitHub"
                         >
                           <Github className="w-5 h-5" />
@@ -675,21 +675,21 @@ export default function SolutionDetailPage() {
                     <>
                       <a
                         href="#"
-                        className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                         aria-label="LinkedIn"
                       >
                         <Linkedin className="w-5 h-5" />
                       </a>
                       <a
                         href="#"
-                        className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                         aria-label="Twitter"
                       >
                         <Twitter className="w-5 h-5" />
                       </a>
                       <a
                         href="#"
-                        className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                         aria-label="GitHub"
                       >
                         <Github className="w-5 h-5" />
@@ -707,7 +707,7 @@ export default function SolutionDetailPage() {
                   {footer?.links?.services ? (
                     footer.links.services.map((link: { label: string; href: string }, index: number) => (
                       <li key={index}>
-                        <a href={link.href} className="hover:text-brand-accent transition-colors">
+                        <a href={link.href} className="hover:text-brand-primary transition-colors">
                           {link.label}
                         </a>
                       </li>
@@ -715,12 +715,12 @@ export default function SolutionDetailPage() {
                   ) : (
                     <>
                       <li>
-                        <Link href="/solutions" className="hover:text-brand-accent transition-colors">
+                        <Link href="/solutions" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Çözümler' : 'Solutions'}
                         </Link>
                       </li>
                       <li>
-                        <a href="/#services" className="hover:text-brand-accent transition-colors">
+                        <a href="/#services" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Hizmetlerimiz' : 'Our Services'}
                         </a>
                       </li>
@@ -737,7 +737,7 @@ export default function SolutionDetailPage() {
                   {footer?.links?.company ? (
                     footer.links.company.map((link: { label: string; href: string }, index: number) => (
                       <li key={index}>
-                        <a href={link.href} className="hover:text-brand-accent transition-colors">
+                        <a href={link.href} className="hover:text-brand-primary transition-colors">
                           {link.label}
                         </a>
                       </li>
@@ -745,12 +745,12 @@ export default function SolutionDetailPage() {
                   ) : (
                     <>
                       <li>
-                        <a href="/#about" className="hover:text-brand-accent transition-colors">
+                        <a href="/#about" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Hakkımızda' : 'About Us'}
                         </a>
                       </li>
                       <li>
-                        <a href="/#contact" className="hover:text-brand-accent transition-colors">
+                        <a href="/#contact" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'İletişim' : 'Contact'}
                         </a>
                       </li>
@@ -767,7 +767,7 @@ export default function SolutionDetailPage() {
                   {footer?.links?.resources ? (
                     footer.links.resources.map((link: { label: string; href: string }, index: number) => (
                       <li key={index}>
-                        <a href={link.href} className="hover:text-brand-accent transition-colors">
+                        <a href={link.href} className="hover:text-brand-primary transition-colors">
                           {link.label}
                         </a>
                       </li>
@@ -775,12 +775,12 @@ export default function SolutionDetailPage() {
                   ) : (
                     <>
                       <li>
-                        <a href="#" className="hover:text-brand-accent transition-colors">
+                        <a href="#" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Blog' : 'Blog'}
                         </a>
                       </li>
                       <li>
-                        <a href="#" className="hover:text-brand-accent transition-colors">
+                        <a href="#" className="hover:text-brand-primary transition-colors">
                           {language === 'tr' ? 'Dökümanlar' : 'Documentation'}
                         </a>
                       </li>
@@ -796,15 +796,15 @@ export default function SolutionDetailPage() {
                   {footer?.copyright || '© 2025 sipsy.ai. All rights reserved.'}
                 </p>
                 <div className="flex flex-wrap justify-center gap-6 text-sm">
-                  <a href="#" className="hover:text-brand-accent transition-colors">
+                  <a href="#" className="hover:text-brand-primary transition-colors">
                     {language === 'tr' ? 'Gizlilik Politikası' : 'Privacy Policy'}
                   </a>
                   <span className="text-gray-600">•</span>
-                  <a href="#" className="hover:text-brand-accent transition-colors">
+                  <a href="#" className="hover:text-brand-primary transition-colors">
                     {language === 'tr' ? 'Hizmet Şartları' : 'Terms of Service'}
                   </a>
                   <span className="text-gray-600">•</span>
-                  <a href="#" className="hover:text-brand-accent transition-colors">
+                  <a href="#" className="hover:text-brand-primary transition-colors">
                     {language === 'tr' ? 'Çerez Politikası' : 'Cookie Policy'}
                   </a>
                 </div>
