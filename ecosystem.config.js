@@ -17,9 +17,7 @@ module.exports = {
       args: 'start',
       instances: 1,
       exec_mode: 'fork',
-      env: {
-        NODE_ENV: 'production',
-      },
+      // NODE_ENV removed - let Strapi use .env settings for proxy mode
       error_file: path.join(logDir, 'strapi-error.log'),
       out_file: path.join(logDir, 'strapi-out.log'),
       log_date_format: 'YYYY-MM-DD HH:mm:ss Z',
