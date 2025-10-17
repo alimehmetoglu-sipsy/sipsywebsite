@@ -255,9 +255,23 @@ export default function AboutUsPage() {
             {/* Content Sections */}
             {aboutUsData.sections && aboutUsData.sections.length > 0 && (
               <>
+                {/* Regular sections (excluding technology stack) */}
                 {aboutUsData.sections
+                  .filter(section => {
+                    // Exclude technology stack section (any type)
+                    return !(section.sectionTitle.toLowerCase().includes('technology') ||
+                             section.sectionTitle.toLowerCase().includes('teknoloji'));
+                  })
                   .sort((a, b) => a.order - b.order)
                   .map((section, index) => renderContentSection(section, index))}
+
+                {/* Technology Stack section - always render last before CTA */}
+                {aboutUsData.sections
+                  .filter(section => {
+                    return section.sectionTitle.toLowerCase().includes('technology') ||
+                           section.sectionTitle.toLowerCase().includes('teknoloji');
+                  })
+                  .map((section, index) => renderContentSection(section, aboutUsData.sections.length))}
               </>
             )}
           </>
