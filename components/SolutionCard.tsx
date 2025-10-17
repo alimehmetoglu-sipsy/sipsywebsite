@@ -1,6 +1,7 @@
 'use client';
 
 import { Solution } from '@/lib/types';
+import { getMediaURL } from '../lib/strapi';
 import DynamicIcon from '@/components/DynamicIcon';
 import { ArrowRight, Clock, TrendingDown, DollarSign } from 'lucide-react';
 import Link from 'next/link';
@@ -101,7 +102,7 @@ export default function SolutionCard({ solution, language }: SolutionCardProps) 
               >
                 {tool.Logo && (
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${tool.Logo.url}`}
+                    src={getMediaURL(tool.Logo.url)}
                     alt={tool.Logo.alternativeText || tool.Name}
                     width={16}
                     height={16}

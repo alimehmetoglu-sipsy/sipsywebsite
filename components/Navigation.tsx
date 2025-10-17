@@ -1,6 +1,7 @@
 'use client';
 
 import { useState, useEffect } from 'react';
+import { getMediaURL } from '../lib/strapi';
 import { Menu, X } from 'lucide-react';
 import Image from 'next/image';
 import { NavigationItem, CtaButton, ContactFormContent } from '@/lib/types';
@@ -111,7 +112,7 @@ export default function Navigation({ items: initialItems = [], ctaButtons: initi
           <a href="/" className="flex items-center space-x-3">
             {footerData?.logo ? (
               <Image
-                src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${footerData.logo.url}`}
+                src={getMediaURL(footerData.logo.url)}
                 alt={footerData.logo.alternativeText || 'Logo'}
                 width={48}
                 height={48}

@@ -1,5 +1,20 @@
 const STRAPI_URL = process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337';
 
+// Helper function to get the full media URL
+// If the URL is already absolute (starts with http:// or https://), return it as is
+// Otherwise, prepend the STRAPI_URL
+export function getMediaURL(url: string | undefined): string {
+  if (!url) return '';
+
+  // If URL is already absolute, return it as is
+  if (url.startsWith('http://') || url.startsWith('https://')) {
+    return url;
+  }
+
+  // For relative URLs, prepend the STRAPI_URL
+  return `${STRAPI_URL}${url.startsWith('/') ? '' : '/'}${url}`;
+}
+
 async function fetchAPI(path: string, locale: string = 'tr', options: RequestInit = {}) {
   // Add locale parameter to the URL
   const separator = path.includes('?') ? '&' : '?';

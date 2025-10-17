@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { getMediaURL } from '../lib/strapi';
 import { useLanguage } from '@/contexts/LanguageContext';
 import Image from 'next/image';
 import {
@@ -330,7 +331,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                           >
                             {tool.Logo && (
                               <Image
-                                src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${tool.Logo.url}`}
+                                src={getMediaURL(tool.Logo.url)}
                                 alt={tool.Logo.alternativeText || tool.Name}
                                 width={16}
                                 height={16}
@@ -413,7 +414,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
               <div className="flex items-center space-x-3 mb-4">
                 {footer?.logo ? (
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${footer.logo.url}`}
+                    src={getMediaURL(footer.logo.url)}
                     alt={footer.logo.alternativeText || 'Logo'}
                     width={40}
                     height={40}
