@@ -13,10 +13,11 @@ interface SolutionCardProps {
 }
 
 export default function SolutionCard({ solution, language }: SolutionCardProps) {
-  const serviceColor = solution.service?.color === 'accent' ? 'brand-accent' : 'brand-secondary';
-  const serviceBgColor = solution.service?.color === 'accent' ? 'bg-copper-500/10' : 'bg-gold-400/10';
-  const serviceTextColor = solution.service?.color === 'accent' ? 'text-copper-500' : 'text-gold-600';
-  const serviceBorderColor = solution.service?.color === 'accent' ? 'border-copper-500' : 'border-gold-400';
+  // Use consistent navy/cyan palette for all cards
+  const serviceColor = 'brand-primary';
+  const serviceBgColor = 'bg-cyan-light';
+  const serviceTextColor = 'text-brand-primary';
+  const serviceBorderColor = 'border-cyan-500';
 
   // Extract key metrics from project
   const timeSaved = solution.project?.beforeMetrics?.find(m =>
@@ -30,7 +31,7 @@ export default function SolutionCard({ solution, language }: SolutionCardProps) 
 
   return (
     <div
-      className={`group bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:${serviceBorderColor}`}
+      className={`group bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-transparent hover:${serviceBorderColor}`}
     >
       {/* Service Badge */}
       {solution.service && (
@@ -64,23 +65,23 @@ export default function SolutionCard({ solution, language }: SolutionCardProps) 
       {(timeSaved || costSavings || firstResult) && (
         <div className="flex flex-wrap gap-2 mb-4">
           {timeSaved && (
-            <div className="flex items-center space-x-1 bg-gold-400/10 px-3 py-1 rounded-full text-sm">
-              <Clock className="w-4 h-4 text-gold-600" />
-              <span className="text-gold-700 font-medium">
+            <div className="flex items-center space-x-1 bg-cyan-light px-3 py-1 rounded-full text-sm">
+              <Clock className="w-4 h-4 text-brand-primary" />
+              <span className="text-brand-primary font-medium">
                 {timeSaved.value}
               </span>
             </div>
           )}
           {costSavings && (
-            <div className="flex items-center space-x-1 bg-azure-500/10 px-3 py-1 rounded-full text-sm">
-              <DollarSign className="w-4 h-4 text-azure-600" />
-              <span className="text-azure-700 font-medium">{costSavings}</span>
+            <div className="flex items-center space-x-1 bg-cyan-light px-3 py-1 rounded-full text-sm">
+              <DollarSign className="w-4 h-4 text-brand-primary" />
+              <span className="text-brand-primary font-medium">{costSavings}</span>
             </div>
           )}
           {firstResult && !costSavings && (
-            <div className="flex items-center space-x-1 bg-copper-500/10 px-3 py-1 rounded-full text-sm">
-              <TrendingDown className="w-4 h-4 text-copper-600" />
-              <span className="text-copper-700 font-medium">
+            <div className="flex items-center space-x-1 bg-cyan-light px-3 py-1 rounded-full text-sm">
+              <TrendingDown className="w-4 h-4 text-brand-primary" />
+              <span className="text-brand-primary font-medium">
                 {firstResult.value}
               </span>
             </div>

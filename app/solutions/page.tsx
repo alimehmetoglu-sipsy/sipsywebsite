@@ -89,7 +89,7 @@ export default function SolutionsPage() {
         )}
 
         {/* Solutions Grid */}
-        <section className="section-padding bg-neutral-light">
+        <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-cyan-50">
           <div className="container-custom">
             {isLoading ? (
               <div className="flex justify-center items-center min-h-[400px]">

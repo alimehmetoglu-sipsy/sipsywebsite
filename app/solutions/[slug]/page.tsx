@@ -262,7 +262,7 @@ export default function SolutionDetailPage() {
 
         {/* Problem Section - Enhanced with Empathy */}
         {solution.project?.problemPoints && solution.project.problemPoints.length > 0 && (
-          <section className="section-padding bg-neutral-light">
+          <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-cyan-50">
             <div className="container-custom">
               <div className="max-w-4xl mx-auto">
                 {/* Empathy Header */}
@@ -285,7 +285,7 @@ export default function SolutionDetailPage() {
                   {solution.project.problemPoints.map((point, index) => (
                     <div
                       key={index}
-                      className="flex items-start space-x-4 bg-white rounded-xl p-6 shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-x-1"
+                      className="flex items-start space-x-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 shadow-lg border-l-4 border-red-500 hover:shadow-xl transition-all duration-300 transform hover:-translate-x-1"
                     >
                       <div className="flex-shrink-0 w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
                         {point.emoji ? (
@@ -327,7 +327,7 @@ export default function SolutionDetailPage() {
 
         {/* Solution Section - Benefit-Focused */}
         {solution.project?.solutionSteps && solution.project.solutionSteps.length > 0 && (
-          <section className="section-padding bg-white">
+          <section className="section-padding bg-gradient-to-br from-blue-50 via-cyan-50 to-slate-100">
             <div className="container-custom">
               <div className="max-w-4xl mx-auto">
                 {/* Solution Header */}
@@ -350,7 +350,7 @@ export default function SolutionDetailPage() {
                   {solution.project.solutionSteps.map((step, index) => (
                     <div
                       key={index}
-                      className={`relative flex items-start space-x-4 bg-white rounded-xl p-6 shadow-lg border-l-4 ${serviceBorderColor} hover:shadow-2xl transition-all duration-300 group`}
+                      className={`relative flex items-start space-x-4 bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 shadow-lg border-l-4 ${serviceBorderColor} hover:shadow-2xl transition-all duration-300 group`}
                     >
                       {/* Step Number */}
                       <div className={`flex-shrink-0 w-12 h-12 ${serviceBgColor} text-white rounded-full flex items-center justify-center font-bold text-xl shadow-lg`}>
@@ -379,7 +379,7 @@ export default function SolutionDetailPage() {
 
         {/* Technologies Section */}
         {solution.keyTools && solution.keyTools.length > 0 && (
-          <section className="section-padding bg-neutral-light">
+          <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-cyan-50">
             <div className="container-custom">
               <div className="text-center mb-12">
                 <h2 className="text-3xl font-bold text-navy-900 mb-4">
@@ -437,7 +437,7 @@ export default function SolutionDetailPage() {
 
               <div className="grid lg:grid-cols-2 gap-8 max-w-6xl mx-auto">
                 {/* Before */}
-                <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl shadow-2xl overflow-hidden">
                   <div className="bg-gradient-to-r from-red-500 to-red-600 p-6">
                     <div className="flex items-center justify-center space-x-3">
                       <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
@@ -466,7 +466,7 @@ export default function SolutionDetailPage() {
                 </div>
 
                 {/* After */}
-                <div className="bg-white rounded-2xl shadow-2xl overflow-hidden">
+                <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl shadow-2xl overflow-hidden">
                   <div className="bg-gradient-to-r from-green-500 to-green-600 p-6">
                     <div className="flex items-center justify-center space-x-3">
                       <div className="w-12 h-12 bg-white/20 rounded-full flex items-center justify-center">
@@ -507,7 +507,7 @@ export default function SolutionDetailPage() {
 
         {/* Results Section - ROI Focused */}
         {solution.project?.results && solution.project.results.length > 0 && (
-          <section className="section-padding bg-neutral-light">
+          <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-cyan-50">
             <div className="container-custom">
               <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-12">
@@ -593,7 +593,7 @@ export default function SolutionDetailPage() {
         </section>
 
         {/* Other Solutions Teaser */}
-        <section className="section-padding bg-neutral-light">
+        <section className="section-padding bg-gradient-to-br from-blue-50 via-cyan-50 to-slate-100">
           <div className="container-custom text-center">
             <h3 className="text-3xl font-bold text-navy-900 mb-4">
               {solution.relatedSolutionsSection?.title || (language === 'tr' ? 'Diğer Çözümlerimiz' : 'Our Other Solutions')}

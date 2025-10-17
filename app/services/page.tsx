@@ -81,7 +81,7 @@ export default function ServicesPage() {
 
       <main className="min-h-screen pt-20">
         {/* Main Content with Sidebar */}
-        <section className="section-padding bg-neutral-light">
+        <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-cyan-50">
           <div className="container-custom">
             {isLoading ? (
               <div className="flex justify-center items-center min-h-[400px]">
@@ -114,7 +114,7 @@ export default function ServicesPage() {
                     </div>
 
                     {/* Desktop: Vertical List */}
-                    <div className="hidden lg:block bg-white rounded-xl shadow-lg p-6">
+                    <div className="hidden lg:block bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl shadow-lg p-6">
                       <h3 className="text-lg font-bold text-navy-900 mb-4">
                         {language === 'tr' ? 'Hizmetlerimiz' : 'Our Services'}
                       </h3>
@@ -165,7 +165,7 @@ export default function ServicesPage() {
                         className="scroll-mt-24"
                       >
                         {/* Service Header */}
-                        <div className={`bg-white rounded-2xl shadow-xl p-8 mb-8 border-l-8 ${borderColor}`}>
+                        <div className={`bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl shadow-xl p-8 mb-8 border-l-8 ${borderColor}`}>
                           <div className="flex items-start gap-6 mb-6">
                             {/* Icon */}
                             {service.icon && (

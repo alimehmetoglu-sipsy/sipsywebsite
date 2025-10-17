@@ -230,7 +230,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
       </section>
 
       {/* Value Proposition - Now positioned after hero */}
-      <section className="section-padding bg-neutral-light">
+      <section className="section-padding bg-gradient-to-br from-slate-100 via-blue-50 to-cyan-50">
         <div className="container-custom">
           <h2 className="text-4xl font-bold text-center mb-4 text-brand-primary">
             {language === 'tr' ? 'Neden sipsy.ai?' : 'Why Choose sipsy.ai?'}
@@ -240,7 +240,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
               return (
                 <div
                   key={item.id}
-                  className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-2 border-transparent hover:border-cyan-500"
+                  className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-2 border-transparent hover:border-cyan-500"
                 >
                   <div className="w-16 h-16 rounded-lg flex items-center justify-center mb-6 bg-cyan-light">
                     <DynamicIcon
@@ -263,7 +263,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
       </section>
 
       {/* Services Overview */}
-      <section id="services" className="section-padding bg-white">
+      <section id="services" className="section-padding bg-gradient-to-br from-blue-50 via-cyan-50 to-slate-100">
         <div className="container-custom">
           <div className="text-center mb-16">
             <h2 className="text-4xl font-bold text-navy-900 mb-4">
@@ -281,7 +281,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
               return (
                 <div
                   key={service.id}
-                  className="group relative bg-white rounded-xl p-6 border-2 border-transparent transition-all duration-300 hover:scale-105 shadow-lg hover:border-cyan-500"
+                  className="group relative bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border-2 border-transparent transition-all duration-300 hover:scale-105 shadow-lg hover:border-cyan-500"
                 >
                   <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-4 bg-cyan-light">
                     <DynamicIcon

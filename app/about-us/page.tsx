@@ -101,7 +101,7 @@ export default function AboutUsPage() {
 
       // Regular text section with enhanced styling
       return (
-        <section key={index} className={`section-padding ${index % 2 === 0 ? 'bg-neutral-light' : 'bg-white'}`}>
+        <section key={index} className={`section-padding ${index % 2 === 0 ? 'bg-gradient-to-br from-slate-100 via-blue-50 to-cyan-50' : 'bg-gradient-to-br from-blue-50 via-cyan-50 to-slate-100'}`}>
           <div className="container-custom">
             <div className="max-w-4xl mx-auto">
               <div className="relative">
@@ -111,7 +111,7 @@ export default function AboutUsPage() {
                 </h2>
               </div>
               {section.description && (
-                <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-gray-100">
+                <div className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-2xl shadow-xl p-8 md:p-12 border border-cyan-200">
                   <div
                     className="prose prose-lg max-w-none
                                prose-headings:font-bold prose-headings:text-navy-900
@@ -167,7 +167,7 @@ export default function AboutUsPage() {
       const sortedCards = [...section.cards].sort((a, b) => a.order - b.order);
 
       return (
-        <section key={index} className={`section-padding ${index % 2 === 0 ? 'bg-neutral-light' : 'bg-white'}`}>
+        <section key={index} className={`section-padding ${index % 2 === 0 ? 'bg-gradient-to-br from-slate-100 via-blue-50 to-cyan-50' : 'bg-gradient-to-br from-blue-50 via-cyan-50 to-slate-100'}`}>
           <div className="container-custom">
             <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-12 text-center">
               {section.sectionTitle}
