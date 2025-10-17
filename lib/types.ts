@@ -328,7 +328,7 @@ export interface AboutUsContentCard {
 // About Us - Content Section
 export interface AboutUsContentSection {
   sectionTitle: string;
-  sectionType: 'text' | 'cards';
+  sectionType: 'text' | 'cards' | 'badges';
   description?: string;
   cards?: AboutUsContentCard[];
   order: number;
