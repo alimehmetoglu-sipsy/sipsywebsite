@@ -271,7 +271,7 @@ export default function AboutUsPage() {
                     return section.sectionTitle.toLowerCase().includes('technology') ||
                            section.sectionTitle.toLowerCase().includes('teknoloji');
                   })
-                  .map((section, index) => renderContentSection(section, aboutUsData.sections.length))}
+                  .map((section, index) => renderContentSection(section, aboutUsData.sections?.length || 0))}
               </>
             )}
           </>
