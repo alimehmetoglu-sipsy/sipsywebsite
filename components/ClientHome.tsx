@@ -143,12 +143,12 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
         />
 
         {/* Dark Overlay for better text readability */}
-        <div className="absolute inset-0 bg-gradient-to-br from-navy-900/80 via-navy-800/80 to-navy-900/80" />
+        <div className="absolute inset-0 bg-gradient-to-br from-navy-800/90 via-navy-dark/90 to-navy-800/90" />
 
         {/* Animated Background Pattern */}
         <div className="absolute inset-0 opacity-10">
-          <div className="absolute top-20 left-20 w-72 h-72 bg-gold-400 rounded-full blur-3xl animate-pulse"></div>
-          <div className="absolute bottom-20 right-20 w-96 h-96 bg-copper-500 rounded-full blur-3xl animate-pulse delay-1000"></div>
+          <div className="absolute top-20 left-20 w-72 h-72 bg-cyan-500 rounded-full blur-3xl animate-pulse"></div>
+          <div className="absolute bottom-20 right-20 w-96 h-96 bg-navy-700 rounded-full blur-3xl animate-pulse delay-1000"></div>
         </div>
 
         <div className="container-custom relative z-10 pt-20">
@@ -163,10 +163,10 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                 {hero?.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button className="bg-brand-secondary hover:bg-gold-500 text-navy-900 font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 text-lg shadow-lg">
+                <button className="bg-brand-secondary hover:bg-cyan-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 text-lg shadow-lg">
                   {hero?.primaryButtonText}
                 </button>
-                <button className="border-2 border-gold-400 text-gold-400 hover:bg-gold-400 hover:text-navy-900 font-semibold px-8 py-4 rounded-lg transition-all duration-300">
+                <button className="border-2 border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300">
                   {hero?.secondaryButtonText}
                 </button>
               </div>
@@ -187,33 +187,33 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
 
             {/* Right Visual */}
             <div className="hidden lg:block relative">
-              <div className="relative w-full h-96 bg-gradient-to-br from-gold-400/20 to-copper-500/20 rounded-2xl backdrop-blur-sm border border-white/10 p-8">
+              <div className="relative w-full h-96 bg-gradient-to-br from-navy-800/20 to-cyan-500/20 rounded-2xl backdrop-blur-sm border border-white/10 p-8">
                 <div className="space-y-4">
                   {/* Animated nodes */}
                   <div className="flex items-center space-x-4 animate-pulse">
-                    <div className="w-16 h-16 bg-gold-500 rounded-lg flex items-center justify-center">
-                      <Bot className="w-8 h-8 text-navy-900" />
+                    <div className="w-16 h-16 bg-cyan-500 rounded-lg flex items-center justify-center">
+                      <Bot className="w-8 h-8 text-white" />
                     </div>
-                    <div className="flex-1 h-2 bg-gradient-to-r from-gold-400 to-copper-500 rounded"></div>
-                    <div className="w-16 h-16 bg-copper-500 rounded-lg flex items-center justify-center">
+                    <div className="flex-1 h-2 bg-gradient-to-r from-navy-800 to-cyan-500 rounded"></div>
+                    <div className="w-16 h-16 bg-navy-800 rounded-lg flex items-center justify-center">
                       <Brain className="w-8 h-8 text-white" />
                     </div>
                   </div>
                   <div className="flex items-center space-x-4 animate-pulse delay-500">
-                    <div className="w-16 h-16 bg-azure-500 rounded-lg flex items-center justify-center">
+                    <div className="w-16 h-16 bg-navy-700 rounded-lg flex items-center justify-center">
                       <Database className="w-8 h-8 text-white" />
                     </div>
-                    <div className="flex-1 h-2 bg-gradient-to-r from-azure-500 to-gold-400 rounded"></div>
-                    <div className="w-16 h-16 bg-gold-500 rounded-lg flex items-center justify-center">
-                      <Network className="w-8 h-8 text-navy-900" />
+                    <div className="flex-1 h-2 bg-gradient-to-r from-cyan-500 to-navy-800 rounded"></div>
+                    <div className="w-16 h-16 bg-cyan-500 rounded-lg flex items-center justify-center">
+                      <Network className="w-8 h-8 text-white" />
                     </div>
                   </div>
                   <div className="flex items-center space-x-4 animate-pulse delay-1000">
-                    <div className="w-16 h-16 bg-gold-500 rounded-lg flex items-center justify-center">
-                      <Sparkles className="w-8 h-8 text-navy-900" />
+                    <div className="w-16 h-16 bg-cyan-500 rounded-lg flex items-center justify-center">
+                      <Sparkles className="w-8 h-8 text-white" />
                     </div>
-                    <div className="flex-1 h-2 bg-gradient-to-r from-gold-400 to-copper-500 rounded"></div>
-                    <div className="w-16 h-16 bg-copper-500 rounded-lg flex items-center justify-center">
+                    <div className="flex-1 h-2 bg-gradient-to-r from-navy-800 to-cyan-500 rounded"></div>
+                    <div className="w-16 h-16 bg-navy-800 rounded-lg flex items-center justify-center">
                       <TrendingUp className="w-8 h-8 text-white" />
                     </div>
                   </div>
@@ -230,38 +230,29 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
       </section>
 
       {/* Value Proposition - Now positioned after hero */}
-      <section className="section-padding bg-gray-50">
+      <section className="section-padding bg-neutral-light">
         <div className="container-custom">
-          <h2
-            className="text-4xl font-bold text-center mb-4"
-            style={{ color: 'rgba(204, 96, 47, 1)' }}
-          >
+          <h2 className="text-4xl font-bold text-center mb-4 text-brand-primary">
             {language === 'tr' ? 'Neden sipsy.ai?' : 'Why Choose sipsy.ai?'}
           </h2>
           <div className="grid md:grid-cols-3 gap-8 mt-12">
             {safeValuePropositions.map((item: ValueProposition & {id: number}) => {
-              const isAccent = item.id % 2 === 0;
               return (
                 <div
                   key={item.id}
-                  className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-2 border-transparent hover:border-[rgba(204,96,47,0.5)]"
+                  className="bg-white rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-2 border-transparent hover:border-cyan-500"
                 >
-                  <div
-                    className="w-16 h-16 rounded-lg flex items-center justify-center mb-6"
-                    style={{
-                      backgroundColor: isAccent ? 'rgba(204, 96, 47, 0.1)' : 'rgba(204, 96, 47, 0.15)'
-                    }}
-                  >
+                  <div className="w-16 h-16 rounded-lg flex items-center justify-center mb-6 bg-cyan-light">
                     <DynamicIcon
                       icon={item.icon}
-                      className="w-8 h-8 text-[rgba(204,96,47,1)]"
+                      className="w-8 h-8 text-brand-primary"
                       size={32}
                     />
                   </div>
                   <h3 className="text-2xl font-bold text-navy-900 mb-4">
                     {item.title}
                   </h3>
-                  <p className="text-gray-600 leading-relaxed">
+                  <p className="text-neutral-medium leading-relaxed">
                     {item.description}
                   </p>
                 </div>
@@ -287,47 +278,34 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
 
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {safeServices.map((service: Service & {id: number}) => {
-              const isAccent = service.color === 'accent';
               return (
                 <div
                   key={service.id}
-                  className={`group relative bg-white rounded-xl p-6 border-2 border-transparent transition-all duration-300 hover:scale-105 shadow-lg ${
-                    isAccent
-                      ? 'hover:border-copper-500'
-                      : 'hover:border-gold-400'
-                  }`}
+                  className="group relative bg-white rounded-xl p-6 border-2 border-transparent transition-all duration-300 hover:scale-105 shadow-lg hover:border-cyan-500"
                 >
-                  <div
-                    className={`w-14 h-14 rounded-lg flex items-center justify-center mb-4 ${
-                      isAccent ? 'bg-copper-500/10' : 'bg-gold-400/10'
-                    }`}
-                  >
+                  <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-4 bg-cyan-light">
                     <DynamicIcon
                       icon={service.icon}
-                      className={`w-7 h-7 ${
-                        isAccent ? 'text-copper-500' : 'text-gold-500'
-                      }`}
+                      className="w-7 h-7 text-brand-primary"
                       size={28}
                     />
                   </div>
                   <h3 className="text-xl font-bold text-navy-900 mb-3">
                     {service.title}
                   </h3>
-                  <p className="text-gray-600 mb-4">
+                  <p className="text-neutral-medium mb-4">
                     {service.description}
                   </p>
                   {service.keyTools && service.keyTools.length > 0 && (
                     <div className="mb-4">
-                      <p className="text-sm font-semibold text-gray-600 mb-2">
+                      <p className="text-sm font-semibold text-neutral-medium mb-2">
                         {language === 'tr' ? 'Anahtar araçlar:' : 'Key tools:'}
                       </p>
                       <div className="flex flex-wrap gap-2">
                         {service.keyTools.map((tool, index) => (
                           <span
                             key={index}
-                            className={`inline-flex items-center gap-2 px-3 py-1 ${
-                              isAccent ? 'bg-copper-500/10' : 'bg-gold-400/10'
-                            } rounded-full text-sm`}
+                            className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-light rounded-full text-sm"
                           >
                             {tool.Logo && (
                               <Image
@@ -338,7 +316,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                                 className="w-4 h-4 object-contain"
                               />
                             )}
-                            <span className="text-gray-900 font-medium">{tool.Name}</span>
+                            <span className="text-navy-900 font-medium">{tool.Name}</span>
                           </span>
                         ))}
                       </div>
@@ -346,9 +324,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                   )}
                   <a
                     href={service.link || '#'}
-                    className={`inline-flex items-center font-semibold hover:underline ${
-                      isAccent ? 'text-copper-500' : 'text-gold-600'
-                    }`}
+                    className="inline-flex items-center font-semibold hover:underline text-brand-primary hover:text-cyan-500"
                   >
                     {service.linkText}{' '}
                     <ArrowRight className="w-4 h-4 ml-1" />
@@ -363,16 +339,16 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
       {/* Final CTA Section */}
       <section
         id="contact"
-        className="section-padding bg-gradient-to-r from-gold-500 via-gold-400 to-copper-500"
+        className="section-padding bg-gradient-to-r from-navy-800 via-brand-primary to-cyan-500"
       >
         <div className="container-custom text-center">
           {ctaSection?.title && (
-            <h2 className="text-4xl lg:text-5xl font-bold text-navy-900 mb-6">
+            <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
               {ctaSection.title}
             </h2>
           )}
           {ctaSection?.description && (
-            <p className="text-xl text-navy-800 mb-8 max-w-2xl mx-auto">
+            <p className="text-xl text-neutral-light mb-8 max-w-2xl mx-auto">
               {ctaSection.description}
             </p>
           )}
@@ -382,23 +358,23 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                 href={ctaSection.buttonUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
+                className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
               >
                 {ctaSection.buttonText}
               </a>
             ) : (
-              <button className="bg-navy-900 text-gold-400 hover:bg-navy-800 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
+              <button className="bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
                 {ctaSection.buttonText}
               </button>
             )
           )}
           {ctaSection?.phoneText && (
-            <p className="text-navy-800 mb-2">
+            <p className="text-white mb-2">
               {ctaSection.phoneText}
             </p>
           )}
           {ctaSection?.confidentialityText && (
-            <p className="text-sm text-navy-700">
+            <p className="text-sm text-neutral-light">
               {ctaSection.confidentialityText}
             </p>
           )}
@@ -440,7 +416,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                     {footer.socialLinks.linkedin && (
                       <a
                         href={footer.socialLinks.linkedin}
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                         aria-label="LinkedIn"
                       >
                         <Linkedin className="w-5 h-5" />
@@ -449,7 +425,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                     {footer.socialLinks.twitter && (
                       <a
                         href={footer.socialLinks.twitter}
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                         aria-label="Twitter"
                       >
                         <Twitter className="w-5 h-5" />
@@ -458,7 +434,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                     {footer.socialLinks.github && (
                       <a
                         href={footer.socialLinks.github}
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                         aria-label="GitHub"
                       >
                         <Github className="w-5 h-5" />
@@ -469,21 +445,21 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                   <>
                     <a
                       href="#"
-                      className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                      className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                       aria-label="LinkedIn"
                     >
                       <Linkedin className="w-5 h-5" />
                     </a>
                     <a
                       href="#"
-                      className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                      className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                       aria-label="Twitter"
                     >
                       <Twitter className="w-5 h-5" />
                     </a>
                     <a
                       href="#"
-                      className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                      className="w-10 h-10 bg-white/10 hover:bg-cyan-500 rounded-lg flex items-center justify-center transition-colors"
                       aria-label="GitHub"
                     >
                       <Github className="w-5 h-5" />
@@ -502,7 +478,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                 {footer?.links?.services ? (
                   footer.links.services.map((link: { label: string; href: string }, index: number) => (
                     <li key={index}>
-                      <a href={link.href} className="hover:text-gold-400 transition-colors">
+                      <a href={link.href} className="hover:text-cyan-500 transition-colors">
                         {link.label}
                       </a>
                     </li>
@@ -520,7 +496,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                 {footer?.links?.company ? (
                   footer.links.company.map((link: { label: string; href: string }, index: number) => (
                     <li key={index}>
-                      <a href={link.href} className="hover:text-gold-400 transition-colors">
+                      <a href={link.href} className="hover:text-cyan-500 transition-colors">
                         {link.label}
                       </a>
                     </li>
@@ -538,7 +514,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                 {footer?.links?.resources ? (
                   footer.links.resources.map((link: { label: string; href: string }, index: number) => (
                     <li key={index}>
-                      <a href={link.href} className="hover:text-gold-400 transition-colors">
+                      <a href={link.href} className="hover:text-cyan-500 transition-colors">
                         {link.label}
                       </a>
                     </li>
@@ -555,15 +531,15 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                 {footer?.copyright || '© 2025 sipsy.ai. All rights reserved.'}
               </p>
               <div className="flex flex-wrap justify-center gap-6 text-sm">
-                <a href="#" className="hover:text-gold-400 transition-colors">
+                <a href="#" className="hover:text-cyan-500 transition-colors">
                   {language === 'tr' ? 'Gizlilik Politikası' : 'Privacy Policy'}
                 </a>
                 <span className="text-gray-600">•</span>
-                <a href="#" className="hover:text-gold-400 transition-colors">
+                <a href="#" className="hover:text-cyan-500 transition-colors">
                   {language === 'tr' ? 'Hizmet Şartları' : 'Terms of Service'}
                 </a>
                 <span className="text-gray-600">•</span>
-                <a href="#" className="hover:text-gold-400 transition-colors">
+                <a href="#" className="hover:text-cyan-500 transition-colors">
                   {language === 'tr' ? 'Çerez Politikası' : 'Cookie Policy'}
                 </a>
               </div>
