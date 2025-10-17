@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
-import { getAboutUs, getCtaSection, getFooter } from '@/lib/strapi';
+import {getAboutUs, getCtaSection, getFooter, getMediaURL} from '@/lib/strapi';
 import { AboutUs, AboutUsContentCard, AboutUsContentSection } from '@/lib/types';
 import { useLanguage } from '@/contexts/LanguageContext';
 import {
@@ -329,7 +329,7 @@ export default function AboutUsPage() {
                 <div className="flex items-center space-x-3 mb-4">
                   {footer?.logo ? (
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${footer.logo.url}`}
+                      src={getMediaURL(footer.logo.url)}
                       alt={footer.logo.alternativeText || 'Logo'}
                       width={40}
                       height={40}

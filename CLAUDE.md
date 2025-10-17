@@ -132,51 +132,64 @@ When answering questions about Strapi features, architecture, or best practices,
 - **Webhooks**: `https://docs.strapi.io/cms/backend-customization/webhooks`
 - **CRON Jobs**: `https://docs.strapi.io/cms/configurations/cron`
 
-## Data Transfer & Deployment
+## Development to Production Workflow
 
-### Export Data from Local Strapi
+This is the recommended workflow for developing locally and deploying to production:
 
-To export data from local Strapi instance (content, files, and configurations):
+### Step 1: Local Development
+1. Develop and test locally using `npm run develop`
+2. Create content types, add content, upload media files in local Strapi admin
+3. Test thoroughly on `http://localhost:1337` and `http://localhost:3000`
+
+### Step 2: Export from Local
+
+Export ALL data including media files:
 
 ```bash
 cd backend
-npm run strapi export
+npm run strapi export -- --no-encrypt --only content,files,config
 ```
 
-This creates an encrypted export file: `backend/export_YYYYMMDDHHMMSS.tar.gz.enc`
+This creates: `backend/export_YYYYMMDDHHMMSS.tar.gz`
 
-**Note**:
-- Export includes: entities, assets, links, and configurations
+**Important**:
+- `--no-encrypt`: Skip encryption for easier import
+- `--only content,files,config`: **Include media files (logos, images)**
+- Export includes: entities (content), assets (media files), links, and configurations
 - Admin users and API tokens are NOT exported
-- Leave encryption password empty when prompted (press Enter)
 
-### Import Data to Production
+### Step 3: Copy to AWS Server
 
-1. **Copy export file to AWS server:**
 ```bash
-scp -i sipsy-lightsail-key.pem backend/export_*.tar.gz.enc bitnami@54.243.251.248:~/sipsywebsite/backend/
+scp -i sipsy-lightsail-key.pem backend/export_*.tar.gz bitnami@54.243.251.248:~/sipsywebsite/backend/
 ```
 
-2. **SSH to AWS server:**
+### Step 4: Import to Production
+
+1. **SSH to AWS server:**
 ```bash
 ssh -i sipsy-lightsail-key.pem bitnami@54.243.251.248
 ```
 
-3. **Import data:**
+2. **Import data (with media files):**
 ```bash
 cd ~/sipsywebsite/backend
-npm run strapi import -- -f ./export_YYYYMMDDHHMMSS.tar.gz.enc
+npm run strapi import -- -f export_YYYYMMDDHHMMSS.tar.gz --force
 ```
 
-When prompted:
-- Press Enter for decryption key (if no password was used during export)
-- Type "Yes" to confirm data deletion warning
+**Note**: `--force` bypasses confirmation prompt. Remove it if you want manual confirmation.
 
-4. **Restart services:**
+3. **Restart services:**
 ```bash
-pm2 restart strapi-backend
-pm2 restart nextjs-frontend
+pm2 restart all
 ```
+
+### Step 5: Verify Production
+
+1. Check website: https://sipsy.ai
+2. Check admin panel: https://sipsy.ai/admin
+3. Verify media files are loading correctly
+4. Test i18n (Turkish/English) content
 
 ### Alternative: Strapi Transfer Command
 
@@ -200,9 +213,24 @@ npm run strapi transfer -- --to https://sipsy.ai/admin --to-token YOUR_TRANSFER_
 - **Solution**: Already fixed in `backend/config/plugins.ts` by removing `ACL: 'public-read'` parameter
 - Files will rely on bucket policy for public access
 
+**Admin panel not loading (404 error on /admin):**
+- **Cause**: Missing admin build files in `dist/build/` directory
+- **Solution**: Build admin panel on AWS server:
+```bash
+cd ~/sipsywebsite/backend
+NODE_OPTIONS="--max-old-space-size=2048" npm run build
+pm2 restart strapi-backend
+```
+- **Note**: Building with increased memory allocation prevents out-of-memory errors
+
 **Memory error during build on AWS:**
 - **Cause**: Insufficient RAM for admin panel build
-- **Solution**: Use export/import instead of live transfer for large datasets
+- **Solution**: Use `NODE_OPTIONS="--max-old-space-size=2048"` when building
+
+**Media thumbnails not loading in admin panel:**
+- **Cause**: Content Security Policy (CSP) restrictions in admin panel
+- **Status**: This is a visual issue in admin panel only - media files work correctly on frontend
+- **Verification**: Check https://sipsy.ai to confirm media files load properly
 
 **Schema mismatch warnings:**
 - **Cause**: Content types don't exist on destination

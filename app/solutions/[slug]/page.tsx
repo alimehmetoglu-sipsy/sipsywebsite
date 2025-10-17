@@ -5,7 +5,7 @@ import { useParams } from 'next/navigation';
 import Navigation from '@/components/Navigation';
 import DynamicIcon from '@/components/DynamicIcon';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { getSolutionBySlug, getCtaSection, getFooter } from '@/lib/strapi';
+import { getSolutionBySlug, getCtaSection, getFooter, getMediaURL } from '@/lib/strapi';
 import { Solution } from '@/lib/types';
 import {
   Bot,
@@ -400,7 +400,7 @@ export default function SolutionDetailPage() {
                     {tool.Logo ? (
                       <div className="w-16 h-16 mb-4 flex items-center justify-center">
                         <Image
-                          src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${tool.Logo.url}`}
+                          src={getMediaURL(tool.Logo.url)}
                           alt={tool.Logo.alternativeText || tool.Name}
                           width={64}
                           height={64}
@@ -621,7 +621,7 @@ export default function SolutionDetailPage() {
                 <div className="flex items-center space-x-3 mb-4">
                   {footer?.logo ? (
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${footer.logo.url}`}
+                      src={getMediaURL(footer.logo.url)}
                       alt={footer.logo.alternativeText || 'Logo'}
                       width={40}
                       height={40}

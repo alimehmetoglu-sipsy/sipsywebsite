@@ -2,7 +2,7 @@
 
 import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
-import { getPageBySlug, getFooter } from '@/lib/strapi';
+import { getPageBySlug, getFooter, getMediaURL } from '@/lib/strapi';
 import { Page } from '@/lib/types';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { Bot, Linkedin, Twitter, Github } from 'lucide-react';
@@ -108,7 +108,7 @@ export default function TermsPage() {
               <div className="flex items-center space-x-3 mb-4">
                 {footer?.logo ? (
                   <Image
-                    src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${footer.logo.url}`}
+                    src={getMediaURL(footer.logo.url)}
                     alt={footer.logo.alternativeText || 'Logo'}
                     width={40}
                     height={40}
