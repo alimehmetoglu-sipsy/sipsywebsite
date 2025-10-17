@@ -5,7 +5,7 @@ import Navigation from '@/components/Navigation';
 import SolutionCard from '@/components/SolutionCard';
 import DynamicIcon from '@/components/DynamicIcon';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { getServicesWithDetails, getCtaSection, getFooter } from '@/lib/strapi';
+import { getServicesWithDetails, getCtaSection, getFooter, getMediaURL } from '@/lib/strapi';
 import { Service, Solution } from '@/lib/types';
 import { Bot, Linkedin, Twitter, Github, Sparkles, Zap } from 'lucide-react';
 import Link from 'next/link';
@@ -206,7 +206,7 @@ export default function ServicesPage() {
                                   >
                                     {tool.Logo && (
                                       <Image
-                                        src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${tool.Logo.url}`}
+                                        src={getMediaURL(tool.Logo.url)}
                                         alt={tool.Logo.alternativeText || tool.Name}
                                         width={20}
                                         height={20}
@@ -318,7 +318,7 @@ export default function ServicesPage() {
                 <div className="flex items-center space-x-3 mb-4">
                   {footer?.logo ? (
                     <Image
-                      src={`${process.env.NEXT_PUBLIC_STRAPI_URL || 'http://localhost:1337'}${footer.logo.url}`}
+                      src={getMediaURL(footer.logo.url)}
                       alt={footer.logo.alternativeText || 'Logo'}
                       width={40}
                       height={40}
