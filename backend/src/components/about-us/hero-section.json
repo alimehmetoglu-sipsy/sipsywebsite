@@ -1,0 +1,43 @@
+{
+  "collectionName": "components_about_us_hero_sections",
+  "info": {
+    "displayName": "Hero Section",
+    "icon": "star",
+    "description": "Hero section with title, subtitle, badge and stats"
+  },
+  "options": {},
+  "attributes": {
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "subtitle": {
+      "type": "text",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "badgeText": {
+      "type": "string",
+      "required": false,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "stats": {
+      "type": "component",
+      "repeatable": true,
+      "component": "about-us.stat-card"
+    }
+  }
+}

@@ -308,3 +308,42 @@ export interface Page {
     keywords?: string;
   };
 }
+
+// About Us - Stat Card
+export interface AboutUsStatCard {
+  icon?: string;
+  value: string;
+  label: string;
+  order: number;
+}
+
+// About Us - Content Card
+export interface AboutUsContentCard {
+  icon?: string;
+  title: string;
+  description: string;
+  order: number;
+}
+
+// About Us - Content Section
+export interface AboutUsContentSection {
+  sectionTitle: string;
+  sectionType: 'text' | 'cards';
+  description?: string;
+  cards?: AboutUsContentCard[];
+  order: number;
+}
+
+// About Us - Hero Section
+export interface AboutUsHeroSection {
+  title: string;
+  subtitle: string;
+  badgeText?: string;
+  stats?: AboutUsStatCard[];
+}
+
+// About Us - Main Type
+export interface AboutUs {
+  heroSection: AboutUsHeroSection;
+  sections?: AboutUsContentSection[];
+}

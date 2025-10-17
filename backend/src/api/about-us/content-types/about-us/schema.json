@@ -1,0 +1,41 @@
+{
+  "kind": "singleType",
+  "collectionName": "about_us",
+  "info": {
+    "singularName": "about-us",
+    "pluralName": "about-uses",
+    "displayName": "About Us",
+    "description": "About Us page with hero section and content sections"
+  },
+  "options": {
+    "draftAndPublish": true
+  },
+  "pluginOptions": {
+    "i18n": {
+      "localized": true
+    }
+  },
+  "attributes": {
+    "heroSection": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "about-us.hero-section",
+      "repeatable": false,
+      "required": true
+    },
+    "sections": {
+      "type": "component",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "component": "about-us.content-section",
+      "repeatable": true
+    }
+  }
+}

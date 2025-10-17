@@ -2,39 +2,48 @@
 
 import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
-import { getPageBySlug, getCtaSection, getFooter, getValuePropositions } from '@/lib/strapi';
-import { Page, ValueProposition } from '@/lib/types';
+import { getAboutUs, getCtaSection, getFooter } from '@/lib/strapi';
+import { AboutUs, AboutUsContentCard, AboutUsContentSection } from '@/lib/types';
 import { useLanguage } from '@/contexts/LanguageContext';
 import {
-  Bot, Linkedin, Twitter, Github, Target, Zap, Award,
-  TrendingUp, Users, Code, Sparkles, Rocket, Users2, TrendingUpIcon
+  Bot, Linkedin, Twitter, Github, Sparkles,
+  Code, Target, Users, Zap, Award, TrendingUp, Users2, Rocket, TrendingUpIcon
 } from 'lucide-react';
+import * as LucideIcons from 'lucide-react';
 import Image from 'next/image';
+
+// Dynamic icon component
+const DynamicIcon = ({ iconName, className = 'w-8 h-8' }: { iconName?: string; className?: string }) => {
+  if (!iconName) return null;
+
+  // @ts-ignore - Dynamic icon access
+  const IconComponent = LucideIcons[iconName as keyof typeof LucideIcons];
+
+  if (!IconComponent) return null;
+
+  return <IconComponent className={className} />;
+};
 
 export default function AboutUsPage() {
   const { language } = useLanguage();
-  const [pageData, setPageData] = useState<Page | null>(null);
+  const [aboutUsData, setAboutUsData] = useState<AboutUs | null>(null);
   const [ctaSection, setCtaSection] = useState<any>(null);
   const [footer, setFooter] = useState<any>(null);
-  const [valuePropositions, setValuePropositions] = useState<ValueProposition[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
       try {
-        const slug = language === 'tr' ? 'hakkimizda' : 'about-us';
-        const [page, ctaData, footerData, valueProps] = await Promise.all([
-          getPageBySlug(slug, language),
+        const [aboutUs, ctaData, footerData] = await Promise.all([
+          getAboutUs(language),
           getCtaSection(language),
           getFooter(language),
-          getValuePropositions(language),
         ]);
 
-        setPageData(page);
+        setAboutUsData(aboutUs);
         setCtaSection(ctaData);
         setFooter(footerData);
-        setValuePropositions(valueProps);
       } catch (error) {
         console.error('Error fetching about us page:', error);
       } finally {
@@ -45,202 +54,227 @@ export default function AboutUsPage() {
     fetchData();
   }, [language]);
 
-  const highlights = [
-    {
-      icon: Zap,
-      value: '6+',
-      label: language === 'tr' ? 'Yıl Deneyim' : 'Years Experience',
-    },
-    {
-      icon: Award,
-      value: '25+',
-      label: language === 'tr' ? 'Başarılı Proje' : 'Successful Projects',
-    },
-    {
-      icon: TrendingUp,
-      value: '%40',
-      label: language === 'tr' ? 'Verimlilik Artışı' : 'Efficiency Boost',
-    },
-    {
-      icon: Users,
-      value: '50K+',
-      label: language === 'tr' ? 'Aylık İşlem' : 'Monthly Transactions',
-    },
+  // Gradient colors for cards
+  const cardGradients = [
+    'from-blue-500 to-blue-600',
+    'from-purple-500 to-purple-600',
+    'from-green-500 to-green-600',
+    'from-orange-500 to-orange-600',
+    'from-teal-500 to-teal-600',
+    'from-indigo-500 to-indigo-600',
+    'from-pink-500 to-pink-600',
+    'from-yellow-500 to-yellow-600',
   ];
+
+  const renderContentSection = (section: AboutUsContentSection, index: number) => {
+    if (section.sectionType === 'text') {
+      // Special handling for Technology Stack
+      if (section.sectionTitle.toLowerCase().includes('technology') || section.sectionTitle.toLowerCase().includes('teknoloji')) {
+        const technologies = section.description?.split('•').map(tech => tech.trim()).filter(tech => tech.length > 0) || [];
+
+        return (
+          <section key={index} className="section-padding bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white">
+            <div className="container-custom">
+              <div className="max-w-6xl mx-auto">
+                <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-white via-gold-200 to-white bg-clip-text text-transparent">
+                  {section.sectionTitle}
+                </h2>
+                <p className="text-center text-gray-400 mb-12 max-w-3xl mx-auto">
+                  {language === 'tr' ? 'Uzman ekibimizin kullandığı modern teknolojiler' : 'Modern technologies our expert team uses'}
+                </p>
+                <div className="flex flex-wrap gap-3 justify-center">
+                  {technologies.map((tech, idx) => (
+                    <span
+                      key={idx}
+                      className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-gold-400/50
+                                 px-5 py-3 rounded-xl text-sm font-medium text-gray-200 hover:text-white
+                                 transition-all duration-300 hover:scale-105 hover:bg-white/15"
+                    >
+                      {tech}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </section>
+        );
+      }
+
+      // Regular text section with enhanced styling
+      return (
+        <section key={index} className={`section-padding ${index % 2 === 0 ? 'bg-white' : 'bg-gradient-to-br from-gray-50 to-gray-100'}`}>
+          <div className="container-custom">
+            <div className="max-w-4xl mx-auto">
+              <div className="relative">
+                <div className="absolute -left-4 top-0 w-1 h-24 bg-gradient-to-b from-gold-500 to-copper-500 rounded-full"></div>
+                <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-8">
+                  {section.sectionTitle}
+                </h2>
+              </div>
+              {section.description && (
+                <div className="bg-white rounded-2xl shadow-xl p-8 md:p-12 border border-gray-100">
+                  <div
+                    className="prose prose-lg max-w-none
+                               prose-headings:font-bold prose-headings:text-navy-900
+                               prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6
+                               prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-4
+                               prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
+                               prose-ul:my-8 prose-ul:space-y-3
+                               prose-li:text-gray-700 prose-li:leading-relaxed prose-li:pl-2
+                               prose-li:marker:text-gold-500 prose-li:marker:text-xl
+                               prose-strong:text-navy-900 prose-strong:font-bold
+                               prose-a:text-gold-600 prose-a:font-semibold prose-a:no-underline
+                               hover:prose-a:text-gold-700 hover:prose-a:underline"
+                    dangerouslySetInnerHTML={{ __html: section.description }}
+                  />
+                </div>
+              )}
+            </div>
+          </div>
+        </section>
+      );
+    } else if (section.sectionType === 'badges' && section.cards && section.cards.length > 0) {
+      // Badges section - displaying technology badges
+      const sortedCards = [...section.cards].sort((a, b) => a.order - b.order);
+
+      return (
+        <section key={index} className="section-padding bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white">
+          <div className="container-custom">
+            <div className="max-w-6xl mx-auto">
+              <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-gradient-to-r from-white via-gold-200 to-white bg-clip-text text-transparent">
+                {section.sectionTitle}
+              </h2>
+              <p className="text-center text-gray-400 mb-12 max-w-3xl mx-auto">
+                {language === 'tr' ? 'Uzman ekibimizin kullandığı modern teknolojiler' : 'Modern technologies our expert team uses'}
+              </p>
+              <div className="flex flex-wrap gap-3 justify-center">
+                {sortedCards.map((card, idx) => (
+                  <span
+                    key={idx}
+                    className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-gold-400/50
+                               px-5 py-3 rounded-xl text-sm font-medium text-gray-200 hover:text-white
+                               transition-all duration-300 hover:scale-105 hover:bg-white/15"
+                  >
+                    {card.title}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+      );
+    } else if (section.sectionType === 'cards' && section.cards && section.cards.length > 0) {
+      // Cards section
+      const sortedCards = [...section.cards].sort((a, b) => a.order - b.order);
+
+      return (
+        <section key={index} className={`section-padding ${index % 2 === 0 ? 'bg-white' : 'bg-gray-50'}`}>
+          <div className="container-custom">
+            <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-12 text-center">
+              {section.sectionTitle}
+            </h2>
+            <div className={`grid ${sortedCards.length <= 3 ? 'md:grid-cols-3' : 'md:grid-cols-2 lg:grid-cols-3'} gap-8 max-w-6xl mx-auto`}>
+              {sortedCards.map((card, cardIndex) => {
+                const gradient = cardGradients[cardIndex % cardGradients.length];
+
+                return (
+                  <div
+                    key={cardIndex}
+                    className={`bg-gradient-to-br ${gradient} text-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105`}
+                  >
+                    {card.icon && (
+                      <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 w-fit mb-6">
+                        <DynamicIcon iconName={card.icon} className="w-10 h-10" />
+                      </div>
+                    )}
+                    <h3 className="text-2xl font-bold mb-4">{card.title}</h3>
+                    <p className="text-white/90 leading-relaxed">{card.description}</p>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
+        </section>
+      );
+    }
+
+    return null;
+  };
 
   return (
     <>
       <Navigation forceScrolled={true} />
 
       <main className="min-h-screen pt-20">
-        {/* Hero Section */}
-        <section className="relative bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white py-24 overflow-hidden">
-          <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
-
-          <div className="container-custom relative z-10">
-            <div className="max-w-4xl mx-auto text-center">
-              <div className="inline-flex items-center gap-2 bg-gold-500/20 backdrop-blur-sm border border-gold-400/30 rounded-full px-6 py-2 mb-6">
-                <Sparkles className="w-4 h-4 text-gold-400" />
-                <span className="text-sm font-semibold text-gold-300">
-                  {language === 'tr' ? 'Dijital Dönüşüm Lideri' : 'Digital Transformation Leader'}
-                </span>
-              </div>
-
-              <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight bg-gradient-to-r from-white via-gold-200 to-white bg-clip-text text-transparent">
-                {pageData?.title || (language === 'tr' ? 'Hakkımızda' : 'About Us')}
-              </h1>
-
-              <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed">
-                {language === 'tr'
-                  ? 'Yapay zeka ve otomasyon ile işletmeleri dönüştürüyoruz'
-                  : 'Transforming businesses through AI and automation'}
-              </p>
-
-              {/* Stats */}
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-                {highlights.map((item, index) => (
-                  <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
-                    <item.icon className="w-8 h-8 text-gold-400 mx-auto mb-3" />
-                    <div className="text-3xl font-bold text-white mb-1">{item.value}</div>
-                    <div className="text-sm text-gray-300">{item.label}</div>
-                  </div>
-                ))}
-              </div>
-            </div>
+        {isLoading ? (
+          <div className="flex justify-center items-center min-h-screen">
+            <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-gold-500"></div>
           </div>
-        </section>
+        ) : aboutUsData ? (
+          <>
+            {/* Hero Section */}
+            <section className="relative bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white py-24 overflow-hidden">
+              <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
 
-        {/* Content Section */}
-        <section className="section-padding bg-gray-50">
-          <div className="container-custom">
-            {isLoading ? (
-              <div className="flex justify-center items-center min-h-[400px]">
-                <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-brand-accent"></div>
-              </div>
-            ) : pageData?.content ? (
-              <div className="max-w-5xl mx-auto">
-                {/* Main Content Card */}
-                <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-                  <div className="p-8 md:p-12">
-                    <div
-                      className="prose prose-lg max-w-none
-                                 prose-headings:font-bold prose-headings:text-navy-900
-                                 prose-h2:text-4xl prose-h2:mt-16 prose-h2:mb-8 prose-h2:first:mt-0
-                                 prose-h2:pb-4 prose-h2:border-b-4 prose-h2:border-gradient-to-r prose-h2:from-gold-400 prose-h2:to-copper-500
-                                 prose-h3:text-2xl prose-h3:mt-10 prose-h3:mb-4 prose-h3:text-navy-800
-                                 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-6 prose-p:text-lg
-                                 prose-ul:my-8 prose-ul:space-y-3
-                                 prose-li:text-gray-700 prose-li:leading-relaxed prose-li:pl-2
-                                 prose-li:marker:text-gold-500 prose-li:marker:text-xl
-                                 prose-strong:text-navy-900 prose-strong:font-bold prose-strong:text-lg
-                                 prose-a:text-gold-600 prose-a:font-semibold prose-a:no-underline
-                                 hover:prose-a:text-gold-700 hover:prose-a:underline
-                                 prose-hr:my-16 prose-hr:border-gray-300
-                                 prose-em:text-gray-600 prose-em:italic"
-                      dangerouslySetInnerHTML={{ __html: pageData.content }}
-                    />
-                  </div>
-                </div>
+              <div className="container-custom relative z-10">
+                <div className="max-w-4xl mx-auto text-center">
+                  {aboutUsData.heroSection.badgeText && (
+                    <div className="inline-flex items-center gap-2 bg-gold-500/20 backdrop-blur-sm border border-gold-400/30 rounded-full px-6 py-2 mb-6">
+                      <Sparkles className="w-4 h-4 text-gold-400" />
+                      <span className="text-sm font-semibold text-gold-300">
+                        {aboutUsData.heroSection.badgeText}
+                      </span>
+                    </div>
+                  )}
 
-                {/* Technology Showcase */}
-                <div className="mt-16 grid md:grid-cols-3 gap-6">
-                  <div className="bg-gradient-to-br from-blue-500 to-blue-600 text-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-shadow">
-                    <Code className="w-12 h-12 mb-4" />
-                    <h3 className="text-2xl font-bold mb-3">
-                      {language === 'tr' ? 'Modern Teknolojiler' : 'Modern Technologies'}
-                    </h3>
-                    <p className="text-blue-100">
-                      {language === 'tr'
-                        ? 'Python, FastAPI, Docker ve yapay zeka framework\'leri'
-                        : 'Python, FastAPI, Docker and AI frameworks'}
-                    </p>
-                  </div>
+                  <h1 className="text-5xl md:text-6xl font-bold mb-6 leading-tight bg-gradient-to-r from-white via-gold-200 to-white bg-clip-text text-transparent">
+                    {aboutUsData.heroSection.title}
+                  </h1>
 
-                  <div className="bg-gradient-to-br from-purple-500 to-purple-600 text-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-shadow">
-                    <Target className="w-12 h-12 mb-4" />
-                    <h3 className="text-2xl font-bold mb-3">
-                      {language === 'tr' ? 'Sonuç Odaklı' : 'Result-Driven'}
-                    </h3>
-                    <p className="text-purple-100">
-                      {language === 'tr'
-                        ? 'Ölçülebilir ROI ve iş etkisi sağlıyoruz'
-                        : 'Delivering measurable ROI and business impact'}
-                    </p>
-                  </div>
-
-                  <div className="bg-gradient-to-br from-green-500 to-green-600 text-white rounded-xl p-8 shadow-lg hover:shadow-2xl transition-shadow">
-                    <Users className="w-12 h-12 mb-4" />
-                    <h3 className="text-2xl font-bold mb-3">
-                      {language === 'tr' ? 'Global Erişim' : 'Global Reach'}
-                    </h3>
-                    <p className="text-green-100">
-                      {language === 'tr'
-                        ? '4 ülkede başarılı projeler'
-                        : 'Successful projects in 4 countries'}
-                    </p>
-                  </div>
-                </div>
-              </div>
-            ) : (
-              <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 max-w-2xl mx-auto">
-                <div className="text-center py-12">
-                  <Bot className="w-24 h-24 text-gray-300 mx-auto mb-6" />
-                  <p className="text-gray-600 text-lg">
-                    {language === 'tr'
-                      ? 'Hakkımızda içeriği henüz yüklenmedi. Lütfen daha sonra tekrar deneyin.'
-                      : 'About us content is not yet available. Please try again later.'}
+                  <p className="text-xl md:text-2xl text-gray-300 mb-12 leading-relaxed">
+                    {aboutUsData.heroSection.subtitle}
                   </p>
+
+                  {/* Stats */}
+                  {aboutUsData.heroSection.stats && aboutUsData.heroSection.stats.length > 0 && (
+                    <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
+                      {aboutUsData.heroSection.stats
+                        .sort((a, b) => a.order - b.order)
+                        .map((stat, index) => (
+                          <div key={index} className="bg-white/10 backdrop-blur-sm border border-white/20 rounded-xl p-6">
+                            {stat.icon && <DynamicIcon iconName={stat.icon} className="w-8 h-8 text-gold-400 mx-auto mb-3" />}
+                            <div className="text-3xl font-bold text-white mb-1">{stat.value}</div>
+                            <div className="text-sm text-gray-300">{stat.label}</div>
+                          </div>
+                        ))}
+                    </div>
+                  )}
                 </div>
               </div>
-            )}
-          </div>
-        </section>
+            </section>
 
-        {/* Why sipsy.ai Section */}
-        {valuePropositions.length > 0 && (
-          <section className="section-padding bg-white">
-            <div className="container-custom">
-              <div className="text-center mb-16">
-                <h2 className="text-4xl md:text-5xl font-bold text-navy-900 mb-4">
-                  {language === 'tr' ? 'Neden sipsy.ai?' : 'Why sipsy.ai?'}
-                </h2>
-                <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            {/* Content Sections */}
+            {aboutUsData.sections && aboutUsData.sections.length > 0 && (
+              <>
+                {aboutUsData.sections
+                  .sort((a, b) => a.order - b.order)
+                  .map((section, index) => renderContentSection(section, index))}
+              </>
+            )}
+          </>
+        ) : (
+          <div className="flex justify-center items-center min-h-screen">
+            <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 max-w-2xl mx-auto">
+              <div className="text-center py-12">
+                <Bot className="w-24 h-24 text-gray-300 mx-auto mb-6" />
+                <p className="text-gray-600 text-lg">
                   {language === 'tr'
-                    ? 'Yapay zeka ve otomasyon projeleriniz için bizi tercih etmeniz gereken sebepler'
-                    : 'Reasons to choose us for your AI and automation projects'}
+                    ? 'Hakkımızda içeriği henüz yüklenmedi. Lütfen daha sonra tekrar deneyin.'
+                    : 'About us content is not yet available. Please try again later.'}
                 </p>
               </div>
-
-              <div className="grid md:grid-cols-3 gap-8 max-w-6xl mx-auto">
-                {valuePropositions.map((vp, index) => {
-                  // Define gradient colors for each card
-                  const gradients = [
-                    'from-orange-500 to-orange-600',
-                    'from-teal-500 to-teal-600',
-                    'from-indigo-500 to-indigo-600',
-                  ];
-                  const gradient = gradients[index % gradients.length];
-
-                  // Define default icons for each card
-                  const icons = [Rocket, Users2, TrendingUpIcon];
-                  const IconComponent = icons[index % icons.length];
-
-                  return (
-                    <div
-                      key={index}
-                      className={`bg-gradient-to-br ${gradient} text-white rounded-2xl p-8 shadow-xl hover:shadow-2xl transition-all duration-300 hover:scale-105`}
-                    >
-                      <div className="bg-white/20 backdrop-blur-sm rounded-xl p-4 w-fit mb-6">
-                        <IconComponent className="w-10 h-10" />
-                      </div>
-                      <h3 className="text-2xl font-bold mb-4">{vp.title}</h3>
-                      <p className="text-white/90 leading-relaxed">{vp.description}</p>
-                    </div>
-                  );
-                })}
-              </div>
             </div>
-          </section>
+          </div>
         )}
 
         {/* CTA Section */}
@@ -391,12 +425,12 @@ export default function AboutUsPage() {
                   ) : (
                     <>
                       <li>
-                        <a href="/#services" className="hover:text-brand-accent transition-colors">
+                        <a href="/#services" className="hover:text-gold-400 transition-colors">
                           {language === 'tr' ? 'RPA & Hiperotomasyon' : 'RPA & Hyperautomation'}
                         </a>
                       </li>
                       <li>
-                        <a href="/#services" className="hover:text-brand-accent transition-colors">
+                        <a href="/#services" className="hover:text-gold-400 transition-colors">
                           {language === 'tr' ? 'AI/ML Entegrasyonu' : 'AI/ML Integration'}
                         </a>
                       </li>
@@ -422,12 +456,12 @@ export default function AboutUsPage() {
                   ) : (
                     <>
                       <li>
-                        <a href="/about-us" className="hover:text-brand-accent transition-colors">
+                        <a href="/about-us" className="hover:text-gold-400 transition-colors">
                           {language === 'tr' ? 'Hakkımızda' : 'About Us'}
                         </a>
                       </li>
                       <li>
-                        <a href="/contact" className="hover:text-brand-accent transition-colors">
+                        <a href="/contact" className="hover:text-gold-400 transition-colors">
                           {language === 'tr' ? 'İletişim' : 'Contact'}
                         </a>
                       </li>

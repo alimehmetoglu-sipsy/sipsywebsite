@@ -1,0 +1,47 @@
+{
+  "collectionName": "components_about_us_content_sections",
+  "info": {
+    "displayName": "Content Section",
+    "icon": "dashboard",
+    "description": "Section with either text content or card list"
+  },
+  "options": {},
+  "attributes": {
+    "sectionTitle": {
+      "type": "string",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      },
+      "required": true
+    },
+    "sectionType": {
+      "type": "enumeration",
+      "required": true,
+      "default": "text",
+      "enum": [
+        "text",
+        "cards",
+        "badges"
+      ]
+    },
+    "description": {
+      "type": "richtext",
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "cards": {
+      "type": "component",
+      "component": "about-us.content-card",
+      "repeatable": true
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

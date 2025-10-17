@@ -45,3 +45,4 @@ backup-*.tar.gz
 
 # deployment guides with sensitive info
 DEPLOYMENT_GUIDE.md
+.playwright-mcp/

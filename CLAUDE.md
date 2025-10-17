@@ -132,4 +132,5 @@ When answering questions about Strapi features, architecture, or best practices,
 - **Webhooks**: `https://docs.strapi.io/cms/backend-customization/webhooks`
 - **CRON Jobs**: `https://docs.strapi.io/cms/configurations/cron`
 
-Use WebFetch tool to access specific documentation pages when providing detailed answers about Strapi features or best practices.
+Connect to AWS Production Cloud Server
+- ssh -i sipsy-lightsail-key.pem bitnami@54.243.251.248 C:\Users\Ali\Documents\Projects\sipsywebsite sipsy-lightsail-key.pem

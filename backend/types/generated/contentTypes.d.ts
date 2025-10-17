@@ -430,6 +430,51 @@ export interface AdminUser extends Struct.CollectionTypeSchema {
   };
 }
 
+export interface ApiAboutUsAboutUs extends Struct.SingleTypeSchema {
+  collectionName: 'about_us';
+  info: {
+    description: 'About Us page with hero section and content sections';
+    displayName: 'About Us';
+    pluralName: 'about-uses';
+    singularName: 'about-us';
+  };
+  options: {
+    draftAndPublish: true;
+  };
+  pluginOptions: {
+    i18n: {
+      localized: true;
+    };
+  };
+  attributes: {
+    createdAt: Schema.Attribute.DateTime;
+    createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+    heroSection: Schema.Attribute.Component<'about-us.hero-section', false> &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    locale: Schema.Attribute.String;
+    localizations: Schema.Attribute.Relation<
+      'oneToMany',
+      'api::about-us.about-us'
+    >;
+    publishedAt: Schema.Attribute.DateTime;
+    sections: Schema.Attribute.Component<'about-us.content-section', true> &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    updatedAt: Schema.Attribute.DateTime;
+    updatedBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
+      Schema.Attribute.Private;
+  };
+}
+
 export interface ApiBlogPostBlogPost extends Struct.CollectionTypeSchema {
   collectionName: 'blog_posts';
   info: {
@@ -1191,14 +1236,7 @@ export interface ApiServiceService extends Struct.CollectionTypeSchema {
           localized: true;
         };
       }>;
-    icon: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<
-        'plugin::strapi-plugin-iconhub.iconhub',
-        {
-          storeIconData: true;
-          storeIconName: true;
-        }
-      >;
+    icon: Schema.Attribute.Text;
     keyTools: Schema.Attribute.Relation<'manyToMany', 'api::tool.tool'>;
     link: Schema.Attribute.String;
     linkText: Schema.Attribute.String &
@@ -1245,14 +1283,7 @@ export interface ApiSolutionSolution extends Struct.CollectionTypeSchema {
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     featured: Schema.Attribute.Boolean & Schema.Attribute.DefaultTo<false>;
-    icon: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<
-        'plugin::strapi-plugin-iconhub.iconhub',
-        {
-          storeIconData: true;
-          storeIconName: true;
-        }
-      >;
+    icon: Schema.Attribute.Text;
     keyTools: Schema.Attribute.Relation<'manyToMany', 'api::tool.tool'>;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
@@ -1405,14 +1436,7 @@ export interface ApiValuePropositionValueProposition
     createdBy: Schema.Attribute.Relation<'oneToOne', 'admin::user'> &
       Schema.Attribute.Private;
     description: Schema.Attribute.Text & Schema.Attribute.Required;
-    icon: Schema.Attribute.JSON &
-      Schema.Attribute.CustomField<
-        'plugin::strapi-plugin-iconhub.iconhub',
-        {
-          storeIconData: true;
-          storeIconName: true;
-        }
-      >;
+    icon: Schema.Attribute.Text;
     locale: Schema.Attribute.String;
     localizations: Schema.Attribute.Relation<
       'oneToMany',
@@ -2090,6 +2114,7 @@ declare module '@strapi/strapi' {
       'admin::transfer-token': AdminTransferToken;
       'admin::transfer-token-permission': AdminTransferTokenPermission;
       'admin::user': AdminUser;
+      'api::about-us.about-us': ApiAboutUsAboutUs;
       'api::blog-post.blog-post': ApiBlogPostBlogPost;
       'api::case-study.case-study': ApiCaseStudyCaseStudy;
       'api::contact-form.contact-form': ApiContactFormContactForm;

@@ -215,3 +215,11 @@ export async function getPageBySlug(slug: string, locale: string = 'tr') {
   const data = await fetchAPI(`/pages?filters[slug][$eq]=${slug}&populate=*`, locale);
   return data.data?.[0];
 }
+
+// About Us
+export async function getAboutUs(locale: string = 'tr') {
+  // Strapi 5 requires explicit nested populate for components
+  const populateQuery = 'populate[heroSection][populate]=stats&populate[sections][populate]=cards';
+  const data = await fetchAPI(`/about-us?${populateQuery}`, locale);
+  return data.data;
+}

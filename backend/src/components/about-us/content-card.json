@@ -1,0 +1,38 @@
+{
+  "collectionName": "components_about_us_content_cards",
+  "info": {
+    "displayName": "Content Card",
+    "icon": "layer",
+    "description": "Individual card for about us sections (expertise, achievements, etc.)"
+  },
+  "options": {},
+  "attributes": {
+    "icon": {
+      "type": "string",
+      "required": false,
+      "maxLength": 50
+    },
+    "title": {
+      "type": "string",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "description": {
+      "type": "text",
+      "required": true,
+      "pluginOptions": {
+        "i18n": {
+          "localized": true
+        }
+      }
+    },
+    "order": {
+      "type": "integer",
+      "default": 0
+    }
+  }
+}

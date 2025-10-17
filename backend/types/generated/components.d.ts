@@ -1,5 +1,120 @@
 import type { Schema, Struct } from '@strapi/strapi';
 
+export interface AboutUsContentCard extends Struct.ComponentSchema {
+  collectionName: 'components_about_us_content_cards';
+  info: {
+    description: 'Individual card for about us sections (expertise, achievements, etc.)';
+    displayName: 'Content Card';
+    icon: 'layer';
+  };
+  attributes: {
+    description: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    icon: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 50;
+      }>;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+  };
+}
+
+export interface AboutUsContentSection extends Struct.ComponentSchema {
+  collectionName: 'components_about_us_content_sections';
+  info: {
+    description: 'Section with either text content or card list';
+    displayName: 'Content Section';
+    icon: 'dashboard';
+  };
+  attributes: {
+    cards: Schema.Attribute.Component<'about-us.content-card', true>;
+    description: Schema.Attribute.RichText &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    sectionTitle: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    sectionType: Schema.Attribute.Enumeration<['text', 'cards', 'badges']> &
+      Schema.Attribute.Required &
+      Schema.Attribute.DefaultTo<'text'>;
+  };
+}
+
+export interface AboutUsHeroSection extends Struct.ComponentSchema {
+  collectionName: 'components_about_us_hero_sections';
+  info: {
+    description: 'Hero section with title, subtitle, badge and stats';
+    displayName: 'Hero Section';
+    icon: 'star';
+  };
+  attributes: {
+    badgeText: Schema.Attribute.String &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    stats: Schema.Attribute.Component<'about-us.stat-card', true>;
+    subtitle: Schema.Attribute.Text &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    title: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+  };
+}
+
+export interface AboutUsStatCard extends Struct.ComponentSchema {
+  collectionName: 'components_about_us_stat_cards';
+  info: {
+    description: 'Statistics card for hero section (6+, 25+, etc.)';
+    displayName: 'Stat Card';
+    icon: 'chartBubble';
+  };
+  attributes: {
+    icon: Schema.Attribute.String &
+      Schema.Attribute.SetMinMaxLength<{
+        maxLength: 50;
+      }>;
+    label: Schema.Attribute.String &
+      Schema.Attribute.Required &
+      Schema.Attribute.SetPluginOptions<{
+        i18n: {
+          localized: true;
+        };
+      }>;
+    order: Schema.Attribute.Integer & Schema.Attribute.DefaultTo<0>;
+    value: Schema.Attribute.String & Schema.Attribute.Required;
+  };
+}
+
 export interface SolutionMetric extends Struct.ComponentSchema {
   collectionName: 'components_solution_metrics';
   info: {
@@ -101,6 +216,10 @@ export interface SolutionVisual extends Struct.ComponentSchema {
 declare module '@strapi/strapi' {
   export module Public {
     export interface ComponentSchemas {
+      'about-us.content-card': AboutUsContentCard;
+      'about-us.content-section': AboutUsContentSection;
+      'about-us.hero-section': AboutUsHeroSection;
+      'about-us.stat-card': AboutUsStatCard;
       'solution.metric': SolutionMetric;
       'solution.point': SolutionPoint;
       'solution.project': SolutionProject;
