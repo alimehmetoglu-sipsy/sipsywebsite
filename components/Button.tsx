@@ -1,10 +1,10 @@
-import React, { ButtonHTMLAttributes, ReactNode } from 'react';
+import React, { ButtonHTMLAttributes, AnchorHTMLAttributes, ReactNode } from 'react';
 
 export type ButtonVariant = 'primary' | 'secondary' | 'outline' | 'ghost' | 'danger';
 export type ButtonSize = 'sm' | 'md' | 'lg' | 'xl';
 export type IconPosition = 'left' | 'right';
 
-export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
+type BaseButtonProps = {
   variant?: ButtonVariant;
   size?: ButtonSize;
   loading?: boolean;
@@ -13,11 +13,18 @@ export interface ButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   iconPosition?: IconPosition;
   fullWidth?: boolean;
   children: ReactNode;
-}
+};
 
-const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
+export type ButtonProps = BaseButtonProps &
+  (
+    | ({ as?: 'button' } & ButtonHTMLAttributes<HTMLButtonElement>)
+    | ({ as: 'a' } & AnchorHTMLAttributes<HTMLAnchorElement>)
+  );
+
+const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonProps>(
   (
     {
+      as: Component = 'button',
       variant,
       size = 'md',
       loading = false,
@@ -27,7 +34,6 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       fullWidth = false,
       className = '',
       children,
-      type = 'button',
       ...props
     },
     ref
@@ -97,18 +103,37 @@ const Button = React.forwardRef<HTMLButtonElement, ButtonProps>(
       return null;
     };
 
-    return (
-      <button
-        ref={ref}
-        type={type}
-        className={combinedClassName}
-        disabled={isDisabled}
-        aria-busy={loading}
-        {...props}
-      >
+    const content = (
+      <>
         {renderLeftContent()}
         <span>{children}</span>
         {renderRightContent()}
+      </>
+    );
+
+    if (Component === 'a') {
+      return (
+        <a
+          ref={ref as React.Ref<HTMLAnchorElement>}
+          className={combinedClassName}
+          aria-busy={loading}
+          {...(props as AnchorHTMLAttributes<HTMLAnchorElement>)}
+        >
+          {content}
+        </a>
+      );
+    }
+
+    return (
+      <button
+        ref={ref as React.Ref<HTMLButtonElement>}
+        type={(props as ButtonHTMLAttributes<HTMLButtonElement>).type || 'button'}
+        className={combinedClassName}
+        disabled={isDisabled}
+        aria-busy={loading}
+        {...(props as ButtonHTMLAttributes<HTMLButtonElement>)}
+      >
+        {content}
       </button>
     );
   }

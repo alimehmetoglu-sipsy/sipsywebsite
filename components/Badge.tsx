@@ -1,6 +1,6 @@
 import React, { HTMLAttributes, ReactNode } from 'react';
 
-export type BadgeVariant = 'primary' | 'secondary' | 'accent' | 'neutral' | 'success' | 'warning' | 'error';
+export type BadgeVariant = 'primary' | 'secondary' | 'accent' | 'neutral' | 'success' | 'warning' | 'error' | 'outline';
 export type BadgeSize = 'sm' | 'md' | 'lg';
 
 export interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
@@ -39,6 +39,7 @@ const Badge = React.forwardRef<HTMLSpanElement, BadgeProps>(
       success: 'bg-green-100 text-green-700 border border-green-300',
       warning: 'bg-amber-100 text-amber-700 border border-amber-300',
       error: 'bg-red-100 text-red-700 border border-red-300',
+      outline: 'bg-transparent border border-current',
     };
 
     // Size styles

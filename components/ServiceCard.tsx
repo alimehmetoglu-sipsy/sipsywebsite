@@ -14,7 +14,7 @@ export interface ServiceCardTool {
 }
 
 export interface ServiceCardProps extends Omit<CardProps, 'children'> {
-  icon: string;
+  icon?: string | null;
   title: string;
   description: string;
   linkText: string;
@@ -51,13 +51,15 @@ const ServiceCard = React.forwardRef<HTMLDivElement, ServiceCardProps>(
         {...props}
       >
         {/* Icon */}
-        <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-4 bg-cyan-100">
-          <DynamicIcon
-            icon={icon}
-            className="w-7 h-7 text-navy-800"
-            size={28}
-          />
-        </div>
+        {icon && (
+          <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-4 bg-cyan-100">
+            <DynamicIcon
+              icon={icon}
+              className="w-7 h-7 text-navy-800"
+              size={28}
+            />
+          </div>
+        )}
 
         {/* Title */}
         <h3 className="text-xl font-bold text-navy-900 mb-3">

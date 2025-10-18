@@ -64,8 +64,6 @@ const Card = React.forwardRef<HTMLDivElement, CardProps>(
         <Link
           href={href}
           className={combinedClassName}
-          ref={ref as any}
-          {...props}
         >
           {children}
         </Link>

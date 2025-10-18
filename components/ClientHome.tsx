@@ -285,7 +285,7 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
               return (
                 <ServiceCard
                   key={service.id}
-                  icon={service.icon}
+                  icon={typeof service.icon === 'string' ? service.icon : null}
                   title={service.title}
                   description={service.description}
                   linkText={service.linkText}

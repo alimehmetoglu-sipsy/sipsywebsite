@@ -5,7 +5,7 @@ import Card, { CardProps } from './Card';
 import Badge from './Badge';
 import Button from './Button';
 
-export interface CaseStudyCardProps extends Omit<CardProps, 'children'> {
+export interface CaseStudyCardProps extends Omit<CardProps, 'children' | 'results'> {
   title: string;
   client?: string;
   industry?: string;
