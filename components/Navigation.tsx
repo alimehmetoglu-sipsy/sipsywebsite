@@ -96,36 +96,46 @@ export default function Navigation({ items: initialItems = [], ctaButtons: initi
 
   return (
     <nav
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        isScrolled ? 'bg-white shadow-lg' : 'bg-transparent'
+      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-lg ${
+        isScrolled
+          ? 'bg-white/80 shadow-2xl border-b-2 border-cyan-500/20'
+          : 'bg-white/10 shadow-lg border-b-2 border-white/10'
       }`}
     >
       <div className="container-custom">
         <div className="flex items-center justify-between h-20">
           {/* Logo */}
-          <a href="/" className="flex items-center space-x-3">
-            {footerData?.logo ? (
-              <Image
-                src={getMediaURL(footerData.logo.url)}
-                alt={footerData.logo.alternativeText || 'Logo'}
-                width={48}
-                height={48}
-                className="w-12 h-12 object-contain"
-                priority
-              />
-            ) : (
-              <Image
-                src="/images/logo.png"
-                alt="Sipsy Logo"
-                width={48}
-                height={48}
-                className="w-12 h-12"
-                priority
-              />
-            )}
+          <a href="/" className="flex items-center space-x-4 group transition-all duration-300 hover:scale-105">
+            <div className="relative">
+              {/* Gradient ring around logo */}
+              <div className="absolute inset-0 bg-gradient-to-br from-cyan-500 to-navy-800 rounded-full opacity-0 group-hover:opacity-20 blur-sm transition-opacity duration-300" />
+
+              {footerData?.logo ? (
+                <Image
+                  src={getMediaURL(footerData.logo.url)}
+                  alt={footerData.logo.alternativeText || 'Logo'}
+                  width={56}
+                  height={56}
+                  className="w-14 h-14 object-contain relative z-10 transition-transform duration-300 group-hover:rotate-6"
+                  priority
+                />
+              ) : (
+                <Image
+                  src="/images/logo.png"
+                  alt="Sipsy Logo"
+                  width={56}
+                  height={56}
+                  className="w-14 h-14 relative z-10 transition-transform duration-300 group-hover:rotate-6"
+                  priority
+                />
+              )}
+            </div>
+
             <span
-              className={`text-2xl font-bold ${
-                isScrolled ? 'text-navy-900' : 'text-white'
+              className={`text-3xl font-bold transition-all duration-300 ${
+                isScrolled
+                  ? 'text-navy-900 group-hover:text-cyan-500'
+                  : 'text-white group-hover:text-cyan-400 drop-shadow-lg'
               }`}
             >
               {footerData?.siteName || 'sipsy.ai'}
@@ -138,13 +148,24 @@ export default function Navigation({ items: initialItems = [], ctaButtons: initi
               <a
                 key={item.id}
                 href={item.href}
-                className={`font-medium transition-colors ${
+                className={`relative font-medium transition-all duration-300 py-2 px-4 rounded-lg group overflow-hidden hover:scale-105 ${
                   isScrolled
-                    ? 'text-neutral-dark hover:text-cyan-500'
-                    : 'text-neutral-light hover:text-white'
+                    ? 'text-navy-900 hover:text-cyan-500'
+                    : 'text-white hover:text-cyan-400'
                 }`}
               >
-                {item.label}
+                {/* Background pill on hover */}
+                <span
+                  className={`absolute inset-0 rounded-lg transition-all duration-300 opacity-0 group-hover:opacity-100 ${
+                    isScrolled ? 'bg-cyan-50' : 'bg-white/10 backdrop-blur-sm'
+                  }`}
+                />
+
+                {/* Animated underline */}
+                <span className="absolute bottom-1 left-0 h-0.5 w-0 bg-gradient-to-r from-cyan-500 to-navy-800 transition-all duration-300 group-hover:w-full" />
+
+                {/* Label */}
+                <span className="relative z-10">{item.label}</span>
               </a>
             ))}
             {sortedCtaButtons.map((button) => (
@@ -185,13 +206,13 @@ export default function Navigation({ items: initialItems = [], ctaButtons: initi
 
       {/* Mobile Menu Overlay */}
       {isMenuOpen && (
-        <div className="lg:hidden fixed inset-0 top-20 bg-white z-40 overflow-y-auto">
+        <div className="lg:hidden fixed inset-0 top-20 bg-white/90 backdrop-blur-xl z-40 overflow-y-auto border-t-2 border-cyan-500/20">
           <div className="container-custom py-8 space-y-6">
             {sortedItems.map((item) => (
               <a
                 key={item.id}
                 href={item.href}
-                className="block text-lg font-medium text-neutral-dark hover:text-cyan-500 py-2"
+                className="block text-lg font-medium text-neutral-dark hover:text-cyan-500 py-2 px-3 rounded-lg hover:bg-gradient-to-r hover:from-cyan-50 hover:to-blue-50 transition-all duration-300 hover:scale-105 hover:pl-5"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}

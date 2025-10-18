@@ -41,15 +41,21 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
     const isDisabled = disabled || loading;
 
     // Base styles - common to all buttons
-    const baseStyles = 'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100';
+    const baseStyles =
+      'inline-flex items-center justify-center font-semibold rounded-lg transition-all duration-300 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-cyan-500 focus-visible:ring-offset-2 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 relative overflow-hidden group';
 
-    // Variant styles
+    // Variant styles with enhanced animations
     const variantStyles: Record<ButtonVariant, string> = {
-      primary: 'bg-navy-800 hover:bg-navy-dark text-white shadow-button hover:shadow-button-hover hover:scale-105 active:scale-100',
-      secondary: 'bg-cyan-500 hover:bg-cyan-600 text-white shadow-button hover:shadow-button-hover hover:scale-105 active:scale-100',
-      outline: 'border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white active:bg-cyan-600',
-      ghost: 'text-navy-800 hover:text-cyan-500 hover:bg-cyan-50 active:bg-cyan-100',
-      danger: 'bg-red-600 hover:bg-red-700 text-white shadow-button hover:shadow-button-hover hover:scale-105 active:scale-100',
+      primary:
+        'bg-gradient-to-r from-navy-800 to-navy-900 hover:from-navy-900 hover:to-navy-800 text-white shadow-button hover:shadow-2xl hover:shadow-navy-800/40 hover:scale-105 active:scale-95 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700',
+      secondary:
+        'bg-gradient-to-r from-cyan-500 to-cyan-600 hover:from-cyan-600 hover:to-cyan-500 text-white shadow-button hover:shadow-2xl hover:shadow-cyan-500/40 hover:scale-105 active:scale-95 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/20 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700',
+      outline:
+        'border-2 border-cyan-500 text-cyan-500 hover:bg-cyan-500 hover:text-white hover:shadow-lg hover:shadow-cyan-500/30 active:bg-cyan-600 hover:scale-105 active:scale-95 transition-all duration-300',
+      ghost:
+        'text-navy-800 hover:text-cyan-500 hover:bg-cyan-50 active:bg-cyan-100 hover:scale-105 active:scale-95',
+      danger:
+        'bg-gradient-to-r from-red-600 to-red-700 hover:from-red-700 hover:to-red-600 text-white shadow-button hover:shadow-2xl hover:shadow-red-600/40 hover:scale-105 active:scale-95 before:absolute before:inset-0 before:bg-gradient-to-r before:from-transparent before:via-white/10 before:to-transparent before:translate-x-[-200%] hover:before:translate-x-[200%] before:transition-transform before:duration-700',
     };
 
     // Size styles
@@ -69,7 +75,7 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
     // Render loading spinner
     const renderLoadingSpinner = () => (
       <svg
-        className="loading-spinner"
+        className="loading-spinner relative z-10 animate-spin"
         xmlns="http://www.w3.org/2000/svg"
         fill="none"
         viewBox="0 0 24 24"
@@ -94,19 +100,21 @@ const Button = React.forwardRef<HTMLButtonElement | HTMLAnchorElement, ButtonPro
     // Render icon or loading spinner
     const renderLeftContent = () => {
       if (loading) return renderLoadingSpinner();
-      if (icon && iconPosition === 'left') return <span className="inline-flex">{icon}</span>;
+      if (icon && iconPosition === 'left')
+        return <span className="inline-flex relative z-10">{icon}</span>;
       return null;
     };
 
     const renderRightContent = () => {
-      if (!loading && icon && iconPosition === 'right') return <span className="inline-flex">{icon}</span>;
+      if (!loading && icon && iconPosition === 'right')
+        return <span className="inline-flex relative z-10">{icon}</span>;
       return null;
     };
 
     const content = (
       <>
         {renderLeftContent()}
-        <span>{children}</span>
+        <span className="relative z-10">{children}</span>
         {renderRightContent()}
       </>
     );

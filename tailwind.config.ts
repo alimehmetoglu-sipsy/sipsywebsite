@@ -55,6 +55,9 @@ const config: Config = {
         'slide-up': 'slideUp 0.5s ease-out',
         'count-up': 'countUp 1s ease-out',
         'spin': 'spin 1s linear infinite',
+        'pulse-glow': 'pulseGlow 2s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+        'slide-in-right': 'slideInRight 0.3s ease-out',
+        'shimmer': 'shimmer 2s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -72,6 +75,18 @@ const config: Config = {
         spin: {
           '0%': { transform: 'rotate(0deg)' },
           '100%': { transform: 'rotate(360deg)' },
+        },
+        pulseGlow: {
+          '0%, 100%': { opacity: '1', boxShadow: '0 0 20px rgba(0, 212, 255, 0.3)' },
+          '50%': { opacity: '0.8', boxShadow: '0 0 30px rgba(0, 212, 255, 0.5)' },
+        },
+        slideInRight: {
+          '0%': { transform: 'translateX(100%)', opacity: '0' },
+          '100%': { transform: 'translateX(0)', opacity: '1' },
+        },
+        shimmer: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(100%)' },
         },
       },
       backgroundImage: {

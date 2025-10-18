@@ -51,7 +51,7 @@ export default function SolutionsPage() {
 
   return (
     <>
-      <Navigation />
+      <Navigation forceScrolled />
 
       <main className="min-h-screen pt-20">
         {/* Service Filters */}
