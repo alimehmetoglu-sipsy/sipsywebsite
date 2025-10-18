@@ -7,14 +7,12 @@ import { X } from 'lucide-react';
 import { NavigationItem, CtaButton, Service } from '@/lib/types';
 import Button from '@/components/Button';
 import LanguageSwitcher from '@/components/LanguageSwitcher';
-import MobileMenuServices from './MobileMenuServices';
 
 interface MobileMenuProps {
   isOpen: boolean;
   onClose: () => void;
   items: (NavigationItem & { id: number })[];
   ctaButtons: (CtaButton & { id: number })[];
-  services: (Service & { id: number })[];
   onCtaClick: (button: CtaButton & { id: number }) => void;
 }
 
@@ -23,7 +21,6 @@ export default function MobileMenu({
   onClose,
   items,
   ctaButtons,
-  services,
   onCtaClick,
 }: MobileMenuProps) {
   // Lock body scroll when menu is open
@@ -79,7 +76,6 @@ export default function MobileMenu({
   // Sort items by order
   const sortedItems = [...items].sort((a, b) => a.order - b.order);
   const sortedCtaButtons = [...ctaButtons].sort((a, b) => a.order - b.order);
-  const sortedServices = [...services].sort((a, b) => a.order - b.order);
 
   return (
     <AnimatePresence>
@@ -141,11 +137,6 @@ export default function MobileMenu({
                     </Link>
                   </motion.div>
                 ))}
-
-                {/* Services - with nested menu */}
-                <motion.div variants={itemVariants}>
-                  <MobileMenuServices services={sortedServices} onClose={onClose} />
-                </motion.div>
               </motion.div>
             </div>
 

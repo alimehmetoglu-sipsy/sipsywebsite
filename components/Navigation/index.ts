@@ -1,5 +1,4 @@
 export { default as Navigation } from './Navigation';
-export { default as SkipLink } from './SkipLink';
 export { default as NavBrand } from './NavBrand';
 export { default as NavLink } from './NavLink';
 export { default as NavDropdown } from './NavDropdown';

@@ -14,11 +14,11 @@ import {
 } from '@/lib/strapi';
 import ContactFormModal from '@/components/ContactFormModal';
 import Button from '@/components/Button';
-import SkipLink from './SkipLink';
 import NavBrand from './NavBrand';
 import NavLink from './NavLink';
 import NavDropdown from './NavDropdown';
 import MobileMenu from './MobileMenu';
+import LanguageSwitcher from '@/components/LanguageSwitcher';
 
 interface NavigationProps {
   items?: (NavigationItem & { id: number })[];
@@ -125,7 +125,6 @@ export default function Navigation({
 
   return (
     <>
-      <SkipLink />
       <nav
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 backdrop-blur-lg ${
           isScrolled
@@ -160,15 +159,6 @@ export default function Navigation({
                 />
               ))}
 
-              {/* Services Dropdown */}
-              {sortedServices.length > 0 && (
-                <NavDropdown
-                  label="Services"
-                  services={sortedServices}
-                  isScrolled={isScrolled}
-                />
-              )}
-
               {/* CTA Buttons */}
               {sortedCtaButtons.map((button) => (
                 <Button
@@ -185,6 +175,9 @@ export default function Navigation({
                   {button.text}
                 </Button>
               ))}
+
+              {/* Language Switcher */}
+              <LanguageSwitcher />
             </div>
 
             {/* Mobile Menu Button */}
@@ -211,7 +204,6 @@ export default function Navigation({
         onClose={() => setIsMenuOpen(false)}
         items={sortedItems}
         ctaButtons={sortedCtaButtons}
-        services={sortedServices}
         onCtaClick={handleCtaClick}
       />
 
