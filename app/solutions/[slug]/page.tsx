@@ -4,6 +4,9 @@ import { useState, useEffect } from 'react';
 import { useParams } from 'next/navigation';
 import Navigation from '@/components/Navigation';
 import DynamicIcon from '@/components/DynamicIcon';
+import Button from '@/components/Button';
+import Badge from '@/components/Badge';
+import Card from '@/components/Card';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getSolutionBySlug, getCtaSection, getFooter, getMediaURL } from '@/lib/strapi';
 import { Solution } from '@/lib/types';
@@ -128,15 +131,15 @@ export default function SolutionDetailPage() {
       {/* Sticky Floating CTA */}
       {showStickyCTA && (
         <div className="fixed bottom-6 right-6 z-50 animate-fade-in">
-          <button
+          <Button
             onClick={scrollToCTA}
-            className={`${serviceBgColor} text-white px-6 py-3 rounded-full shadow-2xl hover:scale-105 transition-all duration-300 flex items-center space-x-2 group`}
+            variant={solution.service?.color === 'accent' ? 'primary' : 'secondary'}
+            size="md"
+            icon={<Sparkles className="w-5 h-5" />}
+            className="rounded-full shadow-2xl"
           >
-            <Sparkles className="w-5 h-5 group-hover:animate-spin" />
-            <span className="font-semibold">
-              {language === 'tr' ? 'Ücretsiz Demo' : 'Get Free Demo'}
-            </span>
-          </button>
+            {language === 'tr' ? 'Ücretsiz Demo' : 'Get Free Demo'}
+          </Button>
         </div>
       )}
 
@@ -168,9 +171,13 @@ export default function SolutionDetailPage() {
                 {/* Service Badge */}
                 {solution.service && (
                   <div className="mb-6">
-                    <span className={`inline-block px-4 py-2 ${serviceBgColor} text-white text-sm font-semibold rounded-full shadow-lg`}>
+                    <Badge
+                      variant={solution.service?.color === 'accent' ? 'primary' : 'secondary'}
+                      size="md"
+                      className="shadow-lg"
+                    >
                       {solution.service.title}
-                    </span>
+                    </Badge>
                   </div>
                 )}
 
@@ -201,24 +208,24 @@ export default function SolutionDetailPage() {
 
                 {/* Primary CTA */}
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
-                  <button
+                  <Button
                     onClick={scrollToCTA}
-                    className="bg-gradient-to-r from-green-500 to-green-600 hover:from-green-600 hover:to-green-700 text-white font-bold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 shadow-xl flex items-center justify-center space-x-2"
+                    variant="primary"
+                    size="lg"
+                    icon={<Calendar className="w-5 h-5" />}
+                    className="shadow-xl"
                   >
-                    <Calendar className="w-5 h-5" />
-                    <span>
-                      {solution.heroCTA?.primaryButtonText || (language === 'tr' ? 'Ücretsiz Demo Talep Edin' : 'Request Free Demo')}
-                    </span>
-                  </button>
-                  <button
+                    {solution.heroCTA?.primaryButtonText || (language === 'tr' ? 'Ücretsiz Demo Talep Edin' : 'Request Free Demo')}
+                  </Button>
+                  <Button
                     onClick={scrollToCTA}
-                    className="border-2 border-white text-white hover:bg-white hover:text-navy-900 font-semibold px-8 py-4 rounded-lg transition-all duration-300 flex items-center justify-center space-x-2"
+                    variant="outline"
+                    size="lg"
+                    icon={<MessageCircle className="w-5 h-5" />}
+                    className="border-white text-white hover:bg-white hover:text-navy-900"
                   >
-                    <MessageCircle className="w-5 h-5" />
-                    <span>
-                      {solution.heroCTA?.secondaryButtonText || (language === 'tr' ? 'Uzmanla Görüş' : 'Talk to Expert')}
-                    </span>
-                  </button>
+                    {solution.heroCTA?.secondaryButtonText || (language === 'tr' ? 'Uzmanla Görüş' : 'Talk to Expert')}
+                  </Button>
                 </div>
               </div>
 
@@ -313,12 +320,14 @@ export default function SolutionDetailPage() {
                       ? 'Siz de benzer zorluklarla mı karşılaşıyorsunuz? Çözümü birlikte bulalım.'
                       : 'Are you facing similar challenges? Let\'s find the solution together.'}
                   </p>
-                  <button
+                  <Button
                     onClick={scrollToCTA}
-                    className="bg-white text-red-600 hover:bg-neutral-light font-bold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 shadow-lg"
+                    variant="primary"
+                    size="lg"
+                    className="bg-white text-red-600 hover:bg-neutral-light shadow-lg"
                   >
                     {language === 'tr' ? 'Çözümü Keşfet' : 'Discover the Solution'}
-                  </button>
+                  </Button>
                 </div>
               </div>
             </div>
@@ -565,18 +574,23 @@ export default function SolutionDetailPage() {
             )}
             {ctaSection?.buttonText && (
               ctaSection.buttonUrl ? (
-                <a
+                <Button
+                  as="a"
                   href={ctaSection.buttonUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
+                  size="lg"
+                  className="bg-white text-navy-900 hover:bg-neutral-light font-bold shadow-lg mb-6 text-xl transition-all duration-300 hover:scale-105"
                 >
                   {ctaSection.buttonText}
-                </a>
+                </Button>
               ) : (
-                <button className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
+                <Button
+                  size="lg"
+                  className="bg-white text-navy-900 hover:bg-neutral-light font-bold shadow-lg mb-6 text-xl transition-all duration-300 hover:scale-105"
+                >
                   {ctaSection.buttonText}
-                </button>
+                </Button>
               )
             )}
             {ctaSection?.phoneText && (
@@ -603,13 +617,17 @@ export default function SolutionDetailPage() {
                 ? 'İşletmeniz için başka çözümler de keşfedin'
                 : 'Discover other solutions for your business')}
             </p>
-            <Link
+            <Button
+              as="a"
               href="/solutions"
-              className={`inline-flex items-center ${serviceBgColor} text-white font-bold px-8 py-4 rounded-lg hover:opacity-90 transition-opacity shadow-lg`}
+              variant={solution.service?.color === 'accent' ? 'primary' : 'secondary'}
+              size="lg"
+              icon={<ArrowRight className="w-5 h-5" />}
+              iconPosition="right"
+              className="shadow-lg"
             >
               {language === 'tr' ? 'Tüm Çözümleri Gör' : 'View All Solutions'}
-              <ArrowRight className="w-5 h-5 ml-2" />
-            </Link>
+            </Button>
           </div>
         </section>
 

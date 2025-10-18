@@ -4,6 +4,7 @@ import { useState, useEffect } from 'react';
 import { X, CheckCircle } from 'lucide-react';
 import { submitContactForm } from '@/lib/strapi';
 import Link from 'next/link';
+import Button from './Button';
 
 interface ContactFormContent {
   title: string;
@@ -215,11 +216,11 @@ export default function ContactFormModal({ isOpen, onClose, content }: ContactFo
             )}
 
             {submitSuccess && (
-              <div className="mb-6 p-4 bg-gold-50 border border-gold-200 rounded-lg flex items-start space-x-3">
-                <CheckCircle className="w-6 h-6 text-gold-600 flex-shrink-0 mt-0.5" />
+              <div className="mb-6 p-4 bg-cyan-light border border-cyan-500 rounded-lg flex items-start space-x-3">
+                <CheckCircle className="w-6 h-6 text-brand-primary flex-shrink-0 mt-0.5" />
                 <div>
-                  <p className="font-semibold text-gold-900">Başarılı!</p>
-                  <p className="text-gold-800 text-sm">
+                  <p className="font-semibold text-navy-900">Başarılı!</p>
+                  <p className="text-neutral-dark text-sm">
                     {content.successMessage}
                   </p>
                 </div>
@@ -340,17 +341,15 @@ export default function ContactFormModal({ isOpen, onClose, content }: ContactFo
               </div>
 
               {/* Submit Button */}
-              <button
+              <Button
                 type="submit"
-                disabled={isSubmitting}
-                className={`w-full py-4 rounded-lg font-bold text-lg transition transform shadow-md ${
-                  isSubmitting
-                    ? 'bg-gray-400 cursor-not-allowed'
-                    : 'bg-brand-secondary hover:bg-gold-500 hover:scale-105 text-navy-900'
-                }`}
+                variant="secondary"
+                size="lg"
+                fullWidth
+                loading={isSubmitting}
               >
-                {isSubmitting ? 'Gönderiliyor...' : content.submitButtonText}
-              </button>
+                {content.submitButtonText}
+              </Button>
             </form>
           </div>
         </div>

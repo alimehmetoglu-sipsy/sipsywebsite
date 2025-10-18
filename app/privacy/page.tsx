@@ -39,7 +39,7 @@ export default function PrivacyPage() {
     <>
       <Navigation forceScrolled={true} />
 
-      <main className="min-h-screen pt-20 bg-gray-50">
+      <main className="min-h-screen pt-20 bg-neutral-light">
         {/* Hero Section */}
         <section className="bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white py-16">
           <div className="container-custom">
@@ -62,7 +62,7 @@ export default function PrivacyPage() {
             <div className="max-w-4xl mx-auto">
               {isLoading ? (
                 <div className="flex justify-center items-center min-h-[400px]">
-                  <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-brand-accent"></div>
+                  <div className="animate-spin rounded-full h-16 w-16 border-t-4 border-b-4 border-brand-primary"></div>
                 </div>
               ) : pageData?.content ? (
                 <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
@@ -70,14 +70,14 @@ export default function PrivacyPage() {
                     className="prose prose-lg max-w-none
                                prose-headings:font-bold prose-headings:text-navy-900
                                prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:first:mt-0
-                               prose-h2:pb-3 prose-h2:border-b-2 prose-h2:border-gold-400/30
+                               prose-h2:pb-3 prose-h2:border-b-2 prose-h2:border-cyan-500/30
                                prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-navy-800
                                prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4
                                prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6
                                prose-li:text-gray-700 prose-li:leading-relaxed prose-li:mb-2
                                prose-strong:text-navy-900 prose-strong:font-semibold
-                               prose-a:text-gold-600 prose-a:font-medium prose-a:no-underline
-                               hover:prose-a:text-gold-700 hover:prose-a:underline
+                               prose-a:text-brand-primary prose-a:font-medium prose-a:no-underline
+                               hover:prose-a:text-cyan-600 hover:prose-a:underline
                                prose-hr:my-12 prose-hr:border-gray-300
                                prose-em:text-gray-600 prose-em:italic"
                     dangerouslySetInnerHTML={{ __html: pageData.content }}
@@ -115,7 +115,7 @@ export default function PrivacyPage() {
                     className="w-10 h-10 object-contain"
                   />
                 ) : (
-                  <div className="w-10 h-10 bg-gradient-to-br from-gold-400 to-copper-500 rounded-lg flex items-center justify-center">
+                  <div className="w-10 h-10 bg-gradient-to-br from-brand-primary to-cyan-500 rounded-lg flex items-center justify-center">
                     <Bot className="w-6 h-6 text-navy-900" />
                   </div>
                 )}
@@ -133,7 +133,7 @@ export default function PrivacyPage() {
                     {footer.socialLinks.linkedin && (
                       <a
                         href={footer.socialLinks.linkedin}
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                         aria-label="LinkedIn"
                       >
                         <Linkedin className="w-5 h-5" />
@@ -142,7 +142,7 @@ export default function PrivacyPage() {
                     {footer.socialLinks.twitter && (
                       <a
                         href={footer.socialLinks.twitter}
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                         aria-label="Twitter"
                       >
                         <Twitter className="w-5 h-5" />
@@ -151,7 +151,7 @@ export default function PrivacyPage() {
                     {footer.socialLinks.github && (
                       <a
                         href={footer.socialLinks.github}
-                        className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                        className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                         aria-label="GitHub"
                       >
                         <Github className="w-5 h-5" />
@@ -162,21 +162,21 @@ export default function PrivacyPage() {
                   <>
                     <a
                       href="#"
-                      className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                      className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                       aria-label="LinkedIn"
                     >
                       <Linkedin className="w-5 h-5" />
                     </a>
                     <a
                       href="#"
-                      className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                      className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                       aria-label="Twitter"
                     >
                       <Twitter className="w-5 h-5" />
                     </a>
                     <a
                       href="#"
-                      className="w-10 h-10 bg-white/10 hover:bg-gold-500 rounded-lg flex items-center justify-center transition-colors"
+                      className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                       aria-label="GitHub"
                     >
                       <Github className="w-5 h-5" />
@@ -195,7 +195,7 @@ export default function PrivacyPage() {
                 {footer?.links?.services ? (
                   footer.links.services.map((link: { label: string; href: string }, index: number) => (
                     <li key={index}>
-                      <a href={link.href} className="hover:text-gold-400 transition-colors">
+                      <a href={link.href} className="hover:text-brand-primary transition-colors">
                         {link.label}
                       </a>
                     </li>
@@ -203,12 +203,12 @@ export default function PrivacyPage() {
                 ) : (
                   <>
                     <li>
-                      <a href="/#services" className="hover:text-brand-accent transition-colors">
+                      <a href="/#services" className="hover:text-brand-primary transition-colors">
                         {language === 'tr' ? 'RPA & Hiperotomasyon' : 'RPA & Hyperautomation'}
                       </a>
                     </li>
                     <li>
-                      <a href="/#services" className="hover:text-brand-accent transition-colors">
+                      <a href="/#services" className="hover:text-brand-primary transition-colors">
                         {language === 'tr' ? 'AI/ML Entegrasyonu' : 'AI/ML Integration'}
                       </a>
                     </li>
@@ -226,7 +226,7 @@ export default function PrivacyPage() {
                 {footer?.links?.company ? (
                   footer.links.company.map((link: { label: string; href: string }, index: number) => (
                     <li key={index}>
-                      <a href={link.href} className="hover:text-gold-400 transition-colors">
+                      <a href={link.href} className="hover:text-brand-primary transition-colors">
                         {link.label}
                       </a>
                     </li>
@@ -234,12 +234,12 @@ export default function PrivacyPage() {
                 ) : (
                   <>
                     <li>
-                      <a href="/#about" className="hover:text-brand-accent transition-colors">
+                      <a href="/#about" className="hover:text-brand-primary transition-colors">
                         {language === 'tr' ? 'Hakkımızda' : 'About Us'}
                       </a>
                     </li>
                     <li>
-                      <a href="/contact" className="hover:text-brand-accent transition-colors">
+                      <a href="/contact" className="hover:text-brand-primary transition-colors">
                         {language === 'tr' ? 'İletişim' : 'Contact'}
                       </a>
                     </li>
@@ -255,12 +255,12 @@ export default function PrivacyPage() {
               </h4>
               <ul className="space-y-2">
                 <li>
-                  <a href="/privacy" className="hover:text-gold-400 transition-colors">
+                  <a href="/privacy" className="hover:text-brand-primary transition-colors">
                     {language === 'tr' ? 'Gizlilik Politikası' : 'Privacy Policy'}
                   </a>
                 </li>
                 <li>
-                  <a href="/terms" className="hover:text-gold-400 transition-colors">
+                  <a href="/terms" className="hover:text-brand-primary transition-colors">
                     {language === 'tr' ? 'Kullanım Koşulları' : 'Terms of Service'}
                   </a>
                 </li>

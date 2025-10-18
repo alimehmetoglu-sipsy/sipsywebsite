@@ -9,6 +9,7 @@ import LanguageSwitcher from './LanguageSwitcher';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getNavigationItems, getNavigationCtaButtons, getFooter, getContactFormContent } from '@/lib/strapi';
 import ContactFormModal from './ContactFormModal';
+import Button from './Button';
 
 interface NavigationProps {
   items?: (NavigationItem & {id: number})[];
@@ -26,6 +27,7 @@ export default function Navigation({ items: initialItems = [], ctaButtons: initi
   const [isScrolled, setIsScrolled] = useState(forceScrolled);
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
   const [contactFormContent, setContactFormContent] = useState<ContactFormContent | null>(null);
+
 
   useEffect(() => {
     if (forceScrolled) return; // Don't track scroll if forced
@@ -76,23 +78,15 @@ export default function Navigation({ items: initialItems = [], ctaButtons: initi
     (a, b) => a.order - b.order
   );
 
-  // Helper function to get button style classes based on variant
-  const getButtonClasses = (variant: string, isMobile: boolean = false) => {
-    const baseClasses = "font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105 shadow-md";
-    const mobileClasses = isMobile ? "w-full py-4" : "";
-
-    const variantClasses = {
-      primary: "bg-brand-primary hover:bg-blue-600 text-white",
-      secondary: "bg-brand-secondary hover:bg-gold-500 text-navy-900",
-      outline: "border-2 border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-navy-900"
-    };
-
-    return `${baseClasses} ${mobileClasses} ${variantClasses[variant as keyof typeof variantClasses] || variantClasses.secondary}`;
-  };
-
   // Handle CTA button click
   const handleCtaClick = (button: CtaButton & {id: number}) => {
-    if (button.opensContactForm) {
+    // Check if this button should open the contact modal
+    // Use toLocaleLowerCase('tr') for proper Turkish character handling (İ -> i)
+    const buttonTextLower = button.text.toLocaleLowerCase('tr');
+    const isContactButton = buttonTextLower.includes('iletişim') ||
+                           buttonTextLower.includes('contact');
+
+    if (button.opensContactForm || isContactButton) {
       setIsContactModalOpen(true);
       setIsMenuOpen(false);
     } else if (button.href) {
@@ -146,21 +140,27 @@ export default function Navigation({ items: initialItems = [], ctaButtons: initi
                 href={item.href}
                 className={`font-medium transition-colors ${
                   isScrolled
-                    ? 'text-gray-700 hover:text-brand-secondary'
-                    : 'text-gray-200 hover:text-white'
+                    ? 'text-neutral-dark hover:text-cyan-500'
+                    : 'text-neutral-light hover:text-white'
                 }`}
               >
                 {item.label}
               </a>
             ))}
             {sortedCtaButtons.map((button) => (
-              <button
+              <Button
                 key={button.id}
-                onClick={() => handleCtaClick(button)}
-                className={getButtonClasses(button.variant)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleCtaClick(button);
+                }}
+                variant="primary"
+                size="md"
+                type="button"
               >
                 {button.text}
-              </button>
+              </Button>
             ))}
             <LanguageSwitcher />
           </div>
@@ -191,33 +191,56 @@ export default function Navigation({ items: initialItems = [], ctaButtons: initi
               <a
                 key={item.id}
                 href={item.href}
-                className="block text-lg font-medium text-gray-700 hover:text-brand-secondary py-2"
+                className="block text-lg font-medium text-neutral-dark hover:text-cyan-500 py-2"
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.label}
               </a>
             ))}
             {sortedCtaButtons.map((button) => (
-              <button
+              <Button
                 key={button.id}
-                className={`${getButtonClasses(button.variant, true)} mt-4`}
-                onClick={() => handleCtaClick(button)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  e.stopPropagation();
+                  handleCtaClick(button);
+                }}
+                variant="primary"
+                size="md"
+                fullWidth
+                className="mt-4"
+                type="button"
               >
                 {button.text}
-              </button>
+              </Button>
             ))}
           </div>
         </div>
       )}
 
       {/* Contact Form Modal */}
-      {contactFormContent && (
-        <ContactFormModal
-          isOpen={isContactModalOpen}
-          onClose={() => setIsContactModalOpen(false)}
-          content={contactFormContent}
-        />
-      )}
+      <ContactFormModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+        content={contactFormContent || {
+          title: language === 'tr' ? 'İletişim Formu' : 'Contact Form',
+          fullNameLabel: language === 'tr' ? 'Ad Soyad' : 'Full Name',
+          fullNamePlaceholder: language === 'tr' ? 'Adınız ve Soyadınız' : 'Your Full Name',
+          emailLabel: 'Email',
+          emailPlaceholder: language === 'tr' ? 'ornek@email.com' : 'example@email.com',
+          phoneLabel: language === 'tr' ? 'Telefon' : 'Phone',
+          phonePlaceholder: language === 'tr' ? '+90 (555) 123 45 67' : '+1 (555) 123-4567',
+          messageLabel: language === 'tr' ? 'Mesaj' : 'Message',
+          messagePlaceholder: language === 'tr' ? 'Mesajınızı buraya yazın...' : 'Write your message here...',
+          submitButtonText: language === 'tr' ? 'Gönder' : 'Submit',
+          successMessage: language === 'tr' ? 'Mesajınız başarıyla gönderildi!' : 'Your message has been sent successfully!',
+          privacyPolicyText: language === 'tr' ? 'Gizlilik Politikası' : 'Privacy Policy',
+          privacyPolicyUrl: '/privacy',
+          termsText: language === 'tr' ? 'Kullanım Koşulları' : 'Terms of Service',
+          termsUrl: '/terms',
+          privacyAgreementText: language === 'tr' ? "'nı ve ... 'nı kabul ediyorum" : " and ... I agree",
+        }}
+      />
     </nav>
   );
 }

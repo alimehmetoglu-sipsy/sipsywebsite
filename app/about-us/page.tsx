@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
+import Button from '@/components/Button';
+import Badge from '@/components/Badge';
 import {getAboutUs, getCtaSection, getFooter, getMediaURL} from '@/lib/strapi';
 import { AboutUs, AboutUsContentCard, AboutUsContentSection } from '@/lib/types';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -83,14 +85,14 @@ export default function AboutUsPage() {
                 </p>
                 <div className="flex flex-wrap gap-3 justify-center">
                   {technologies.map((tech, idx) => (
-                    <span
+                    <Badge
                       key={idx}
-                      className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-cyan-500/50
-                                 px-5 py-3 rounded-xl text-sm font-medium text-gray-200 hover:text-white
-                                 transition-all duration-300 hover:scale-105 hover:bg-white/15"
+                      variant="outline"
+                      size="md"
+                      className="bg-white/10 backdrop-blur-sm border-white/20 hover:border-cyan-500/50 text-gray-200 hover:text-white transition-all duration-300 hover:scale-105 hover:bg-white/15"
                     >
                       {tech}
-                    </span>
+                    </Badge>
                   ))}
                 </div>
               </div>
@@ -148,14 +150,14 @@ export default function AboutUsPage() {
               </p>
               <div className="flex flex-wrap gap-3 justify-center">
                 {sortedCards.map((card, idx) => (
-                  <span
+                  <Badge
                     key={idx}
-                    className="bg-white/10 backdrop-blur-sm border border-white/20 hover:border-cyan-500/50
-                               px-5 py-3 rounded-xl text-sm font-medium text-gray-200 hover:text-white
-                               transition-all duration-300 hover:scale-105 hover:bg-white/15"
+                    variant="outline"
+                    size="md"
+                    className="bg-white/10 backdrop-blur-sm border-white/20 hover:border-cyan-500/50 text-gray-200 hover:text-white transition-all duration-300 hover:scale-105 hover:bg-white/15"
                   >
                     {card.title}
-                  </span>
+                  </Badge>
                 ))}
               </div>
             </div>
@@ -218,11 +220,15 @@ export default function AboutUsPage() {
               <div className="container-custom relative z-10">
                 <div className="max-w-4xl mx-auto text-center">
                   {aboutUsData.heroSection.badgeText && (
-                    <div className="inline-flex items-center gap-2 bg-cyan-light backdrop-blur-sm border border-cyan-500/30 rounded-full px-6 py-2 mb-6">
-                      <Sparkles className="w-4 h-4 text-brand-primary" />
-                      <span className="text-sm font-semibold text-cyan-200">
+                    <div className="mb-6">
+                      <Badge
+                        variant="secondary"
+                        size="md"
+                        icon={<Sparkles className="w-4 h-4" />}
+                        className="bg-cyan-light backdrop-blur-sm border border-cyan-500/30 text-cyan-200"
+                      >
                         {aboutUsData.heroSection.badgeText}
-                      </span>
+                      </Badge>
                     </div>
                   )}
 
@@ -306,18 +312,23 @@ export default function AboutUsPage() {
               )}
               {ctaSection.buttonText && (
                 ctaSection.buttonUrl ? (
-                  <a
+                  <Button
+                    as="a"
                     href={ctaSection.buttonUrl}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
+                    size="lg"
+                    className="bg-white text-navy-900 hover:bg-neutral-light font-bold shadow-lg mb-6 text-xl transition-all duration-300 hover:scale-105"
                   >
                     {ctaSection.buttonText}
-                  </a>
+                  </Button>
                 ) : (
-                  <button className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
+                  <Button
+                    size="lg"
+                    className="bg-white text-navy-900 hover:bg-neutral-light font-bold shadow-lg mb-6 text-xl transition-all duration-300 hover:scale-105"
+                  >
                     {ctaSection.buttonText}
-                  </button>
+                  </Button>
                 )
               )}
               {ctaSection.phoneText && (

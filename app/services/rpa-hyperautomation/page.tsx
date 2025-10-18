@@ -2,6 +2,7 @@
 
 import { useState } from 'react';
 import Link from 'next/link';
+import Button from '@/components/Button';
 import {
   Menu,
   X,
@@ -170,7 +171,7 @@ export default function RPAServicePage() {
           <div className="flex items-center justify-between h-20">
             {/* Logo */}
             <Link href="/" className="flex items-center space-x-2">
-              <div className="w-10 h-10 bg-gradient-to-br from-brand-accent to-brand-secondary rounded-lg flex items-center justify-center">
+              <div className="w-10 h-10 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-lg flex items-center justify-center">
                 <Bot className="w-6 h-6 text-white" />
               </div>
               <span className="text-2xl font-bold text-navy-900">sipsy.ai</span>
@@ -214,9 +215,9 @@ export default function RPAServicePage() {
               >
                 Contact
               </a>
-              <button className="bg-brand-accent hover:bg-green-600 text-white font-semibold px-6 py-3 rounded-lg transition-all duration-300 hover:scale-105">
+              <Button variant="primary" size="md">
                 Schedule Free Assessment
-              </button>
+              </Button>
             </div>
 
             {/* Mobile Menu Button */}
@@ -280,9 +281,14 @@ export default function RPAServicePage() {
               >
                 Contact
               </a>
-              <button className="w-full bg-brand-accent hover:bg-green-600 text-white font-semibold px-6 py-4 rounded-lg transition-all duration-300 mt-4">
+              <Button
+                variant="primary"
+                size="lg"
+                fullWidth
+                className="mt-4"
+              >
                 Schedule Free Assessment
-              </button>
+              </Button>
             </div>
           </div>
         )}
@@ -290,11 +296,11 @@ export default function RPAServicePage() {
 
       <main className="min-h-screen">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center bg-gradient-to-br from-gray-50 to-blue-50 overflow-hidden pt-20">
+        <section className="relative min-h-screen flex items-center bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 overflow-hidden pt-20">
           {/* Subtle Automation Pattern Background */}
           <div className="absolute inset-0 opacity-5">
             <div className="absolute top-1/4 left-1/4 w-64 h-64 border-4 border-brand-secondary rounded-lg rotate-12"></div>
-            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 border-4 border-brand-accent rounded-lg -rotate-12"></div>
+            <div className="absolute bottom-1/4 right-1/4 w-48 h-48 border-4 border-brand-primary rounded-lg -rotate-12"></div>
             <div className="absolute top-1/2 right-1/3 w-32 h-32 border-4 border-brand-secondary rounded-full"></div>
           </div>
 
@@ -315,28 +321,35 @@ export default function RPAServicePage() {
             <div className="grid lg:grid-cols-2 gap-12 items-center">
               {/* Left Content */}
               <div className="space-y-8">
-                <h1 className="text-5xl lg:text-6xl font-bold text-navy-900 leading-tight">
+                <h1 className="text-5xl lg:text-6xl font-bold text-white leading-tight">
                   RPA & Hyperautomation Solutions
                 </h1>
-                <p className="text-xl text-gray-700 leading-relaxed">
+                <p className="text-xl text-gray-300 leading-relaxed">
                   Eliminate repetitive manual tasks and reclaim 40% of your team&apos;s time with
                   intelligent process automation
                 </p>
                 <div className="flex flex-col sm:flex-row gap-4">
-                  <button className="bg-brand-accent hover:bg-green-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 flex items-center justify-center">
-                    <Calendar className="w-5 h-5 mr-2" />
+                  <Button
+                    variant="primary"
+                    size="lg"
+                    icon={<Calendar className="w-5 h-5" />}
+                  >
                     Schedule RPA Assessment
-                  </button>
-                  <button className="border-2 border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 flex items-center justify-center">
-                    <Download className="w-5 h-5 mr-2" />
+                  </Button>
+                  <Button
+                    variant="outline"
+                    size="lg"
+                    icon={<Download className="w-5 h-5" />}
+                    className="border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white"
+                  >
                     Download RPA Guide
-                  </button>
+                  </Button>
                 </div>
 
                 {/* Quick Value Props */}
                 <div className="grid grid-cols-3 gap-4 pt-4">
                   <div className="bg-white rounded-lg shadow-md p-4 text-center">
-                    <div className="text-2xl font-bold text-brand-accent mb-1">100+</div>
+                    <div className="text-2xl font-bold text-brand-primary mb-1">100+</div>
                     <div className="text-sm text-gray-600">hours saved per week</div>
                   </div>
                   <div className="bg-white rounded-lg shadow-md p-4 text-center">
@@ -344,7 +357,7 @@ export default function RPAServicePage() {
                     <div className="text-sm text-gray-600">cost reduction</div>
                   </div>
                   <div className="bg-white rounded-lg shadow-md p-4 text-center">
-                    <div className="text-2xl font-bold text-brand-accent mb-1">90-day</div>
+                    <div className="text-2xl font-bold text-brand-primary mb-1">90-day</div>
                     <div className="text-sm text-gray-600">implementation</div>
                   </div>
                 </div>
@@ -378,21 +391,21 @@ export default function RPAServicePage() {
                         </div>
                         <span className="text-sm text-brand-secondary font-medium">RPA Bot</span>
                       </div>
-                      <ArrowRight className="w-6 h-6 text-brand-accent" />
+                      <ArrowRight className="w-6 h-6 text-brand-primary" />
                       <div className="flex items-center space-x-3">
-                        <div className="w-12 h-12 bg-brand-accent/10 rounded-lg flex items-center justify-center">
-                          <Brain className="w-6 h-6 text-brand-accent" />
+                        <div className="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center">
+                          <Brain className="w-6 h-6 text-brand-primary" />
                         </div>
-                        <span className="text-sm text-brand-accent font-medium">AI Processing</span>
+                        <span className="text-sm text-brand-primary font-medium">AI Processing</span>
                       </div>
                     </div>
 
                     <div className="flex items-center justify-between animate-pulse delay-500">
                       <div className="flex items-center space-x-3">
-                        <div className="w-12 h-12 bg-brand-accent/10 rounded-lg flex items-center justify-center">
-                          <Brain className="w-6 h-6 text-brand-accent" />
+                        <div className="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center">
+                          <Brain className="w-6 h-6 text-brand-primary" />
                         </div>
-                        <span className="text-sm text-brand-accent font-medium">AI Processing</span>
+                        <span className="text-sm text-brand-primary font-medium">AI Processing</span>
                       </div>
                       <ArrowRight className="w-6 h-6 text-brand-secondary" />
                       <div className="flex items-center space-x-3">
@@ -428,7 +441,7 @@ export default function RPAServicePage() {
                     </div>
                     <div className="text-center">
                       <div className="text-xs text-gray-500 mb-1">After RPA</div>
-                      <div className="text-lg font-bold text-brand-accent">15 minutes</div>
+                      <div className="text-lg font-bold text-brand-primary">15 minutes</div>
                     </div>
                   </div>
                 </div>
@@ -438,7 +451,7 @@ export default function RPAServicePage() {
         </section>
 
         {/* Problem Section */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-neutral-light">
           <div className="container-custom">
             <h2 className="text-4xl font-bold text-center text-navy-900 mb-4">
               The Cost of Manual Processes
@@ -496,7 +509,7 @@ export default function RPAServicePage() {
         </section>
 
         {/* Our Solution */}
-        <section className="section-padding bg-gray-50">
+        <section className="section-padding bg-white">
           <div className="container-custom">
             <h2 className="text-4xl font-bold text-center text-navy-900 mb-6">
               Intelligent Automation That Actually Works
@@ -528,8 +541,8 @@ export default function RPAServicePage() {
               </div>
 
               <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-14 h-14 bg-brand-accent/10 rounded-lg flex items-center justify-center mb-4">
-                  <Brain className="w-7 h-7 text-brand-accent" />
+                <div className="w-14 h-14 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Brain className="w-7 h-7 text-brand-primary" />
                 </div>
                 <h3 className="text-xl font-bold text-navy-900 mb-3">AI-Enhanced</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -548,8 +561,8 @@ export default function RPAServicePage() {
               </div>
 
               <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1">
-                <div className="w-14 h-14 bg-brand-accent/10 rounded-lg flex items-center justify-center mb-4">
-                  <Activity className="w-7 h-7 text-brand-accent" />
+                <div className="w-14 h-14 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <Activity className="w-7 h-7 text-brand-primary" />
                 </div>
                 <h3 className="text-xl font-bold text-navy-900 mb-3">Ongoing Optimization</h3>
                 <p className="text-gray-600 leading-relaxed">
@@ -561,7 +574,7 @@ export default function RPAServicePage() {
         </section>
 
         {/* Process Timeline */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-neutral-light">
           <div className="container-custom">
             <h2 className="text-4xl font-bold text-center text-navy-900 mb-16">
               Our 6-Step Implementation Process
@@ -575,7 +588,7 @@ export default function RPAServicePage() {
                     1
                   </div>
                 </div>
-                <div className="flex-1 bg-gray-50 rounded-xl p-6 border-l-4 border-brand-secondary">
+                <div className="flex-1 bg-white rounded-xl p-6 border-l-4 border-brand-secondary">
                   <div className="flex items-center mb-3">
                     <Search className="w-6 h-6 text-brand-secondary mr-3" />
                     <h3 className="text-2xl font-bold text-navy-900">Process Discovery</h3>
@@ -591,13 +604,13 @@ export default function RPAServicePage() {
               {/* Step 2 */}
               <div className="flex gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                  <div className="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
                     2
                   </div>
                 </div>
-                <div className="flex-1 bg-gray-50 rounded-xl p-6 border-l-4 border-brand-accent">
+                <div className="flex-1 bg-white rounded-xl p-6 border-l-4 border-brand-primary">
                   <div className="flex items-center mb-3">
-                    <BarChart className="w-6 h-6 text-brand-accent mr-3" />
+                    <BarChart className="w-6 h-6 text-brand-primary mr-3" />
                     <h3 className="text-2xl font-bold text-navy-900">ROI Analysis</h3>
                   </div>
                   <p className="text-gray-700 leading-relaxed">
@@ -615,7 +628,7 @@ export default function RPAServicePage() {
                     3
                   </div>
                 </div>
-                <div className="flex-1 bg-gray-50 rounded-xl p-6 border-l-4 border-brand-secondary">
+                <div className="flex-1 bg-white rounded-xl p-6 border-l-4 border-brand-secondary">
                   <div className="flex items-center mb-3">
                     <Target className="w-6 h-6 text-brand-secondary mr-3" />
                     <h3 className="text-2xl font-bold text-navy-900">Proof of Concept</h3>
@@ -631,13 +644,13 @@ export default function RPAServicePage() {
               {/* Step 4 */}
               <div className="flex gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                  <div className="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
                     4
                   </div>
                 </div>
-                <div className="flex-1 bg-gray-50 rounded-xl p-6 border-l-4 border-brand-accent">
+                <div className="flex-1 bg-white rounded-xl p-6 border-l-4 border-brand-primary">
                   <div className="flex items-center mb-3">
-                    <Code className="w-6 h-6 text-brand-accent mr-3" />
+                    <Code className="w-6 h-6 text-brand-primary mr-3" />
                     <h3 className="text-2xl font-bold text-navy-900">Development</h3>
                   </div>
                   <p className="text-gray-700 leading-relaxed">
@@ -655,7 +668,7 @@ export default function RPAServicePage() {
                     5
                   </div>
                 </div>
-                <div className="flex-1 bg-gray-50 rounded-xl p-6 border-l-4 border-brand-secondary">
+                <div className="flex-1 bg-white rounded-xl p-6 border-l-4 border-brand-secondary">
                   <div className="flex items-center mb-3">
                     <Wrench className="w-6 h-6 text-brand-secondary mr-3" />
                     <h3 className="text-2xl font-bold text-navy-900">Deployment</h3>
@@ -670,13 +683,13 @@ export default function RPAServicePage() {
               {/* Step 6 */}
               <div className="flex gap-6">
                 <div className="flex-shrink-0">
-                  <div className="w-16 h-16 bg-brand-accent rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
+                  <div className="w-16 h-16 bg-brand-primary rounded-full flex items-center justify-center text-white text-2xl font-bold shadow-lg">
                     6
                   </div>
                 </div>
-                <div className="flex-1 bg-gray-50 rounded-xl p-6 border-l-4 border-brand-accent">
+                <div className="flex-1 bg-white rounded-xl p-6 border-l-4 border-brand-primary">
                   <div className="flex items-center mb-3">
-                    <Repeat className="w-6 h-6 text-brand-accent mr-3" />
+                    <Repeat className="w-6 h-6 text-brand-primary mr-3" />
                     <h3 className="text-2xl font-bold text-navy-900">Managed Services</h3>
                   </div>
                   <p className="text-gray-700 leading-relaxed">
@@ -691,7 +704,7 @@ export default function RPAServicePage() {
         </section>
 
         {/* Technology Stack */}
-        <section className="section-padding bg-gray-50">
+        <section className="section-padding bg-white">
           <div className="container-custom">
             <h2 className="text-4xl font-bold text-center text-navy-900 mb-6">Our RPA Toolkit</h2>
             <p className="text-xl text-center text-gray-600 max-w-3xl mx-auto mb-12">
@@ -781,7 +794,7 @@ export default function RPAServicePage() {
         </section>
 
         {/* Use Cases - Accordion */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-neutral-light">
           <div className="container-custom">
             <h2 className="text-4xl font-bold text-center text-navy-900 mb-6">
               Common RPA Applications
@@ -812,7 +825,7 @@ export default function RPAServicePage() {
                   {expandedUseCase === index && (
                     <div className="px-6 pb-6">
                       <p className="text-gray-700 mb-4">{useCase.description}</p>
-                      <div className="grid md:grid-cols-4 gap-4 bg-gray-50 rounded-lg p-4">
+                      <div className="grid md:grid-cols-4 gap-4 bg-white rounded-lg p-4">
                         <div>
                           <div className="text-sm text-gray-600 mb-1">Before</div>
                           <div className="text-lg font-bold text-red-600">{useCase.before}</div>
@@ -823,7 +836,7 @@ export default function RPAServicePage() {
                         </div>
                         <div>
                           <div className="text-sm text-gray-600 mb-1">Time Saved</div>
-                          <div className="text-lg font-bold text-brand-accent">
+                          <div className="text-lg font-bold text-brand-primary">
                             {useCase.timeSaved}
                           </div>
                         </div>
@@ -843,7 +856,7 @@ export default function RPAServicePage() {
         </section>
 
         {/* Results Showcase */}
-        <section className="section-padding bg-gray-50">
+        <section className="section-padding bg-white">
           <div className="container-custom">
             <h2 className="text-4xl font-bold text-center text-navy-900 mb-12">
               Real Results from Real Clients
@@ -852,7 +865,7 @@ export default function RPAServicePage() {
             <div className="grid md:grid-cols-3 gap-8">
               {/* Case Study 1 */}
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
-                <div className="h-40 bg-gradient-to-br from-brand-secondary to-brand-accent flex items-center justify-center">
+                <div className="h-40 bg-gradient-to-br from-brand-primary to-brand-secondary flex items-center justify-center">
                   <Settings className="w-16 h-16 text-white" />
                 </div>
                 <div className="p-6">
@@ -861,7 +874,7 @@ export default function RPAServicePage() {
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Time Reduction</span>
-                      <span className="text-lg font-bold text-brand-accent">95%</span>
+                      <span className="text-lg font-bold text-brand-primary">95%</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Accuracy</span>
@@ -877,7 +890,7 @@ export default function RPAServicePage() {
 
               {/* Case Study 2 */}
               <div className="bg-white rounded-xl shadow-lg overflow-hidden hover:shadow-2xl transition-all duration-300">
-                <div className="h-40 bg-gradient-to-br from-brand-accent to-brand-secondary flex items-center justify-center">
+                <div className="h-40 bg-gradient-to-br from-brand-primary to-brand-secondary flex items-center justify-center">
                   <FileText className="w-16 h-16 text-white" />
                 </div>
                 <div className="p-6">
@@ -886,7 +899,7 @@ export default function RPAServicePage() {
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Processing Time</span>
-                      <span className="text-lg font-bold text-brand-accent">3 days → 3 hours</span>
+                      <span className="text-lg font-bold text-brand-primary">3 days → 3 hours</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Throughput Increase</span>
@@ -911,7 +924,7 @@ export default function RPAServicePage() {
                   <div className="space-y-3">
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Speed Improvement</span>
-                      <span className="text-lg font-bold text-brand-accent">70% faster</span>
+                      <span className="text-lg font-bold text-brand-primary">70% faster</span>
                     </div>
                     <div className="flex justify-between items-center">
                       <span className="text-sm text-gray-600">Backlog</span>
@@ -929,7 +942,7 @@ export default function RPAServicePage() {
         </section>
 
         {/* ROI Calculator */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-neutral-light">
           <div className="container-custom">
             <div className="max-w-4xl mx-auto">
               <h2 className="text-4xl font-bold text-center text-navy-900 mb-6">
@@ -970,9 +983,9 @@ export default function RPAServicePage() {
                       max="40"
                       value={hoursPerWeek}
                       onChange={(e) => setHoursPerWeek(Number(e.target.value))}
-                      className="w-full h-2 bg-brand-accent/20 rounded-lg appearance-none cursor-pointer slider"
+                      className="w-full h-2 bg-brand-primary/20 rounded-lg appearance-none cursor-pointer slider"
                     />
-                    <div className="text-right text-2xl font-bold text-brand-accent mt-2">
+                    <div className="text-right text-2xl font-bold text-brand-primary mt-2">
                       {hoursPerWeek} hours/week
                     </div>
                   </div>
@@ -997,12 +1010,15 @@ export default function RPAServicePage() {
                   </div>
 
                   {/* Calculate Button */}
-                  <button
+                  <Button
                     onClick={() => setShowROI(true)}
-                    className="w-full bg-brand-accent hover:bg-green-600 text-white font-bold py-4 px-8 rounded-lg transition-all duration-300 hover:scale-105 text-lg"
+                    variant="primary"
+                    size="lg"
+                    fullWidth
+                    className="text-lg"
                   >
                     Calculate My Potential Savings
-                  </button>
+                  </Button>
 
                   {/* Results */}
                   {showROI && (
@@ -1014,9 +1030,12 @@ export default function RPAServicePage() {
                       <p className="text-gray-700 mb-6">
                         Based on 70% automation of repetitive tasks
                       </p>
-                      <button className="bg-brand-secondary hover:bg-blue-600 text-white font-semibold px-8 py-3 rounded-lg transition-all duration-300 hover:scale-105">
+                      <Button
+                        variant="secondary"
+                        size="lg"
+                      >
                         Get Detailed Assessment
-                      </button>
+                      </Button>
                     </div>
                   )}
                 </div>
@@ -1026,7 +1045,7 @@ export default function RPAServicePage() {
         </section>
 
         {/* Service Packages */}
-        <section className="section-padding bg-gray-50">
+        <section className="section-padding bg-white">
           <div className="container-custom">
             <h2 className="text-4xl font-bold text-center text-navy-900 mb-6">
               Choose Your Engagement Model
@@ -1045,58 +1064,67 @@ export default function RPAServicePage() {
                 <p className="text-gray-600 mb-6">Perfect for getting started</p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">Process analysis & opportunity identification</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">Detailed ROI calculation</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">Implementation roadmap</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">Duration: 2 weeks</span>
                   </li>
                 </ul>
-                <button className="w-full border-2 border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  fullWidth
+                  className="border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white"
+                >
                   Start with Assessment
-                </button>
+                </Button>
               </div>
 
               {/* Pilot Package */}
-              <div className="bg-white rounded-xl shadow-2xl p-8 border-4 border-brand-accent relative">
+              <div className="bg-white rounded-xl shadow-2xl p-8 border-4 border-brand-primary relative">
                 <div className="absolute -top-4 left-1/2 transform -translate-x-1/2">
-                  <span className="bg-brand-accent text-white px-4 py-1 rounded-full text-sm font-bold">
+                  <span className="bg-brand-primary text-white px-4 py-1 rounded-full text-sm font-bold">
                     MOST POPULAR
                   </span>
                 </div>
                 <h3 className="text-2xl font-bold text-navy-900 mb-2">Pilot Implementation</h3>
-                <div className="text-4xl font-bold text-brand-accent mb-4">$15K - $40K</div>
+                <div className="text-4xl font-bold text-brand-primary mb-4">$15K - $40K</div>
                 <p className="text-gray-600 mb-6">Prove value with a quick win</p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">Single process automation</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">Complete proof of concept</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">2 months support included</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">Duration: 6-8 weeks</span>
                   </li>
                 </ul>
-                <button className="w-full bg-brand-accent hover:bg-green-600 text-white font-bold py-3 px-6 rounded-lg transition-all duration-300 hover:scale-105">
+                <Button
+                  variant="primary"
+                  size="lg"
+                  fullWidth
+                >
                   Launch Pilot Project
-                </button>
+                </Button>
               </div>
 
               {/* Enterprise Package */}
@@ -1106,32 +1134,37 @@ export default function RPAServicePage() {
                 <p className="text-gray-600 mb-6">Full-scale transformation</p>
                 <ul className="space-y-3 mb-8">
                   <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">Multiple process automation</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">Center of Excellence setup</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">Managed services included</span>
                   </li>
                   <li className="flex items-start">
-                    <CheckCircle className="w-5 h-5 text-brand-accent mr-2 flex-shrink-0 mt-0.5" />
+                    <CheckCircle className="w-5 h-5 text-brand-primary mr-2 flex-shrink-0 mt-0.5" />
                     <span className="text-gray-700">Duration: 3-6 months</span>
                   </li>
                 </ul>
-                <button className="w-full border-2 border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white font-semibold py-3 px-6 rounded-lg transition-all duration-300">
+                <Button
+                  variant="outline"
+                  size="lg"
+                  fullWidth
+                  className="border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white"
+                >
                   Request Custom Quote
-                </button>
+                </Button>
               </div>
             </div>
           </div>
         </section>
 
         {/* FAQ Section */}
-        <section className="section-padding bg-white">
+        <section className="section-padding bg-neutral-light">
           <div className="container-custom">
             <h2 className="text-4xl font-bold text-center text-navy-900 mb-12">
               Frequently Asked Questions
@@ -1166,7 +1199,7 @@ export default function RPAServicePage() {
         </section>
 
         {/* Trust Elements & Resources */}
-        <section className="section-padding bg-gray-50">
+        <section className="section-padding bg-white">
           <div className="container-custom">
             {/* Trust Badges */}
             <div className="bg-white rounded-2xl shadow-xl p-8 mb-12">
@@ -1221,15 +1254,19 @@ export default function RPAServicePage() {
                   50-page comprehensive guide covering RPA strategy, vendor selection, and best
                   practices.
                 </p>
-                <button className="inline-flex items-center text-brand-secondary font-semibold hover:underline">
-                  <Download className="w-4 h-4 mr-2" />
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  icon={<Download className="w-4 h-4" />}
+                  className="text-brand-secondary font-semibold hover:underline p-0"
+                >
                   Download Whitepaper
-                </button>
+                </Button>
               </div>
 
               <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300">
-                <div className="w-12 h-12 bg-brand-accent/10 rounded-lg flex items-center justify-center mb-4">
-                  <BarChart className="w-6 h-6 text-brand-accent" />
+                <div className="w-12 h-12 bg-brand-primary/10 rounded-lg flex items-center justify-center mb-4">
+                  <BarChart className="w-6 h-6 text-brand-primary" />
                 </div>
                 <h4 className="text-xl font-bold text-navy-900 mb-3">
                   How We Automated Invoice Processing for Fortune 500 Client
@@ -1238,10 +1275,14 @@ export default function RPAServicePage() {
                   Detailed case study showing our methodology and results from a recent
                   implementation.
                 </p>
-                <button className="inline-flex items-center text-brand-accent font-semibold hover:underline">
-                  <ArrowRight className="w-4 h-4 mr-2" />
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  icon={<ArrowRight className="w-4 h-4" />}
+                  className="text-brand-primary font-semibold hover:underline p-0"
+                >
                   Read Case Study
-                </button>
+                </Button>
               </div>
 
               <div className="bg-white rounded-xl shadow-lg p-6 hover:shadow-2xl transition-all duration-300">
@@ -1254,10 +1295,14 @@ export default function RPAServicePage() {
                 <p className="text-gray-600 mb-4">
                   Join our live webinar to learn what works and what to avoid in RPA projects.
                 </p>
-                <button className="inline-flex items-center text-purple-600 font-semibold hover:underline">
-                  <Calendar className="w-4 h-4 mr-2" />
+                <Button
+                  variant="ghost"
+                  size="sm"
+                  icon={<Calendar className="w-4 h-4" />}
+                  className="text-purple-600 font-semibold hover:underline p-0"
+                >
                   Register for Webinar
-                </button>
+                </Button>
               </div>
             </div>
           </div>
@@ -1273,14 +1318,22 @@ export default function RPAServicePage() {
               Talk to an RPA expert today and discover how automation can transform your operations
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center mb-6">
-              <button className="bg-white text-brand-secondary hover:bg-gray-100 font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg flex items-center justify-center">
-                <Calendar className="w-6 h-6 mr-2" />
+              <Button
+                variant="primary"
+                size="lg"
+                icon={<Calendar className="w-6 h-6" />}
+                className="bg-white text-brand-secondary hover:bg-neutral-light shadow-lg text-xl"
+              >
                 Book Free 30-Min Consultation
-              </button>
-              <button className="border-2 border-white text-white hover:bg-white hover:text-brand-secondary font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 flex items-center justify-center">
-                <Download className="w-6 h-6 mr-2" />
+              </Button>
+              <Button
+                variant="outline"
+                size="lg"
+                icon={<Download className="w-6 h-6" />}
+                className="border-white text-white hover:bg-white hover:text-brand-secondary text-xl"
+              >
                 Download RPA Readiness Checklist
-              </button>
+              </Button>
             </div>
             <p className="text-white/90 text-lg">
               Talk to an RPA expert today • No commitment required
@@ -1295,7 +1348,7 @@ export default function RPAServicePage() {
               {/* Company Info */}
               <div>
                 <div className="flex items-center space-x-2 mb-4">
-                  <div className="w-10 h-10 bg-gradient-to-br from-brand-accent to-brand-secondary rounded-lg flex items-center justify-center">
+                  <div className="w-10 h-10 bg-gradient-to-br from-brand-primary to-brand-secondary rounded-lg flex items-center justify-center">
                     <Bot className="w-6 h-6 text-white" />
                   </div>
                   <span className="text-2xl font-bold text-white">sipsy.ai</span>
@@ -1306,21 +1359,21 @@ export default function RPAServicePage() {
                 <div className="flex space-x-4">
                   <a
                     href="#"
-                    className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                    className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                     aria-label="LinkedIn"
                   >
                     <Linkedin className="w-5 h-5" />
                   </a>
                   <a
                     href="#"
-                    className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                    className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                     aria-label="Twitter"
                   >
                     <Twitter className="w-5 h-5" />
                   </a>
                   <a
                     href="#"
-                    className="w-10 h-10 bg-white/10 hover:bg-brand-accent rounded-lg flex items-center justify-center transition-colors"
+                    className="w-10 h-10 bg-white/10 hover:bg-brand-primary rounded-lg flex items-center justify-center transition-colors"
                     aria-label="GitHub"
                   >
                     <Github className="w-5 h-5" />
@@ -1333,27 +1386,27 @@ export default function RPAServicePage() {
                 <h4 className="text-white font-bold text-lg mb-4">Services</h4>
                 <ul className="space-y-2">
                   <li>
-                    <a href="#" className="hover:text-brand-accent transition-colors">
+                    <a href="#" className="hover:text-brand-primary transition-colors">
                       RPA & Hyperautomation
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-brand-accent transition-colors">
+                    <a href="#" className="hover:text-brand-primary transition-colors">
                       AI/ML Integration
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-brand-accent transition-colors">
+                    <a href="#" className="hover:text-brand-primary transition-colors">
                       Enterprise Integration
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-brand-accent transition-colors">
+                    <a href="#" className="hover:text-brand-primary transition-colors">
                       Data Engineering
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-brand-accent transition-colors">
+                    <a href="#" className="hover:text-brand-primary transition-colors">
                       Digital Transformation
                     </a>
                   </li>
@@ -1365,27 +1418,27 @@ export default function RPAServicePage() {
                 <h4 className="text-white font-bold text-lg mb-4">Company</h4>
                 <ul className="space-y-2">
                   <li>
-                    <a href="/#about" className="hover:text-brand-accent transition-colors">
+                    <a href="/#about" className="hover:text-brand-primary transition-colors">
                       About Us
                     </a>
                   </li>
                   <li>
-                    <a href="/#case-studies" className="hover:text-brand-accent transition-colors">
+                    <a href="/#case-studies" className="hover:text-brand-primary transition-colors">
                       Case Studies
                     </a>
                   </li>
                   <li>
-                    <a href="/#resources" className="hover:text-brand-accent transition-colors">
+                    <a href="/#resources" className="hover:text-brand-primary transition-colors">
                       Blog
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-brand-accent transition-colors">
+                    <a href="#" className="hover:text-brand-primary transition-colors">
                       Careers
                     </a>
                   </li>
                   <li>
-                    <a href="/#contact" className="hover:text-brand-accent transition-colors">
+                    <a href="/#contact" className="hover:text-brand-primary transition-colors">
                       Contact
                     </a>
                   </li>
@@ -1397,22 +1450,22 @@ export default function RPAServicePage() {
                 <h4 className="text-white font-bold text-lg mb-4">Resources</h4>
                 <ul className="space-y-2">
                   <li>
-                    <a href="#" className="hover:text-brand-accent transition-colors">
+                    <a href="#" className="hover:text-brand-primary transition-colors">
                       ROI Calculator
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-brand-accent transition-colors">
+                    <a href="#" className="hover:text-brand-primary transition-colors">
                       Implementation Guide
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-brand-accent transition-colors">
+                    <a href="#" className="hover:text-brand-primary transition-colors">
                       Whitepapers
                     </a>
                   </li>
                   <li>
-                    <a href="#" className="hover:text-brand-accent transition-colors">
+                    <a href="#" className="hover:text-brand-primary transition-colors">
                       Webinars
                     </a>
                   </li>
@@ -1425,15 +1478,15 @@ export default function RPAServicePage() {
               <div className="flex flex-col md:flex-row justify-between items-center space-y-4 md:space-y-0">
                 <p className="text-gray-400 text-sm">© 2025 sipsy.ai. All rights reserved.</p>
                 <div className="flex flex-wrap justify-center gap-6 text-sm">
-                  <a href="#" className="hover:text-brand-accent transition-colors">
+                  <a href="#" className="hover:text-brand-primary transition-colors">
                     Privacy Policy
                   </a>
                   <span className="text-gray-600">•</span>
-                  <a href="#" className="hover:text-brand-accent transition-colors">
+                  <a href="#" className="hover:text-brand-primary transition-colors">
                     Terms of Service
                   </a>
                   <span className="text-gray-600">•</span>
-                  <a href="#" className="hover:text-brand-accent transition-colors">
+                  <a href="#" className="hover:text-brand-primary transition-colors">
                     Cookie Policy
                   </a>
                 </div>

@@ -167,8 +167,9 @@ scp -i sipsy-lightsail-key.pem backend/export_*.tar.gz bitnami@54.243.251.248:~/
 ### Step 4: Import to Production
 
 1. **SSH to AWS server:**
+
 ```bash
-ssh -i sipsy-lightsail-key.pem bitnami@54.243.251.248
+ssh -i C:\Users\Ali\Documents\Projects\sipsywebsite\sipsy-lightsail-key.pem bitnami@54.243.251.248
 ```
 
 2. **Import data (with media files):**

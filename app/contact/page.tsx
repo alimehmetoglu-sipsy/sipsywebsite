@@ -199,21 +199,21 @@ export default function ContactPage() {
             </Link>
 
             <div className="hidden md:flex items-center space-x-8">
-              <Link href="/#solutions" className="hover:text-brand-accent transition">
+              <Link href="/#solutions" className="hover:text-brand-primary transition">
                 Solutions
               </Link>
-              <Link href="/#services" className="hover:text-brand-accent transition">
+              <Link href="/#services" className="hover:text-brand-primary transition">
                 Services
               </Link>
-              <Link href="/case-studies" className="hover:text-brand-accent transition">
+              <Link href="/case-studies" className="hover:text-brand-primary transition">
                 Case Studies
               </Link>
-              <Link href="/#about" className="hover:text-brand-accent transition">
+              <Link href="/#about" className="hover:text-brand-primary transition">
                 About
               </Link>
               <Link
                 href="/contact"
-                className="bg-brand-secondary hover:bg-gold-500 text-navy-900 px-6 py-2 rounded-lg font-semibold transition shadow-md"
+                className="bg-brand-secondary hover:bg-cyan-500 text-navy-900 px-6 py-2 rounded-lg font-semibold transition shadow-md"
               >
                 Get Started
               </Link>
@@ -230,21 +230,21 @@ export default function ContactPage() {
 
           {isMenuOpen && (
             <div className="md:hidden pb-4 space-y-3">
-              <Link href="/#solutions" className="block py-2 hover:text-brand-accent transition">
+              <Link href="/#solutions" className="block py-2 hover:text-brand-primary transition">
                 Solutions
               </Link>
-              <Link href="/#services" className="block py-2 hover:text-brand-accent transition">
+              <Link href="/#services" className="block py-2 hover:text-brand-primary transition">
                 Services
               </Link>
-              <Link href="/case-studies" className="block py-2 hover:text-brand-accent transition">
+              <Link href="/case-studies" className="block py-2 hover:text-brand-primary transition">
                 Case Studies
               </Link>
-              <Link href="/#about" className="block py-2 hover:text-brand-accent transition">
+              <Link href="/#about" className="block py-2 hover:text-brand-primary transition">
                 About
               </Link>
               <Link
                 href="/contact"
-                className="block bg-brand-secondary hover:bg-gold-500 text-navy-900 px-6 py-2 rounded-lg font-semibold transition text-center shadow-md"
+                className="block bg-brand-secondary hover:bg-cyan-500 text-navy-900 px-6 py-2 rounded-lg font-semibold transition text-center shadow-md"
               >
                 Get Started
               </Link>
@@ -266,15 +266,15 @@ export default function ContactPage() {
 
             <div className="flex flex-wrap justify-center gap-6 md:gap-12">
               <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-gold-400" />
+                <CheckCircle className="w-5 h-5 text-brand-primary400" />
                 <span className="text-sm md:text-base">100% Confidential</span>
               </div>
               <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-gold-400" />
+                <CheckCircle className="w-5 h-5 text-brand-primary400" />
                 <span className="text-sm md:text-base">No Commitment Required</span>
               </div>
               <div className="flex items-center space-x-2">
-                <CheckCircle className="w-5 h-5 text-gold-400" />
+                <CheckCircle className="w-5 h-5 text-brand-primary400" />
                 <span className="text-sm md:text-base">Response Within 4 Hours</span>
               </div>
             </div>
@@ -283,7 +283,7 @@ export default function ContactPage() {
       </section>
 
       {/* Main Content - Two Column Layout */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-neutral-light">
         <div className="container-custom">
           <div className="grid lg:grid-cols-12 gap-12">
             {/* LEFT COLUMN - Booking Form */}
@@ -297,11 +297,11 @@ export default function ContactPage() {
                 </p>
 
                 {submitSuccess && (
-                  <div className="mb-6 p-4 bg-gold-50 border border-gold-200 rounded-lg flex items-start space-x-3">
-                    <CheckCircle className="w-6 h-6 text-gold-600 flex-shrink-0 mt-0.5" />
+                  <div className="mb-6 p-4 bg-cyan-50 border border-cyan-200 rounded-lg flex items-start space-x-3">
+                    <CheckCircle className="w-6 h-6 text-brand-primary600 flex-shrink-0 mt-0.5" />
                     <div>
-                      <p className="font-semibold text-gold-900">Başarılı!</p>
-                      <p className="text-gold-800 text-sm">
+                      <p className="font-semibold text-brand-primary900">Başarılı!</p>
+                      <p className="text-brand-primary800 text-sm">
                         Mesajınız başarıyla gönderildi. En kısa sürede size dönüş yapacağız!
                       </p>
                     </div>
@@ -434,7 +434,7 @@ export default function ContactPage() {
                     className={`w-full py-4 rounded-lg font-bold text-lg transition transform shadow-md ${
                       isSubmitting
                         ? 'bg-gray-400 cursor-not-allowed'
-                        : 'bg-brand-secondary hover:bg-gold-500 hover:scale-105 text-navy-900'
+                        : 'bg-brand-secondary hover:bg-cyan-500 hover:scale-105 text-navy-900'
                     }`}
                   >
                     {isSubmitting ? 'Gönderiliyor...' : 'Formu Gönder'}
@@ -495,7 +495,7 @@ export default function ContactPage() {
                   </div>
 
                   <div className="flex space-x-4">
-                    <div className="flex-shrink-0 w-12 h-12 bg-brand-accent text-white rounded-full flex items-center justify-center text-xl font-bold">
+                    <div className="flex-shrink-0 w-12 h-12 bg-brand-primary text-white rounded-full flex items-center justify-center text-xl font-bold">
                       4
                     </div>
                     <div>
@@ -564,7 +564,7 @@ export default function ContactPage() {
                 <div className="bg-white rounded-xl shadow-lg p-6">
                   <div className="flex items-start space-x-3 mb-3">
                     <div className="flex-shrink-0">
-                      <div className="w-12 h-12 bg-brand-accent rounded-full flex items-center justify-center text-white font-bold">
+                      <div className="w-12 h-12 bg-brand-primary rounded-full flex items-center justify-center text-white font-bold">
                         SC
                       </div>
                     </div>
@@ -613,7 +613,7 @@ export default function ContactPage() {
               <div key={index} className="border border-gray-200 rounded-lg overflow-hidden">
                 <button
                   onClick={() => toggleFaq(index)}
-                  className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-gray-50 transition"
+                  className="w-full px-6 py-4 flex items-center justify-between text-left hover:bg-neutral-light transition"
                 >
                   <span className="font-semibold text-navy-900 pr-4">{faq.question}</span>
                   {expandedFaq === index ? (
@@ -634,7 +634,7 @@ export default function ContactPage() {
       </section>
 
       {/* Trust Badges & Alternative Contact */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-16 bg-neutral-light">
         <div className="container-custom">
           {/* Trust Badges */}
           <div className="text-center mb-12">
@@ -645,7 +645,7 @@ export default function ContactPage() {
                 <p className="font-semibold text-navy-900">SOC 2 Certified</p>
               </div>
               <div className="flex flex-col items-center">
-                <Award className="w-16 h-16 text-brand-accent mb-2" />
+                <Award className="w-16 h-16 text-brand-primary mb-2" />
                 <p className="font-semibold text-navy-900">ISO 27001</p>
               </div>
               <div className="flex flex-col items-center">
@@ -674,7 +674,7 @@ export default function ContactPage() {
                 href="tel:+15551234567"
                 className="bg-white rounded-xl shadow-lg p-6 hover:shadow-xl transition text-center"
               >
-                <Phone className="w-12 h-12 text-brand-accent mx-auto mb-3" />
+                <Phone className="w-12 h-12 text-brand-primary mx-auto mb-3" />
                 <h3 className="font-semibold text-navy-900 mb-1">Phone</h3>
                 <p className="text-brand-secondary hover:underline">+1 (555) 123-4567</p>
               </a>
@@ -719,7 +719,7 @@ export default function ContactPage() {
       </section>
 
       {/* Final CTA */}
-      <section className="py-12 bg-gray-100">
+      <section className="py-12 bg-white">
         <div className="container-custom text-center">
           <h2 className="text-2xl font-bold text-navy-900 mb-4">Still have questions? We&apos;re here to help.</h2>
           <button
@@ -727,7 +727,7 @@ export default function ContactPage() {
               // TODO: Integrate with chat widget
               console.log('Open chat widget');
             }}
-            className="inline-flex items-center space-x-2 bg-brand-secondary hover:bg-gold-500 text-navy-900 px-8 py-3 rounded-lg font-semibold transition transform hover:scale-105 shadow-md"
+            className="inline-flex items-center space-x-2 bg-brand-secondary hover:bg-cyan-500 text-navy-900 px-8 py-3 rounded-lg font-semibold transition transform hover:scale-105 shadow-md"
           >
             <MessageCircle className="w-5 h-5" />
             <span>Chat with us now</span>
@@ -741,7 +741,7 @@ export default function ContactPage() {
           <div className="grid md:grid-cols-4 gap-8 mb-8">
             <div>
               <div className="flex items-center space-x-2 mb-4">
-                <Bot className="w-8 h-8 text-brand-accent" />
+                <Bot className="w-8 h-8 text-brand-primary" />
                 <span className="text-xl font-bold">sipsy.ai</span>
               </div>
               <p className="text-gray-400 text-sm">
@@ -753,17 +753,17 @@ export default function ContactPage() {
               <h3 className="font-semibold mb-4">Solutions</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link href="/#solutions" className="text-gray-400 hover:text-brand-accent transition">
+                  <Link href="/#solutions" className="text-gray-400 hover:text-brand-primary transition">
                     RPA & Hyperautomation
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#solutions" className="text-gray-400 hover:text-brand-accent transition">
+                  <Link href="/#solutions" className="text-gray-400 hover:text-brand-primary transition">
                     AI/ML Integration
                   </Link>
                 </li>
                 <li>
-                  <Link href="/#solutions" className="text-gray-400 hover:text-brand-accent transition">
+                  <Link href="/#solutions" className="text-gray-400 hover:text-brand-primary transition">
                     System Integration
                   </Link>
                 </li>
@@ -774,17 +774,17 @@ export default function ContactPage() {
               <h3 className="font-semibold mb-4">Company</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link href="/#about" className="text-gray-400 hover:text-brand-accent transition">
+                  <Link href="/#about" className="text-gray-400 hover:text-brand-primary transition">
                     About Us
                   </Link>
                 </li>
                 <li>
-                  <Link href="/case-studies" className="text-gray-400 hover:text-brand-accent transition">
+                  <Link href="/case-studies" className="text-gray-400 hover:text-brand-primary transition">
                     Case Studies
                   </Link>
                 </li>
                 <li>
-                  <Link href="/contact" className="text-gray-400 hover:text-brand-accent transition">
+                  <Link href="/contact" className="text-gray-400 hover:text-brand-primary transition">
                     Contact
                   </Link>
                 </li>
@@ -795,12 +795,12 @@ export default function ContactPage() {
               <h3 className="font-semibold mb-4">Legal</h3>
               <ul className="space-y-2 text-sm">
                 <li>
-                  <Link href="/privacy" className="text-gray-400 hover:text-brand-accent transition">
+                  <Link href="/privacy" className="text-gray-400 hover:text-brand-primary transition">
                     Privacy Policy
                   </Link>
                 </li>
                 <li>
-                  <Link href="/terms" className="text-gray-400 hover:text-brand-accent transition">
+                  <Link href="/terms" className="text-gray-400 hover:text-brand-primary transition">
                     Terms of Service
                   </Link>
                 </li>
@@ -813,10 +813,10 @@ export default function ContactPage() {
               © 2024 sipsy.ai. All rights reserved.
             </p>
             <div className="flex space-x-6">
-              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-accent transition">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-primary transition">
                 <Linkedin className="w-5 h-5" />
               </a>
-              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-accent transition">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-primary transition">
                 <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 24 24">
                   <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
                 </svg>

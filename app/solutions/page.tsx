@@ -3,6 +3,7 @@
 import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import SolutionCard from '@/components/SolutionCard';
+import Button from '@/components/Button';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getSolutions, getServices, getCtaSection, getFooter, getMediaURL } from '@/lib/strapi';
 import { Solution, Service } from '@/lib/types';
@@ -58,30 +59,24 @@ export default function SolutionsPage() {
           <section className="bg-white border-b sticky top-20 z-40 shadow-sm">
             <div className="container-custom py-6">
               <div className="flex flex-wrap gap-3 justify-center">
-                <button
+                <Button
                   onClick={() => setSelectedService(null)}
-                  className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
-                    selectedService === null
-                      ? 'bg-brand-secondary text-navy-900 shadow-lg'
-                      : 'bg-neutral-light text-gray-700 hover:bg-gray-200'
-                  }`}
+                  variant={selectedService === null ? 'secondary' : 'ghost'}
+                  size="md"
+                  className={selectedService === null ? 'shadow-lg' : ''}
                 >
                   {language === 'tr' ? 'Tümü' : 'All'}
-                </button>
+                </Button>
                 {services.map((service) => (
-                  <button
+                  <Button
                     key={service.id}
                     onClick={() => setSelectedService(service.id)}
-                    className={`px-6 py-2 rounded-full font-semibold transition-all duration-300 ${
-                      selectedService === service.id
-                        ? service.color === 'accent'
-                          ? 'bg-cyan-500 text-white shadow-lg'
-                          : 'bg-cyan-500 text-navy-900 shadow-lg'
-                        : 'bg-neutral-light text-gray-700 hover:bg-gray-200'
-                    }`}
+                    variant={selectedService === service.id ? 'secondary' : 'ghost'}
+                    size="md"
+                    className={selectedService === service.id ? 'shadow-lg' : ''}
                   >
                     {service.title}
-                  </button>
+                  </Button>
                 ))}
               </div>
             </div>
@@ -160,18 +155,23 @@ export default function SolutionsPage() {
             )}
             {ctaSection?.buttonText && (
               ctaSection.buttonUrl ? (
-                <a
+                <Button
+                  as="a"
                   href={ctaSection.buttonUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
+                  size="lg"
+                  className="bg-white text-navy-900 hover:bg-neutral-light font-bold shadow-lg mb-6 text-xl transition-all duration-300 hover:scale-105"
                 >
                   {ctaSection.buttonText}
-                </a>
+                </Button>
               ) : (
-                <button className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
+                <Button
+                  size="lg"
+                  className="bg-white text-navy-900 hover:bg-neutral-light font-bold shadow-lg mb-6 text-xl transition-all duration-300 hover:scale-105"
+                >
                   {ctaSection.buttonText}
-                </button>
+                </Button>
               )
             )}
             {ctaSection?.phoneText && (

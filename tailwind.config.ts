@@ -9,64 +9,42 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        border: '#D1D5DB',       // gray-300 for borders
-        input: '#D1D5DB',        // gray-300 for inputs
-        ring: '#f4d531',         // golden-dream for focus rings
+        border: '#e5e7eb',       // Light gray for subtle borders
+        input: '#d1d5db',        // Medium light gray for inputs
+        ring: '#00d4ff',         // Electric cyan for focus rings
+        // Primary navy scale
         navy: {
-          900: '#212c41',        // Ebony Clay from logo
-          800: '#2a3851',
-          700: '#334155',
+          DEFAULT: '#1e3a5f',    // Deep Tech Navy - Primary brand color
+          dark: '#162d47',       // Darker navy for hovers
+          900: '#1f2937',        // Dark charcoal for text
+          800: '#1e3a5f',        // Primary navy
+          700: '#2c5282',        // Lighter navy variant
         },
-        // Logo-inspired color palette
-        gold: {
-          50: '#fefce8',
-          100: '#fef9c3',
-          200: '#fef08a',
-          300: '#fde047',
-          400: '#f4d531',        // Golden Dream - Logo primary
-          500: '#e5b436',        // Tulip Tree
-          600: '#d09d49',        // Tussock
-          700: '#e5cd73',        // Chenin
-          800: '#6b5b3a',        // Yellow Metal
-          900: '#4a3f28',
-        },
-        copper: {
-          50: '#fef2f2',
-          100: '#fee2e2',
-          200: '#fecaca',
-          300: '#fca5a5',
-          400: '#f87171',
-          500: '#cc602f',        // Tuscany - Logo copper
-          600: '#b54d23',
-          700: '#9c3d1a',
-          800: '#7f2d12',
-          900: '#5c1f0c',
-        },
-        azure: {
+        // Accent cyan scale
+        cyan: {
+          DEFAULT: '#00d4ff',    // Electric Cyan - Accent color
+          light: '#e0f2fe',      // Very light cyan for backgrounds
           50: '#f0f9ff',
           100: '#e0f2fe',
           200: '#bae6fd',
           300: '#7dd3fc',
           400: '#38bdf8',
-          500: '#42698b',        // Bismark - Logo azure
-          600: '#365678',
-          700: '#2c4563',
-          800: '#1e3145',
-          900: '#0f1f2e',
+          500: '#00d4ff',        // Electric Cyan
+          600: '#0099cc',
+          700: '#0077a3',
+          800: '#005580',
+          900: '#003d5c',
         },
-        cream: {
-          50: '#fefce8',
-          100: '#fef9c3',
-          200: '#fef08a',
-          300: '#e3d59b',        // Zombie - Logo cream
-          400: '#d4c589',
-          500: '#c5b577',
+        // Neutral grayscale
+        neutral: {
+          light: '#f3f4f6',      // Light gray - section backgrounds (Tailwind gray-100)
+          medium: '#6b7280',     // Medium gray - secondary text
+          dark: '#1f2937',       // Dark charcoal - primary text
         },
+        // Brand colors (NEW: Navy + Cyan palette)
         brand: {
-          primary: '#212c41',    // Ebony Clay - Logo dark base
-          secondary: '#f4d531',  // Golden Dream - Logo golden
-          accent: '#cc602f',     // Tuscany - Logo copper accent
-          tertiary: '#42698b',   // Bismark - Logo azure accent
+          primary: '#1e3a5f',    // Deep Tech Navy - Primary brand
+          secondary: '#00d4ff',  // Electric Cyan - Accent
         },
       },
       fontFamily: {
@@ -76,6 +54,7 @@ const config: Config = {
         'fade-in': 'fadeIn 0.5s ease-in-out',
         'slide-up': 'slideUp 0.5s ease-out',
         'count-up': 'countUp 1s ease-out',
+        'spin': 'spin 1s linear infinite',
       },
       keyframes: {
         fadeIn: {
@@ -90,6 +69,26 @@ const config: Config = {
           '0%': { opacity: '0' },
           '100%': { opacity: '1' },
         },
+        spin: {
+          '0%': { transform: 'rotate(0deg)' },
+          '100%': { transform: 'rotate(360deg)' },
+        },
+      },
+      backgroundImage: {
+        'gradient-card': 'linear-gradient(to bottom right, #f0f9ff, #e0f2fe)',
+        'gradient-card-hover': 'linear-gradient(to bottom right, #e0f2fe, #bae6fd)',
+        'gradient-metric': 'linear-gradient(to bottom right, #00d4ff, #2563eb)',
+        'gradient-hero': 'linear-gradient(to bottom right, #1e3a5f, #162d47)',
+      },
+      boxShadow: {
+        'focus': '0 0 0 3px rgba(0, 212, 255, 0.3)',
+        'button': '0 2px 8px rgba(30, 58, 95, 0.15)',
+        'button-hover': '0 4px 16px rgba(0, 212, 255, 0.25)',
+        'card': '0 4px 12px rgba(30, 58, 95, 0.08)',
+        'card-hover': '0 8px 24px rgba(0, 212, 255, 0.15)',
+      },
+      transitionTimingFunction: {
+        'smooth': 'cubic-bezier(0.4, 0, 0.2, 1)',
       },
     },
   },

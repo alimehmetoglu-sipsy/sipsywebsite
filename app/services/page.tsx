@@ -4,6 +4,8 @@ import { useState, useEffect } from 'react';
 import Navigation from '@/components/Navigation';
 import SolutionCard from '@/components/SolutionCard';
 import DynamicIcon from '@/components/DynamicIcon';
+import Button from '@/components/Button';
+import Badge from '@/components/Badge';
 import { useLanguage } from '@/contexts/LanguageContext';
 import { getServicesWithDetails, getCtaSection, getFooter, getMediaURL } from '@/lib/strapi';
 import { Service, Solution } from '@/lib/types';
@@ -96,19 +98,16 @@ export default function ServicesPage() {
                     <div className="lg:hidden flex gap-2 overflow-x-auto pb-4 mb-6">
                       {services.map((service) => {
                         const isActive = activeSection === service.id;
-                        const bgColor = service.color === 'accent' ? 'bg-cyan-500' : 'bg-cyan-500';
                         return (
-                          <button
+                          <Button
                             key={service.id}
                             onClick={() => scrollToService(service.id)}
-                            className={`px-4 py-2 rounded-full font-semibold whitespace-nowrap transition-all duration-300 ${
-                              isActive
-                                ? `${bgColor} text-white shadow-lg`
-                                : 'bg-white text-gray-700 hover:bg-neutral-light'
-                            }`}
+                            variant={isActive ? 'secondary' : 'ghost'}
+                            size="md"
+                            className={`whitespace-nowrap ${isActive ? 'shadow-lg' : ''}`}
                           >
                             {service.title}
-                          </button>
+                          </Button>
                         );
                       })}
                     </div>
@@ -122,28 +121,30 @@ export default function ServicesPage() {
                         {services.map((service) => {
                           const isActive = activeSection === service.id;
                           const borderColor = service.color === 'accent' ? 'border-cyan-500' : 'border-cyan-500';
-                          const textColor = service.color === 'accent' ? 'text-brand-primary600' : 'text-brand-primary600';
+                          const textColor = service.color === 'accent' ? 'text-brand-primary' : 'text-brand-primary';
                           return (
-                            <button
+                            <Button
                               key={service.id}
                               onClick={() => scrollToService(service.id)}
-                              className={`w-full text-left px-4 py-3 rounded-lg transition-all duration-300 ${
+                              variant="ghost"
+                              size="md"
+                              className={`w-full justify-start border-l-4 ${
                                 isActive
-                                  ? `bg-neutral-light border-l-4 ${borderColor} ${textColor} font-semibold`
-                                  : 'text-gray-600 hover:bg-neutral-light border-l-4 border-transparent'
+                                  ? `bg-neutral-light ${borderColor} ${textColor} font-semibold`
+                                  : 'border-transparent'
                               }`}
-                            >
-                              <div className="flex items-center gap-2">
-                                {service.icon && (
+                              icon={
+                                service.icon ? (
                                   <DynamicIcon
                                     icon={service.icon}
                                     className="w-5 h-5"
                                     size={20}
                                   />
-                                )}
-                                <span className="line-clamp-2">{service.title}</span>
-                              </div>
-                            </button>
+                                ) : undefined
+                              }
+                            >
+                              <span className="line-clamp-2">{service.title}</span>
+                            </Button>
                           );
                         })}
                       </nav>
@@ -200,21 +201,24 @@ export default function ServicesPage() {
                               </div>
                               <div className="flex flex-wrap gap-2">
                                 {service.keyTools.map((tool, index) => (
-                                  <span
+                                  <Badge
                                     key={index}
-                                    className={`inline-flex items-center gap-2 px-4 py-2 ${bgColor} rounded-full text-sm`}
+                                    variant="secondary"
+                                    size="sm"
+                                    icon={
+                                      tool.Logo ? (
+                                        <Image
+                                          src={getMediaURL(tool.Logo.url)}
+                                          alt={tool.Logo.alternativeText || tool.Name}
+                                          width={20}
+                                          height={20}
+                                          className="w-5 h-5 object-contain"
+                                        />
+                                      ) : undefined
+                                    }
                                   >
-                                    {tool.Logo && (
-                                      <Image
-                                        src={getMediaURL(tool.Logo.url)}
-                                        alt={tool.Logo.alternativeText || tool.Name}
-                                        width={20}
-                                        height={20}
-                                        className="w-5 h-5 object-contain"
-                                      />
-                                    )}
-                                    <span className="text-gray-900 font-medium">{tool.Name}</span>
-                                  </span>
+                                    {tool.Name}
+                                  </Badge>
                                 ))}
                               </div>
                             </div>
@@ -282,18 +286,23 @@ export default function ServicesPage() {
             )}
             {ctaSection?.buttonText && (
               ctaSection.buttonUrl ? (
-                <a
+                <Button
+                  as="a"
                   href={ctaSection.buttonUrl}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
+                  size="lg"
+                  className="bg-white text-navy-900 hover:bg-neutral-light font-bold shadow-lg mb-6 text-xl transition-all duration-300 hover:scale-105"
                 >
                   {ctaSection.buttonText}
-                </a>
+                </Button>
               ) : (
-                <button className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
+                <Button
+                  size="lg"
+                  className="bg-white text-navy-900 hover:bg-neutral-light font-bold shadow-lg mb-6 text-xl transition-all duration-300 hover:scale-105"
+                >
                   {ctaSection.buttonText}
-                </button>
+                </Button>
               )
             )}
             {ctaSection?.phoneText && (

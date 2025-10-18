@@ -23,6 +23,9 @@ import {
   Github,
 } from 'lucide-react';
 import DynamicIcon from '@/components/DynamicIcon';
+import Button from '@/components/Button';
+import Card from '@/components/Card';
+import ServiceCard from '@/components/ServiceCard';
 import {
   getHeroSection,
   getValuePropositions,
@@ -163,12 +166,12 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                 {hero?.description}
               </p>
               <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
-                <button className="bg-brand-secondary hover:bg-cyan-600 text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300 hover:scale-105 text-lg shadow-lg">
+                <Button variant="secondary" size="lg">
                   {hero?.primaryButtonText}
-                </button>
-                <button className="border-2 border-brand-secondary text-brand-secondary hover:bg-brand-secondary hover:text-white font-semibold px-8 py-4 rounded-lg transition-all duration-300">
+                </Button>
+                <Button variant="outline" size="lg">
                   {hero?.secondaryButtonText}
-                </button>
+                </Button>
               </div>
               {hero?.certifiedPartners && hero.certifiedPartners.length > 0 && (
                 <div className="flex flex-wrap gap-4 items-center justify-center lg:justify-start text-sm text-gray-300">
@@ -238,24 +241,25 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
           <div className="grid md:grid-cols-3 gap-8 mt-12">
             {safeValuePropositions.map((item: ValueProposition & {id: number}) => {
               return (
-                <div
+                <Card
                   key={item.id}
-                  className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl shadow-lg p-8 hover:shadow-2xl transition-all duration-300 hover:-translate-y-1 border-2 border-transparent hover:border-cyan-500"
+                  variant="default"
+                  padding="lg"
                 >
-                  <div className="w-16 h-16 rounded-lg flex items-center justify-center mb-6 bg-cyan-light">
+                  <div className="w-16 h-16 rounded-lg flex items-center justify-center mb-6 bg-cyan-100">
                     <DynamicIcon
                       icon={item.icon}
-                      className="w-8 h-8 text-brand-primary"
+                      className="w-8 h-8 text-navy-800"
                       size={32}
                     />
                   </div>
                   <h3 className="text-2xl font-bold text-navy-900 mb-4">
                     {item.title}
                   </h3>
-                  <p className="text-neutral-medium leading-relaxed">
+                  <p className="text-gray-600 leading-relaxed">
                     {item.description}
                   </p>
-                </div>
+                </Card>
               );
             })}
           </div>
@@ -279,57 +283,17 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
             {safeServices.map((service: Service & {id: number}) => {
               return (
-                <div
+                <ServiceCard
                   key={service.id}
-                  className="group relative bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border-2 border-transparent transition-all duration-300 hover:scale-105 shadow-lg hover:border-cyan-500"
-                >
-                  <div className="w-14 h-14 rounded-lg flex items-center justify-center mb-4 bg-cyan-light">
-                    <DynamicIcon
-                      icon={service.icon}
-                      className="w-7 h-7 text-brand-primary"
-                      size={28}
-                    />
-                  </div>
-                  <h3 className="text-xl font-bold text-navy-900 mb-3">
-                    {service.title}
-                  </h3>
-                  <p className="text-neutral-medium mb-4">
-                    {service.description}
-                  </p>
-                  {service.keyTools && service.keyTools.length > 0 && (
-                    <div className="mb-4">
-                      <p className="text-sm font-semibold text-neutral-medium mb-2">
-                        {language === 'tr' ? 'Anahtar araçlar:' : 'Key tools:'}
-                      </p>
-                      <div className="flex flex-wrap gap-2">
-                        {service.keyTools.map((tool, index) => (
-                          <span
-                            key={index}
-                            className="inline-flex items-center gap-2 px-3 py-1 bg-cyan-light rounded-full text-sm"
-                          >
-                            {tool.Logo && (
-                              <Image
-                                src={getMediaURL(tool.Logo.url)}
-                                alt={tool.Logo.alternativeText || tool.Name}
-                                width={16}
-                                height={16}
-                                className="w-4 h-4 object-contain"
-                              />
-                            )}
-                            <span className="text-navy-900 font-medium">{tool.Name}</span>
-                          </span>
-                        ))}
-                      </div>
-                    </div>
-                  )}
-                  <a
-                    href={service.link || '#'}
-                    className="inline-flex items-center font-semibold hover:underline text-brand-primary hover:text-cyan-500"
-                  >
-                    {service.linkText}{' '}
-                    <ArrowRight className="w-4 h-4 ml-1" />
-                  </a>
-                </div>
+                  icon={service.icon}
+                  title={service.title}
+                  description={service.description}
+                  linkText={service.linkText}
+                  link={service.link}
+                  keyTools={service.keyTools}
+                  toolsLabel={language === 'tr' ? 'Anahtar araçlar:' : 'Key tools:'}
+                  getMediaURL={getMediaURL}
+                />
               );
             })}
           </div>
@@ -358,14 +322,18 @@ export default function ClientHome({ initialData }: ClientHomeProps) {
                 href={ctaSection.buttonUrl}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-block bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6"
+                className="inline-block mb-6"
               >
-                {ctaSection.buttonText}
+                <Button size="xl" className="bg-white text-navy-900 hover:bg-neutral-light font-bold shadow-lg transition-all duration-300 hover:scale-105">
+                  {ctaSection.buttonText}
+                </Button>
               </a>
             ) : (
-              <button className="bg-white text-brand-primary hover:bg-neutral-light font-bold px-10 py-5 rounded-lg text-xl transition-all duration-300 hover:scale-105 shadow-lg mb-6">
-                {ctaSection.buttonText}
-              </button>
+              <div className="mb-6">
+                <Button size="xl" className="bg-white text-navy-900 hover:bg-neutral-light font-bold shadow-lg transition-all duration-300 hover:scale-105">
+                  {ctaSection.buttonText}
+                </Button>
+              </div>
             )
           )}
           {ctaSection?.phoneText && (
