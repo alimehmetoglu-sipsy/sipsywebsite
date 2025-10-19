@@ -7,9 +7,10 @@ import DynamicIcon from '@/components/DynamicIcon';
 import Button from '@/components/Button';
 import Badge from '@/components/Badge';
 import Card from '@/components/Card';
+import ContactFormModal from '@/components/ContactFormModal';
 import { useLanguage } from '@/contexts/LanguageContext';
-import { getSolutionBySlug, getCtaSection, getFooter, getMediaURL } from '@/lib/strapi';
-import { Solution } from '@/lib/types';
+import { getSolutionBySlug, getCtaSection, getFooter, getMediaURL, getContactFormContent } from '@/lib/strapi';
+import { Solution, ContactFormContent } from '@/lib/types';
 import {
   Bot,
   ChevronRight,
@@ -49,20 +50,24 @@ export default function SolutionDetailPage() {
   const [ctaSection, setCtaSection] = useState<any>(null);
   const [footer, setFooter] = useState<any>(null);
   const [showStickyCTA, setShowStickyCTA] = useState(false);
+  const [isContactModalOpen, setIsContactModalOpen] = useState(false);
+  const [contactFormContent, setContactFormContent] = useState<ContactFormContent | null>(null);
 
   useEffect(() => {
     async function fetchData() {
       setIsLoading(true);
       try {
-        const [solutionData, ctaData, footerData] = await Promise.all([
+        const [solutionData, ctaData, footerData, contactFormData] = await Promise.all([
           getSolutionBySlug(slug, language),
           getCtaSection(language),
           getFooter(language),
+          getContactFormContent(language),
         ]);
 
         setSolution(solutionData);
         setCtaSection(ctaData);
         setFooter(footerData);
+        setContactFormContent(contactFormData);
       } catch (error) {
         console.error('Error fetching solution:', error);
       } finally {
@@ -119,11 +124,6 @@ export default function SolutionDetailPage() {
   const serviceTextColor = solution.service?.color === 'accent' ? 'text-brand-primary' : 'text-brand-secondary';
   const serviceBorderColor = solution.service?.color === 'accent' ? 'border-brand-primary' : 'border-brand-secondary';
 
-  const scrollToCTA = () => {
-    const ctaSection = document.getElementById('final-cta');
-    ctaSection?.scrollIntoView({ behavior: 'smooth' });
-  };
-
   return (
     <>
       <Navigation />
@@ -132,7 +132,7 @@ export default function SolutionDetailPage() {
       {showStickyCTA && (
         <div className="fixed bottom-6 right-6 z-50 animate-fade-in">
           <Button
-            onClick={scrollToCTA}
+            onClick={() => setIsContactModalOpen(true)}
             variant={solution.service?.color === 'accent' ? 'primary' : 'secondary'}
             size="md"
             icon={<Sparkles className="w-5 h-5" />}
@@ -209,7 +209,7 @@ export default function SolutionDetailPage() {
                 {/* Primary CTA */}
                 <div className="flex flex-col sm:flex-row gap-4 mb-8">
                   <Button
-                    onClick={scrollToCTA}
+                    onClick={() => setIsContactModalOpen(true)}
                     variant="primary"
                     size="lg"
                     icon={<Calendar className="w-5 h-5" />}
@@ -218,7 +218,7 @@ export default function SolutionDetailPage() {
                     {solution.heroCTA?.primaryButtonText || (language === 'tr' ? 'Ücretsiz Demo Talep Edin' : 'Request Free Demo')}
                   </Button>
                   <Button
-                    onClick={scrollToCTA}
+                    onClick={() => window.open('https://calendar.app.google/QdrkAVrUFMVshJpo8', '_blank')}
                     variant="outline"
                     size="lg"
                     icon={<MessageCircle className="w-5 h-5" />}
@@ -321,7 +321,7 @@ export default function SolutionDetailPage() {
                       : 'Are you facing similar challenges? Let\'s find the solution together.'}
                   </p>
                   <Button
-                    onClick={scrollToCTA}
+                    onClick={() => setIsContactModalOpen(true)}
                     variant="primary"
                     size="lg"
                     className="bg-white text-red-600 hover:bg-neutral-light shadow-lg"
@@ -559,53 +559,6 @@ export default function SolutionDetailPage() {
           </section>
         )}
 
-        {/* Final CTA Section */}
-        <section id="final-cta" className="section-padding bg-gradient-to-r from-navy-800 via-brand-primary to-cyan-500">
-          <div className="container-custom text-center">
-            {ctaSection?.title && (
-              <h2 className="text-4xl lg:text-5xl font-bold text-white mb-6">
-                {ctaSection.title}
-              </h2>
-            )}
-            {ctaSection?.description && (
-              <p className="text-xl text-neutral-light mb-8 max-w-2xl mx-auto">
-                {ctaSection.description}
-              </p>
-            )}
-            {ctaSection?.buttonText && (
-              ctaSection.buttonUrl ? (
-                <Button
-                  as="a"
-                  href={ctaSection.buttonUrl}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  size="lg"
-                  className="bg-white text-navy-900 hover:bg-neutral-light font-bold shadow-lg mb-6 text-xl transition-all duration-300 hover:scale-105"
-                >
-                  {ctaSection.buttonText}
-                </Button>
-              ) : (
-                <Button
-                  size="lg"
-                  className="bg-white text-navy-900 hover:bg-neutral-light font-bold shadow-lg mb-6 text-xl transition-all duration-300 hover:scale-105"
-                >
-                  {ctaSection.buttonText}
-                </Button>
-              )
-            )}
-            {ctaSection?.phoneText && (
-              <p className="text-white mb-2">
-                {ctaSection.phoneText}
-              </p>
-            )}
-            {ctaSection?.confidentialityText && (
-              <p className="text-sm text-white">
-                {ctaSection.confidentialityText}
-              </p>
-            )}
-          </div>
-        </section>
-
         {/* Other Solutions Teaser */}
         <section className="section-padding bg-gradient-to-br from-blue-50 via-cyan-50 to-slate-100">
           <div className="container-custom text-center">
@@ -836,6 +789,14 @@ export default function SolutionDetailPage() {
           </div>
         </footer>
       </main>
+
+      {/* Contact Form Modal */}
+      <ContactFormModal
+        isOpen={isContactModalOpen}
+        onClose={() => setIsContactModalOpen(false)}
+        content={contactFormContent}
+        language={language}
+      />
     </>
   );
 }
