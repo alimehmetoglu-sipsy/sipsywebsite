@@ -794,7 +794,25 @@ export default function SolutionDetailPage() {
       <ContactFormModal
         isOpen={isContactModalOpen}
         onClose={() => setIsContactModalOpen(false)}
-        content={contactFormContent}
+        content={contactFormContent || {
+          title: language === 'tr' ? 'İletişim Formu' : 'Contact Form',
+          fullNameLabel: language === 'tr' ? 'Ad Soyad' : 'Full Name',
+          fullNamePlaceholder: language === 'tr' ? 'Adınız ve Soyadınız' : 'Your Full Name',
+          emailLabel: 'Email',
+          emailPlaceholder: language === 'tr' ? 'ornek@email.com' : 'example@email.com',
+          phoneLabel: language === 'tr' ? 'Telefon' : 'Phone',
+          phonePlaceholder: language === 'tr' ? '+90 (555) 123 45 67' : '+1 (555) 123-4567',
+          messageLabel: language === 'tr' ? 'Mesaj' : 'Message',
+          messagePlaceholder: language === 'tr' ? 'Mesajınızı buraya yazın...' : 'Write your message here...',
+          submitButtonText: language === 'tr' ? 'Gönder' : 'Submit',
+          successMessage: language === 'tr' ? 'Mesajınız başarıyla gönderildi!' : 'Your message has been sent successfully!',
+          privacyPolicyText: language === 'tr' ? 'Gizlilik Politikası' : 'Privacy Policy',
+          privacyPolicyUrl: '/privacy',
+          termsText: language === 'tr' ? 'Kullanım Koşulları' : 'Terms of Service',
+          termsUrl: '/terms',
+          privacyAgreementText:
+            language === 'tr' ? "'nı ve ... 'nı kabul ediyorum" : ' and ... I agree',
+        }}
         language={language}
       />
     </>
