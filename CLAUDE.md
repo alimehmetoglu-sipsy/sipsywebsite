@@ -196,16 +196,28 @@ pm2 restart all
 
 For direct transfer between instances (requires transfer token):
 
+**Option 1: Using environment variables from backend/.env (Recommended)**
 ```bash
-cd backend
-npm run strapi transfer -- --to https://sipsy.ai/admin --to-token YOUR_TRANSFER_TOKEN --exclude files --force
+cd backend && source .env && npm run strapi transfer -- --to $STRAPI_TRANSFER_URL --to-token $STRAPI_TRANSFER_TOKEN --force
+```
+
+**Option 2: Direct command with token**
+```bash
+cd backend && npm run strapi transfer -- --to https://sipsy.ai/admin --to-token 9a83fff1ba4a438a48719afd053772b570a8d4ffa14df82728b67bcf1e6b190ca8314e92ac1d258ae7c38fab7b5d2791f72f6396a997fa7ea7f92cb7141f2cbbd009280a6bdef21baf3f9013f8e73260aa3395b6dc73f276eae7734fe694067fe0fb9668f72df6f6eed5357a3f1709c28b2bf4950ed4206fcb773525206157d0 --force
+```
+
+**Option 3: Exclude media files to avoid S3 ACL issues**
+```bash
+cd backend && source .env && npm run strapi transfer -- --to $STRAPI_TRANSFER_URL --to-token $STRAPI_TRANSFER_TOKEN --exclude files --force
 ```
 
 **Important Notes**:
-- `--exclude files`: Recommended to avoid S3 ACL issues during transfer
-- `--force`: Bypasses confirmation prompts (use with caution)
-- Transfer token can be found in `.env.local` under `STRAPI_TRANSFER_TOKEN`
+- `--force`: Bypasses confirmation prompts (use with caution - overwrites production data!)
+- `--exclude files`: Use only if you encounter S3 ACL issues; omit to transfer media files
+- Transfer token is stored in `backend/.env` under `STRAPI_TRANSFER_TOKEN`
 - Both instances must have matching schemas
+- **Use Case**: Ideal for transferring content updates (like icon changes) from local to production
+- Transfer includes: content types, entries, components, and configurations
 
 ### Common Issues & Solutions
 
