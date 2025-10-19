@@ -203,8 +203,9 @@ cd backend && source .env && npm run strapi transfer -- --to $STRAPI_TRANSFER_UR
 
 **Option 2: Direct command with token**
 ```bash
-cd backend && npm run strapi transfer -- --to https://sipsy.ai/admin --to-token 9a83fff1ba4a438a48719afd053772b570a8d4ffa14df82728b67bcf1e6b190ca8314e92ac1d258ae7c38fab7b5d2791f72f6396a997fa7ea7f92cb7141f2cbbd009280a6bdef21baf3f9013f8e73260aa3395b6dc73f276eae7734fe694067fe0fb9668f72df6f6eed5357a3f1709c28b2bf4950ed4206fcb773525206157d0 --force
+cd backend && npm run strapi transfer -- --to https://sipsy.ai/admin --to-token YOUR_TRANSFER_TOKEN --force
 ```
+*Note: Replace `YOUR_TRANSFER_TOKEN` with the actual token from `backend/.env`*
 
 **Option 3: Exclude media files to avoid S3 ACL issues**
 ```bash
