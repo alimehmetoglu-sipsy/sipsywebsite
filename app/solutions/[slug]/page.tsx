@@ -813,7 +813,6 @@ export default function SolutionDetailPage() {
           privacyAgreementText:
             language === 'tr' ? "'nı ve ... 'nı kabul ediyorum" : ' and ... I agree',
         }}
-        language={language}
       />
     </>
   );
