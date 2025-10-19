@@ -85,12 +85,119 @@ export default function PrivacyPage() {
                 </div>
               ) : (
                 <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
-                  <div className="text-center py-12">
-                    <p className="text-gray-600 text-lg">
-                      {language === 'tr'
-                        ? 'Gizlilik politikası içeriği henüz yüklenmedi. Lütfen daha sonra tekrar deneyin.'
-                        : 'Privacy policy content is not yet available. Please try again later.'}
-                    </p>
+                  <div className="prose prose-lg max-w-none
+                                 prose-headings:font-bold prose-headings:text-navy-900
+                                 prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:first:mt-0
+                                 prose-h2:pb-3 prose-h2:border-b-2 prose-h2:border-cyan-500/30
+                                 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-navy-800
+                                 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4
+                                 prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6
+                                 prose-li:text-gray-700 prose-li:leading-relaxed prose-li:mb-2">
+                    {language === 'tr' ? (
+                      <>
+                        <h2>Gizlilik Politikamız</h2>
+                        <p>
+                          sipsy.ai olarak, kişisel verilerinizin güvenliği ve gizliliği bizim için son derece önemlidir.
+                          Bu gizlilik politikası, kişisel bilgilerinizi nasıl topladığımızı, kullandığımızı ve koruduğumuzu açıklar.
+                        </p>
+
+                        <h3>1. Topladığımız Bilgiler</h3>
+                        <p>
+                          Web sitemizi ziyaret ettiğinizde veya hizmetlerimizi kullandığınızda aşağıdaki bilgileri toplayabiliriz:
+                        </p>
+                        <ul>
+                          <li>Ad, soyad ve iletişim bilgileri</li>
+                          <li>E-posta adresi ve telefon numarası</li>
+                          <li>Şirket bilgileri</li>
+                          <li>IP adresi ve tarayıcı bilgileri</li>
+                        </ul>
+
+                        <h3>2. Bilgilerin Kullanımı</h3>
+                        <p>
+                          Topladığımız bilgileri aşağıdaki amaçlarla kullanırız:
+                        </p>
+                        <ul>
+                          <li>Hizmetlerimizi sağlamak ve iyileştirmek</li>
+                          <li>Sizinle iletişim kurmak</li>
+                          <li>Teknik destek sağlamak</li>
+                          <li>Yasal yükümlülüklerimizi yerine getirmek</li>
+                        </ul>
+
+                        <h3>3. Veri Güvenliği</h3>
+                        <p>
+                          Kişisel verilerinizi korumak için endüstri standardı güvenlik önlemlerini kullanıyoruz.
+                          Verileriniz şifrelenerek saklanır ve yetkisiz erişime karşı korunur.
+                        </p>
+
+                        <h3>4. Çerezler</h3>
+                        <p>
+                          Web sitemiz, kullanıcı deneyimini iyileştirmek için çerezler kullanır. Tarayıcı ayarlarınızdan
+                          çerezleri yönetebilir veya reddedebilirsiniz.
+                        </p>
+
+                        <h3>5. İletişim</h3>
+                        <p>
+                          Gizlilik politikamız hakkında sorularınız varsa, lütfen bizimle iletişime geçin:
+                          <strong> hello@sipsy.ai</strong>
+                        </p>
+
+                        <p className="text-sm text-gray-600 mt-8">
+                          Son güncellenme: Ocak 2025
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <h2>Our Privacy Policy</h2>
+                        <p>
+                          At sipsy.ai, the security and privacy of your personal data is extremely important to us.
+                          This privacy policy explains how we collect, use, and protect your personal information.
+                        </p>
+
+                        <h3>1. Information We Collect</h3>
+                        <p>
+                          When you visit our website or use our services, we may collect the following information:
+                        </p>
+                        <ul>
+                          <li>First name, last name, and contact information</li>
+                          <li>Email address and phone number</li>
+                          <li>Company information</li>
+                          <li>IP address and browser information</li>
+                        </ul>
+
+                        <h3>2. Use of Information</h3>
+                        <p>
+                          We use the information we collect for the following purposes:
+                        </p>
+                        <ul>
+                          <li>To provide and improve our services</li>
+                          <li>To communicate with you</li>
+                          <li>To provide technical support</li>
+                          <li>To fulfill our legal obligations</li>
+                        </ul>
+
+                        <h3>3. Data Security</h3>
+                        <p>
+                          We use industry-standard security measures to protect your personal data.
+                          Your data is encrypted and stored securely, protected against unauthorized access.
+                        </p>
+
+                        <h3>4. Cookies</h3>
+                        <p>
+                          Our website uses cookies to improve user experience. You can manage or
+                          reject cookies through your browser settings.
+                        </p>
+
+                        <h3>5. Contact</h3>
+                        <p>
+                          If you have questions about our privacy policy, please contact us at:
+                          <strong> hello@sipsy.ai</strong>
+                        </p>
+
+                        <p className="text-sm text-gray-600 mt-8">
+                          Last updated: January 2025
+                        </p>
+                      </>
+                    )}
                   </div>
                 </div>
               )}

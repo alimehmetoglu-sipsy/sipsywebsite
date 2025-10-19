@@ -215,7 +215,10 @@ export default function AboutUsPage() {
           <>
             {/* Hero Section */}
             <section className="relative bg-gradient-to-br from-navy-900 via-navy-800 to-navy-900 text-white py-24 overflow-hidden">
-              <div className="absolute inset-0 bg-[url('/grid-pattern.svg')] opacity-10"></div>
+              <div className="absolute inset-0 opacity-10" style={{
+                backgroundImage: 'linear-gradient(to right, rgba(255,255,255,0.1) 1px, transparent 1px), linear-gradient(to bottom, rgba(255,255,255,0.1) 1px, transparent 1px)',
+                backgroundSize: '40px 40px'
+              }}></div>
 
               <div className="container-custom relative z-10">
                 <div className="max-w-4xl mx-auto text-center">

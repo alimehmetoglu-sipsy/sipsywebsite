@@ -85,12 +85,155 @@ export default function TermsPage() {
                 </div>
               ) : (
                 <div className="bg-white rounded-xl shadow-lg p-8 md:p-12">
-                  <div className="text-center py-12">
-                    <p className="text-gray-600 text-lg">
-                      {language === 'tr'
-                        ? 'Kullanım koşulları içeriği henüz yüklenmedi. Lütfen daha sonra tekrar deneyin.'
-                        : 'Terms of service content is not yet available. Please try again later.'}
-                    </p>
+                  <div className="prose prose-lg max-w-none
+                                 prose-headings:font-bold prose-headings:text-navy-900
+                                 prose-h2:text-3xl prose-h2:mt-12 prose-h2:mb-6 prose-h2:first:mt-0
+                                 prose-h2:pb-3 prose-h2:border-b-2 prose-h2:border-cyan-500/30
+                                 prose-h3:text-xl prose-h3:mt-8 prose-h3:mb-4 prose-h3:text-navy-800
+                                 prose-p:text-gray-700 prose-p:leading-relaxed prose-p:mb-4
+                                 prose-ul:my-6 prose-ul:list-disc prose-ul:pl-6
+                                 prose-li:text-gray-700 prose-li:leading-relaxed prose-li:mb-2">
+                    {language === 'tr' ? (
+                      <>
+                        <h2>Kullanım Koşullarımız</h2>
+                        <p>
+                          sipsy.ai web sitesini ve hizmetlerini kullanarak, aşağıdaki kullanım koşullarını kabul etmiş olursunuz.
+                          Lütfen bu koşulları dikkatlice okuyun.
+                        </p>
+
+                        <h3>1. Şartların Kabulü</h3>
+                        <p>
+                          Bu web sitesine ve hizmetlerimize erişerek, bu kullanım koşullarına, tüm geçerli yasa ve yönetmeliklere
+                          uymayı kabul edersiniz. Bu koşulları kabul etmiyorsanız, bu siteyi kullanmayınız.
+                        </p>
+
+                        <h3>2. Hizmetlerin Kullanımı</h3>
+                        <p>
+                          Hizmetlerimizi kullanırken aşağıdaki kurallara uymanız gerekmektedir:
+                        </p>
+                        <ul>
+                          <li>Hizmetleri yalnızca yasal amaçlarla kullanmak</li>
+                          <li>Diğer kullanıcıların haklarına saygı göstermek</li>
+                          <li>Sistemlerimize zarar verecek faaliyetlerden kaçınmak</li>
+                          <li>Bilgileri yetkisiz şekilde kopyalamamak veya dağıtmamak</li>
+                        </ul>
+
+                        <h3>3. Kullanıcı Sorumlulukları</h3>
+                        <p>
+                          Kullanıcılar aşağıdaki konulardan sorumludur:
+                        </p>
+                        <ul>
+                          <li>Hesap bilgilerinin güvenliğini sağlamak</li>
+                          <li>Sağlanan bilgilerin doğruluğu</li>
+                          <li>Hizmetlerin uygun kullanımı</li>
+                          <li>Üçüncü taraf içeriklerin kullanımı</li>
+                        </ul>
+
+                        <h3>4. Fikri Mülkiyet Hakları</h3>
+                        <p>
+                          Bu web sitesinde yer alan tüm içerik (metin, grafik, logo, görseller, yazılım) sipsy.ai'nin
+                          mülkiyetindedir ve telif hakkı yasaları ile korunmaktadır. İzinsiz kullanım yasaktır.
+                        </p>
+
+                        <h3>5. Sorumluluk Sınırlaması</h3>
+                        <p>
+                          sipsy.ai, hizmetlerin kesintisiz veya hatasız olacağını garanti etmez. Hizmetlerin kullanımından
+                          kaynaklanan dolaylı zararlardan sorumlu tutulamaz.
+                        </p>
+
+                        <h3>6. Değişiklikler</h3>
+                        <p>
+                          Bu kullanım koşullarını dilediğimiz zaman değiştirme hakkını saklı tutarız. Değişiklikler
+                          bu sayfada yayınlandığında yürürlüğe girer.
+                        </p>
+
+                        <h3>7. Uygulanacak Hukuk</h3>
+                        <p>
+                          Bu kullanım koşulları Türkiye Cumhuriyeti yasalarına tabidir. Ortaya çıkabilecek
+                          anlaşmazlıklar İstanbul mahkemelerinde çözülecektir.
+                        </p>
+
+                        <h3>8. İletişim</h3>
+                        <p>
+                          Kullanım koşullarımız hakkında sorularınız varsa, lütfen bizimle iletişime geçin:
+                          <strong> hello@sipsy.ai</strong>
+                        </p>
+
+                        <p className="text-sm text-gray-600 mt-8">
+                          Son güncellenme: Ocak 2025
+                        </p>
+                      </>
+                    ) : (
+                      <>
+                        <h2>Our Terms of Service</h2>
+                        <p>
+                          By using the sipsy.ai website and services, you agree to the following terms of service.
+                          Please read these terms carefully.
+                        </p>
+
+                        <h3>1. Acceptance of Terms</h3>
+                        <p>
+                          By accessing this website and our services, you agree to be bound by these terms of service,
+                          all applicable laws and regulations. If you do not agree with these terms, do not use this site.
+                        </p>
+
+                        <h3>2. Use of Services</h3>
+                        <p>
+                          When using our services, you must comply with the following rules:
+                        </p>
+                        <ul>
+                          <li>Use services only for lawful purposes</li>
+                          <li>Respect the rights of other users</li>
+                          <li>Avoid activities that could harm our systems</li>
+                          <li>Do not copy or distribute information without authorization</li>
+                        </ul>
+
+                        <h3>3. User Responsibilities</h3>
+                        <p>
+                          Users are responsible for:
+                        </p>
+                        <ul>
+                          <li>Maintaining the security of account information</li>
+                          <li>Accuracy of provided information</li>
+                          <li>Appropriate use of services</li>
+                          <li>Use of third-party content</li>
+                        </ul>
+
+                        <h3>4. Intellectual Property Rights</h3>
+                        <p>
+                          All content on this website (text, graphics, logos, images, software) is owned by sipsy.ai
+                          and protected by copyright laws. Unauthorized use is prohibited.
+                        </p>
+
+                        <h3>5. Limitation of Liability</h3>
+                        <p>
+                          sipsy.ai does not guarantee that services will be uninterrupted or error-free. We cannot be held
+                          liable for indirect damages arising from the use of services.
+                        </p>
+
+                        <h3>6. Modifications</h3>
+                        <p>
+                          We reserve the right to modify these terms of service at any time. Changes become effective
+                          when published on this page.
+                        </p>
+
+                        <h3>7. Governing Law</h3>
+                        <p>
+                          These terms of service are governed by the laws of the Republic of Turkey. Any disputes that
+                          may arise will be resolved in Istanbul courts.
+                        </p>
+
+                        <h3>8. Contact</h3>
+                        <p>
+                          If you have questions about our terms of service, please contact us at:
+                          <strong> hello@sipsy.ai</strong>
+                        </p>
+
+                        <p className="text-sm text-gray-600 mt-8">
+                          Last updated: January 2025
+                        </p>
+                      </>
+                    )}
                   </div>
                 </div>
               )}
