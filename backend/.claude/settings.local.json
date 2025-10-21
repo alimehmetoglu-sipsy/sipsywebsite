@@ -1,0 +1,15 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(node scripts/fetch-about-us.js:*)",
+      "Read(//c/Users/Ali/Documents/Projects/sipsywebsite/app/about-us/**)",
+      "Read(//c/Users/Ali/Documents/Projects/sipsywebsite/**)",
+      "mcp__playwright__browser_navigate",
+      "mcp__playwright__browser_take_screenshot",
+      "mcp__playwright__browser_snapshot",
+      "Bash(cat ../package.json)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
