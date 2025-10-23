@@ -106,6 +106,7 @@ import {
   ArrowLeft,
   ArrowUp,
   ArrowDown,
+  Wrench,
 } from 'lucide-react';
 import { LucideIcon } from 'lucide-react';
 
@@ -134,6 +135,7 @@ const iconMap: Record<string, LucideIcon> = {
   FileText,
   File,
   Folder,
+  Wrench,
 
   // Infrastructure & Systems
   Server,
